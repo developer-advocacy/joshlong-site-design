@@ -25,11 +25,16 @@
     <div class="social-icons"></div>
 </div>
 <div class="hero">
-    <div class="name">Josh Long</div>
-    <div class="description ">
-        A Spring Developer Advocate, Java Champion, author of numerous books and best-selling video training,
-        open-source contributor, podcaster and YouTuber 👋🏻
+    <div class="text">
+        <div class="name">Josh Long</div>
+        <div class="description ">
+            A Spring Developer Advocate, Java Champion,
+            Kotlin Google Developer Expert,
+            author of numerous books and best-selling video training,
+            open-source contributor, podcaster and YouTuber - 👋🏻
+        </div>
     </div>
+    <div class="image"></div>
 </div>
 <div class="appearances"></div>
 <div class="recent-posts"></div>
@@ -117,6 +122,10 @@
     }
 
     :root {
+
+        --josh-hero-image-height: 634px;
+        --josh-hero-image-width: 500px;
+
         --gray-100: #F2F4F7;
         --black: #000;
         --white: white;
@@ -134,13 +143,11 @@
         padding-right: var(--page-left-pad);
         padding-top: var(--page-top-pad);
         display: grid;
-        grid-template-rows: auto   auto;
+        grid-template-rows: auto auto;
         grid-template-areas: "menu"
-                            "hero";
+                             "hero";
     }
 
-
-    /**/
 
     .hero {
 
@@ -150,18 +157,32 @@
         grid-area: hero;
         color: var(--gray-100);
 
+        display: grid;
+        grid-template-areas: "text image";
+        grid-template-columns: auto 500px;
 
         margin-left: calc(-1 * var(--page-left-pad));
         margin-right: calc(-1 * var(--page-right-pad));
-
 
         padding-left: calc(2 * var(--page-left-pad));
         padding-top: var(--page-top-pad);
         padding-right: var(--page-right-pad);
     }
 
-    .hero > .name {
-        border: 1px solid orange;
+    .hero > .text {
+        grid-area: text;
+        padding-top: calc(var(--page-top-pad) * 4);
+    }
+
+
+    .hero > .image {
+        height: var(--josh-hero-image-height);
+        background: url("assets/images/josh-hero-image.png");
+        background-size: var(--josh-hero-image-width) var(--josh-hero-image-height);
+        background-repeat: no-repeat;
+    }
+
+    .hero > .text > .name {
         display: block;
         font-size: 60px;
         line-height: 72px;
