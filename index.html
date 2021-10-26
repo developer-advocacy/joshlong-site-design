@@ -60,7 +60,8 @@
 
     .menu {
 
-        grid-area: menu; /* part of the page's grid, while also having its own grid. */
+        /* part of the page's grid, while also having its own grid. */
+        grid-area: menu;
         color: var(--white);
         background-color: var(--black);
 
@@ -177,15 +178,14 @@
 
     .hero > .image {
         height: var(--josh-hero-image-height);
-        background: url("assets/images/josh-hero-image.png");
         background-size: var(--josh-hero-image-width) var(--josh-hero-image-height);
-        background-repeat: no-repeat;
+        background: url("assets/images/josh-hero-image.png") no-repeat;
     }
 
     .hero > .text > .name {
         display: block;
         font-size: 60px;
-        line-height: 72px;
+        line-height: 2em;
     }
 
 
