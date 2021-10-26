@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        Josh Long
+    </title>
+</head>
+<body>
+
+
+<div class="hero"></div>
+<div class="appearances"></div>
+<div class="recent-posts"></div>
+<div class="podcast"></div>
+<div class="books"></div>
+<div class="livelessons"></div>
+<div class="youtube"></div>
+<div class="footer"></div>
+
+<div class="menu">
+    <div class="logo">Josh Long</div>
+    <div class="links">
+        <nav>
+            <ul><a href="#">Home</a></ul>
+            <ul><a href="#">About</a></ul>
+            <ul><a href="#">Appearances</a></ul>
+            <ul><a href="#">Blog</a></ul>
+            <ul><a href="#">Abstract</a></ul>
+            <ul><a href="#">Livelessons</a></ul>
+            <ul><a href="#">Books</a></ul>
+            <ul><a href="#">Contact</a></ul>
+        </nav>
+
+    </div>
+    <div class="social-icons"></div>
+</div>
+<style type="text/css">
+
+
+    @import url('https://rsms.me/inter/inter.css');
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    a {
+        color: var(--white)
+    }
+
+    .menu {
+
+        color: var(--white);
+        background-color: var(--black);
+        display: grid;
+
+        grid-template-areas: "logo links social-icons";
+        grid-template-columns: 200px  auto 200px;
+
+        margin-left: calc(-1 * var(--page-left-pad));
+        margin-right: calc(-1 * var(--page-right-pad));
+        margin-top: calc(-1 * var(--page-top-pad));
+
+        padding-left: var(--page-left-pad);
+        padding-top: var(--page-top-pad);
+        padding-right: var(--page-right-pad);
+
+    }
+
+    .menu .logo {
+        grid-area: logo;
+
+        font-size: 18px;
+        line-height: 26px;
+        font-weight: 500;
+
+    }
+
+    .menu .links {
+        grid-area: links;
+
+    }
+
+    .menu > .links > nav > ul {
+        display: inline;
+        padding: 0;
+        margin: 0;
+        padding-right: 0.5em;
+    }
+
+    .menu > .links > nav > ul > a {
+
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 24px;
+        text-decoration: none;
+    }
+
+    .menu .social-icons {
+        grid-area: social-icons;
+        /*border: 1px solid yellow;*/
+        background: url("assets/images/social-icons.png") no-repeat;
+        background-size: 200px 20px;
+    }
+
+    html {
+        font-family: 'Inter', sans-serif;
+    }
+
+    :root {
+
+        --black: #000;
+        --white: white;
+
+        --page-right-pad: 30px;
+        --page-left-pad: 30px;
+        --page-top-pad: 30px;
+        --page-bottom-pad: 30px;
+    }
+
+    body {
+        margin: 0;
+        background: var(--white);
+        padding-left: var(--page-left-pad);
+        padding-right: var(--page-left-pad);
+        padding-top: var(--page-top-pad);
+    }
+
+
+</style>
+
+</body>
+</html>
