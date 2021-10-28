@@ -1,9 +1,244 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+
     <title>
         Josh Long
     </title>
+
+
+    <style>
+        @import url("https://rsms.me/inter/inter.css");
+
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        a {
+            color: var(--white)
+        }
+
+        .menu {
+            grid-area: menu;
+            color: var(--white);
+            background-color: var(--black);
+
+            display: grid;
+            grid-template-areas: "logo links social-icons";
+            grid-template-columns: 150px  auto 200px;
+
+            margin-left: calc(-1 * var(--page-left-pad));
+            margin-right: calc(-1 * var(--page-right-pad));
+            margin-top: calc(-1 * var(--page-top-pad));
+
+            padding-left: var(--page-left-pad);
+            padding-top: var(--page-top-pad);
+            padding-right: var(--page-right-pad);
+
+            vertical-align: center;
+        }
+
+        .menu .logo {
+            grid-area: logo;
+            font-size: 22px;
+            line-height: 26px;
+            font-weight: 500;
+        }
+
+        .menu .links {
+            grid-area: links;
+
+        }
+
+        .menu > .links > nav > a {
+            display: inline;
+            margin: 0;
+            padding-right: 0.5em;
+            font-size: 16px;
+        }
+
+        .menu > .links > nav > ul > a {
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .menu .social-icons {
+            grid-area: social-icons;
+            background: url("assets/images/social-icons.png") no-repeat;
+            background-size: 200px 20px;
+        }
+
+        html {
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+
+            --josh-hero-image-height: 634px;
+            --josh-hero-image-width: 500px;
+
+            --gray-25: #FCFCFD;
+            --gray-100: #F2F4F7;
+            --gray-300: #D0D5DD;
+            --gray-900: #101828;
+            --gray-800: #1D2939;
+
+            --black: #000;
+            --white: white;
+            --light-green: #6CE9A6;
+
+            --page-right-pad: 30px;
+            --page-left-pad: 30px;
+            --page-top-pad: 30px;
+            --page-bottom-pad: 30px;
+
+            --appearance-event-padding: 0.5em ;
+
+            --green-gradient: linear-gradient(#079052, #439792);
+        }
+
+        body {
+            margin: 0;
+            background: var(--white);
+            padding-left: var(--page-left-pad);
+            padding-right: var(--page-left-pad);
+            padding-top: var(--page-top-pad);
+            display: grid;
+            grid-template-rows: auto auto;
+            grid-template-areas: "menu"
+                                 "hero"
+                                 "appearances";
+        }
+
+
+        .hero {
+
+            font-size: 20px;
+            line-height: 30px;
+            background-color: var(--black);
+            grid-area: hero;
+            color: var(--gray-100);
+
+            display: grid;
+            grid-template-areas: "text image";
+            grid-template-columns: auto 500px;
+
+            margin-left: calc(-1 * var(--page-left-pad));
+            margin-right: calc(-1 * var(--page-right-pad));
+
+            padding-left: calc(2 * var(--page-left-pad));
+            padding-right: var(--page-right-pad);
+            padding-top: var(--page-top-pad);
+        }
+
+        .hero > .text > button {
+            background-color: var(--black);
+            /*border-radius: 10%;*/
+            border-radius: 10px;
+            padding: 1em 20px;
+            color: var(--light-green);
+            border: 1px solid var(--light-green);
+            margin-top: 2em;
+        }
+
+        .hero > .text {
+            grid-area: text;
+            padding-top: calc(var(--page-top-pad) * 4);
+        }
+
+        .hero > .image {
+            height: var(--josh-hero-image-height);
+            background-size: var(--josh-hero-image-width) var(--josh-hero-image-height);
+            background: url("assets/images/josh-hero-image.png") no-repeat;
+        }
+
+        .hero > .text > .name {
+            display: block;
+            font-size: 60px;
+            line-height: 2em;
+        }
+
+        .appearances {
+            grid-area: appearances;
+            background-color: var(--gray-900);
+
+            margin-left: calc(-1 * var(--page-left-pad));
+            margin-right: calc(-1 * var(--page-right-pad));
+
+            padding-left: calc(2 * var(--page-left-pad));
+            padding-right: var(--page-right-pad);
+        }
+
+
+        .appearances {
+            color: var(--white);
+            font-size: xx-large;
+            vertical-align: center;
+        }
+
+        .appearances > .header {
+            background-image: url("assets/images/calendar.png");
+            background-size: 40px 40px;
+            background-repeat: no-repeat;
+            padding-left: 50px;
+            height: calc(1.5 * 40px);
+            margin-top: 1.5em;
+            margin-bottom: 1.5em;
+        }
+
+        .appearances > .timeline {
+            margin-bottom: 1em;
+        }
+
+        .appearances > .timeline > .event {
+            border-radius: 10px;
+            background-color: var(--gray-800);
+            padding: var(--appearance-event-padding);
+            display: grid;
+            grid-template-areas: "date   description"
+                             ". description";
+            grid-template-columns: 3em   auto;
+            grid-template-rows: 3em   auto;
+
+        }
+
+        .appearances > .timeline > .event > .date > .day {
+            font-size: xx-large;
+        }
+
+        .appearances > .timeline > .event > .date {
+            grid-area: date;
+            background-image: var(--green-gradient);
+            padding: 1em;
+            border-radius: 10px;
+            color: var(--gray-25);
+            font-size: large;
+            text-align: center;
+            /*border: 1px solid yellow;*/
+        }
+
+        .appearances > .timeline > .event > .description {
+            padding-left: var(--appearance-event-padding);
+        }
+
+        .appearances > .timeline > .event > .description > .event {
+            color: var(--gray-25);
+            line-height: 30pt;
+            font-size: 20pt;
+            grid-area: event;
+        }
+
+        .appearances > .timeline > .event > .description > .event-details {
+            font-size: 14pt;
+            line-height: 20pt;
+            color: var(--gray-300);
+            margin-top: 0.5em;
+        }
+
+    </style>
+
 </head>
 <body>
 
@@ -11,14 +246,15 @@
     <div class="logo">Josh Long</div>
     <div class="links">
         <nav>
-            <ul><a href="#">Home</a></ul>
-            <ul><a href="#">About</a></ul>
-            <ul><a href="#">Appearances</a></ul>
-            <ul><a href="#">Blog</a></ul>
-            <ul><a href="#">Abstract</a></ul>
-            <ul><a href="#">Livelessons</a></ul>
-            <ul><a href="#">Books</a></ul>
-            <ul><a href="#">Contact</a></ul>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Appearances</a>
+            <a href="#">Blog</a>
+            <a href="#">Abstract</a>
+            <a href="#">Livelessons</a>
+            <a href="#">Books</a>
+            <a href="#">Contact</a>
+
         </nav>
 
     </div>
@@ -31,12 +267,42 @@
             A Spring Developer Advocate, Java Champion,
             Kotlin Google Developer Expert,
             author of numerous books, best-selling video trainer,
-            open-source contributor, podcaster and YouTuber: hi, Spring fans! 👋🏻
+            open-source contributor, pod caster and YouTuber: hi, Spring fans!
+            👋
         </div>
+        <button type="button">
+            Get to know me
+        </button>
     </div>
     <div class="image"></div>
 </div>
-<div class="appearances"></div>
+
+
+<div class="appearances">
+
+
+    <div class="header"> Upcoming Appearances</div>
+    <div class="timeline">
+
+
+        <div class="event">
+            <div class="date">
+                <div class="day">20</div>
+                <div class="month">Oct</div>
+            </div>
+            <div class="description">
+                <div class="event"> Masterclass + Taster Masterclass with GOTO Academy</div>
+                <div class="event-details">
+                    I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
 <div class="recent-posts"></div>
 <div class="podcast"></div>
 <div class="books"></div>
@@ -44,152 +310,6 @@
 <div class="youtube"></div>
 <div class="footer"></div>
 
-
-<style type="text/css">
-    @import url('https://rsms.me/inter/inter.css');
-
-
-    *, *::before, *::after {
-        box-sizing: border-box;
-    }
-
-    a {
-        color: var(--white)
-    }
-
-
-    .menu {
-
-        /* part of the page's grid, while also having its own grid. */
-        grid-area: menu;
-        color: var(--white);
-        background-color: var(--black);
-
-        display: grid;
-        grid-template-areas: "logo links social-icons";
-        grid-template-columns: 150px  auto 200px;
-
-        margin-left: calc(-1 * var(--page-left-pad));
-        margin-right: calc(-1 * var(--page-right-pad));
-        margin-top: calc(-1 * var(--page-top-pad));
-
-        padding-left: var(--page-left-pad);
-        padding-top: var(--page-top-pad);
-        padding-right: var(--page-right-pad);
-
-        vertical-align: center;
-
-
-    }
-
-    .menu .logo {
-        grid-area: logo;
-        font-size: 22px;
-        line-height: 26px;
-        font-weight: 500;
-    }
-
-    .menu .links {
-        grid-area: links;
-
-    }
-
-    .menu > .links > nav > ul {
-        display: inline;
-        padding: 0;
-        margin: 0;
-        padding-right: 0.5em;
-
-        font-size: 16px;
-        /*line-height: 24px;*/
-
-
-    }
-
-    .menu > .links > nav > ul > a {
-        font-weight: 500;
-
-        text-decoration: none;
-    }
-
-    .menu .social-icons {
-        grid-area: social-icons;
-        background: url("assets/images/social-icons.png") no-repeat;
-        background-size: 200px 20px;
-    }
-
-    html {
-        font-family: 'Inter', sans-serif;
-    }
-
-    :root {
-
-        --josh-hero-image-height: 634px;
-        --josh-hero-image-width: 500px;
-
-        --gray-100: #F2F4F7;
-        --black: #000;
-        --white: white;
-
-        --page-right-pad: 30px;
-        --page-left-pad: 30px;
-        --page-top-pad: 30px;
-        --page-bottom-pad: 30px;
-    }
-
-    body {
-        margin: 0;
-        background: var(--white);
-        padding-left: var(--page-left-pad);
-        padding-right: var(--page-left-pad);
-        padding-top: var(--page-top-pad);
-        display: grid;
-        grid-template-rows: auto auto;
-        grid-template-areas: "menu"
-                             "hero";
-    }
-
-
-    .hero {
-
-        font-size: 20px;
-        line-height: 30px;
-        background-color: var(--black);
-        grid-area: hero;
-        color: var(--gray-100);
-
-        display: grid;
-        grid-template-areas: "text image";
-        grid-template-columns: auto 500px;
-
-        margin-left: calc(-1 * var(--page-left-pad));
-        margin-right: calc(-1 * var(--page-right-pad));
-
-        padding-left: calc(2 * var(--page-left-pad));
-        padding-top: var(--page-top-pad);
-        padding-right: var(--page-right-pad);
-    }
-
-    .hero > .text {
-        grid-area: text;
-        padding-top: calc(var(--page-top-pad) * 4);
-    }
-
-
-    .hero > .image {
-        height: var(--josh-hero-image-height);
-        background-size: var(--josh-hero-image-width) var(--josh-hero-image-height);
-        background: url("assets/images/josh-hero-image.png") no-repeat;
-    }
-
-    .hero > .text > .name {
-        display: block;
-        font-size: 60px;
-        line-height: 2em;
-    }
-
-
-</style>
 
 </body>
 </html>
