@@ -94,7 +94,7 @@
             --page-top-pad: 30px;
             --page-bottom-pad: 30px;
 
-            --appearance-event-padding: 0.5em;
+            --appearance-event-padding: 1em;
 
             --green-gradient: linear-gradient(#079052, #439792);
         }
@@ -174,7 +174,6 @@
 
         .appearances {
             color: var(--white);
-            font-size: xx-large;
             vertical-align: center;
         }
 
@@ -185,28 +184,28 @@
             padding-left: 50px;
             height: calc(1.5 * 40px);
             margin-top: 1.5em;
-            margin-bottom: 1.5em;
+            /*margin-bottom: 1.5em;*/
+            font-size: xx-large;
         }
 
         .appearances > .timeline {
+            /*border: 1px solid yellow ;*/
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 500px);
+            grid-column-gap: 0.5em;
             margin-bottom: 1em;
         }
 
         .appearances > .timeline > .event {
-            \ border-radius: 10px;
-            width: 600px;
+            border-radius: 10px;
             background-color: var(--gray-800);
             padding: var(--appearance-event-padding);
             display: grid;
-            grid-template-areas: "date   description"
-                             ". description";
-            grid-template-columns: 3em   auto;
-            grid-template-rows: 3em   auto;
+            grid-template-areas: "date  description"
+                                 ".     description";
+            grid-template-columns: 100px  auto ;
+            grid-template-rows: 100px auto;
 
-        }
-
-        .appearances > .timeline > .event > .date > .day {
-            font-size: xx-large;
         }
 
         .appearances > .timeline > .event > .date {
@@ -215,25 +214,29 @@
             padding: 1em;
             border-radius: 10px;
             color: var(--gray-25);
-            font-size: medium;
             text-align: center;
-            /*border: 1px solid yellow;*/
+            min-height: 100px ;
+            min-width : 100px ;
+        }
+
+        .appearances > .timeline > .event > .date > .day {
+            font-size: xx-large;
         }
 
         .appearances > .timeline > .event > .description {
             padding-left: var(--appearance-event-padding);
         }
 
-        .appearances > .timeline > .event > .description > .event {
+        .appearances > .timeline > .event > .description > .event-name {
             color: var(--gray-25);
-            line-height: 30pt;
-            font-size: 20pt;
+            /*line-height: 30pt;*/
+            font-size: large;
             grid-area: event;
         }
 
         .appearances > .timeline > .event > .description > .event-details {
-            font-size: 14pt;
-            line-height: 20pt;
+            font-size: small;
+            /*line-height: 20pt;*/
             color: var(--gray-300);
             margin-top: 0.5em;
         }
@@ -292,13 +295,14 @@
                 <div class="month">Oct</div>
             </div>
             <div class="description">
-                <div class="event"> Masterclass + Taster Masterclass with GOTO Academy</div>
+                <div class="event-name">
+                    Masterclass + Taster Masterclass with GOTO Academy
+                </div>
                 <div class="event-details">
                     I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
                 </div>
             </div>
         </div>
-
 
         <div class="event">
             <div class="date">
@@ -306,7 +310,8 @@
                 <div class="month">Oct</div>
             </div>
             <div class="description">
-                <div class="event"> Masterclass + Taster Masterclass with GOTO Academy</div>
+                <div class="event-name"> Masterclass  and Taster Masterclass with GOTO Academy
+                </div>
                 <div class="event-details">
                     I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
                 </div>
@@ -325,32 +330,6 @@
 <div class="youtube"></div>
 <div class="footer"></div>
 
-
-<!--
-<div class="test">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-</div>
-
-<style>
-    .test {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, 300px );
-
-    }
-
-    .test > .box {
-        width: 100px;
-        height: 100px;
-        background-color: red;
-        margin: 1em;
-    }
-</style>
--->
 
 </body>
 </html>
