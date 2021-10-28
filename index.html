@@ -135,7 +135,6 @@
 
         .hero > .text > button {
             background-color: var(--black);
-            /*border-radius: 10%;*/
             border-radius: 10px;
             padding: 1em 20px;
             color: var(--light-green);
@@ -163,14 +162,11 @@
         .appearances {
             grid-area: appearances;
             background-color: var(--gray-900);
-
             margin-left: calc(-1 * var(--page-left-pad));
             margin-right: calc(-1 * var(--page-right-pad));
-
             padding-left: calc(2 * var(--page-left-pad));
             padding-right: var(--page-right-pad);
         }
-
 
         .appearances {
             color: var(--white);
@@ -184,12 +180,10 @@
             padding-left: 50px;
             height: calc(1.5 * 40px);
             margin-top: 1.5em;
-            /*margin-bottom: 1.5em;*/
             font-size: xx-large;
         }
 
         .appearances > .timeline {
-            /*border: 1px solid yellow ;*/
             display: grid;
             grid-template-columns: repeat(auto-fill, 500px);
             grid-column-gap: 0.5em;
@@ -203,7 +197,7 @@
             display: grid;
             grid-template-areas: "date  description"
                                  ".     description";
-            grid-template-columns: 100px  auto ;
+            grid-template-columns: 100px  auto;
             grid-template-rows: 100px auto;
 
         }
@@ -215,8 +209,8 @@
             border-radius: 10px;
             color: var(--gray-25);
             text-align: center;
-            min-height: 100px ;
-            min-width : 100px ;
+            min-height: 100px;
+            min-width: 100px;
         }
 
         .appearances > .timeline > .event > .date > .day {
@@ -236,7 +230,6 @@
 
         .appearances > .timeline > .event > .description > .event-details {
             font-size: small;
-            /*line-height: 20pt;*/
             color: var(--gray-300);
             margin-top: 0.5em;
         }
@@ -310,7 +303,7 @@
                 <div class="month">Oct</div>
             </div>
             <div class="description">
-                <div class="event-name"> Masterclass  and Taster Masterclass with GOTO Academy
+                <div class="event-name"> Masterclass and Taster Masterclass with GOTO Academy
                 </div>
                 <div class="event-details">
                     I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
