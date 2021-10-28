@@ -94,7 +94,7 @@
             --page-top-pad: 30px;
             --page-bottom-pad: 30px;
 
-            --appearance-event-padding: 0.5em ;
+            --appearance-event-padding: 0.5em;
 
             --green-gradient: linear-gradient(#079052, #439792);
         }
@@ -193,7 +193,8 @@
         }
 
         .appearances > .timeline > .event {
-            border-radius: 10px;
+            \ border-radius: 10px;
+            width: 600px;
             background-color: var(--gray-800);
             padding: var(--appearance-event-padding);
             display: grid;
@@ -214,7 +215,7 @@
             padding: 1em;
             border-radius: 10px;
             color: var(--gray-25);
-            font-size: large;
+            font-size: medium;
             text-align: center;
             /*border: 1px solid yellow;*/
         }
@@ -299,6 +300,20 @@
         </div>
 
 
+        <div class="event">
+            <div class="date">
+                <div class="day">20</div>
+                <div class="month">Oct</div>
+            </div>
+            <div class="description">
+                <div class="event"> Masterclass + Taster Masterclass with GOTO Academy</div>
+                <div class="event-details">
+                    I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
+                </div>
+            </div>
+        </div>
+
+
     </div>
 
 
@@ -310,6 +325,32 @@
 <div class="youtube"></div>
 <div class="footer"></div>
 
+
+<!--
+<div class="test">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+</div>
+
+<style>
+    .test {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, 300px );
+
+    }
+
+    .test > .box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+        margin: 1em;
+    }
+</style>
+-->
 
 </body>
 </html>
