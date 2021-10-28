@@ -94,7 +94,7 @@
             --page-top-pad: 30px;
             --page-bottom-pad: 30px;
 
-            --appearance-event-padding: 1em;
+            --appearance-event-padding: .9em;
 
             --green-gradient: linear-gradient(#079052, #439792);
         }
@@ -111,7 +111,6 @@
                                  "hero"
                                  "appearances";
         }
-
 
         .hero {
 
@@ -171,6 +170,8 @@
         .appearances {
             color: var(--white);
             vertical-align: center;
+            padding-top: 1.5em;
+            padding-bottom: 1.5em;
         }
 
         .appearances > .header {
@@ -179,13 +180,13 @@
             background-repeat: no-repeat;
             padding-left: 50px;
             height: calc(1.5 * 40px);
-            margin-top: 1.5em;
+
             font-size: xx-large;
         }
 
         .appearances > .timeline {
             display: grid;
-            grid-template-columns: repeat(auto-fill, 500px);
+            grid-template-columns: repeat(auto-fill, 450px);
             grid-column-gap: 0.5em;
             margin-bottom: 1em;
         }
