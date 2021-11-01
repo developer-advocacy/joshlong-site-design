@@ -107,6 +107,7 @@
             padding-top: var(--page-top-pad);
             display: grid;
             grid-template-rows: auto auto;
+            grid-template-columns: auto;
             grid-template-areas: "menu"
                                  "hero"
                                  "appearances";
@@ -159,19 +160,23 @@
         }
 
         .appearances {
-            grid-area: appearances;
+            display: grid;
+            /*border: 5px solid brown ;*/
+            /*grid-area: appearances;*/
             background-color: var(--gray-900);
             margin-left: calc(-1 * var(--page-left-pad));
             margin-right: calc(-1 * var(--page-right-pad));
             padding-left: calc(2 * var(--page-left-pad));
-            padding-right: var(--page-right-pad);
-        }
-
-        .appearances {
+            padding-right: calc(2 * var(--page-right-pad));
+            /*padding-right: var(--page-right-pad);*/
+            /*border: 1px solid green;*/
             color: var(--white);
             vertical-align: center;
             padding-top: 1.5em;
             padding-bottom: 1.5em;
+            /*border: 10px solid red;*/
+            /*padding-right: 50px ;*/
+            /*padding-left : 50px ;*/
         }
 
         .appearances > .header {
@@ -180,15 +185,18 @@
             background-repeat: no-repeat;
             padding-left: 50px;
             height: calc(1.5 * 40px);
-
             font-size: xx-large;
         }
 
         .appearances > .timeline {
             display: grid;
-            grid-template-columns: repeat(auto-fill, 450px);
+            /*grid-area : timeline ;*/
+            grid-template-columns: repeat(auto-fill, 500px);
             grid-column-gap: 0.5em;
+            grid-auto-flow: column;
             margin-bottom: 1em;
+
+            overflow: auto;
         }
 
         .appearances > .timeline > .event {
@@ -198,7 +206,7 @@
             display: grid;
             grid-template-areas: "date  description"
                                  ".     description";
-            grid-template-columns: 100px  auto;
+            grid-template-columns: 100px  300px;
             grid-template-rows: 100px auto;
 
         }
@@ -298,6 +306,32 @@
             </div>
         </div>
 
+        <div class="event">
+            <div class="date">
+                <div class="day">20</div>
+                <div class="month">Oct</div>
+            </div>
+            <div class="description">
+                <div class="event-name"> Masterclass and Taster Masterclass with GOTO Academy
+                </div>
+                <div class="event-details">
+                    I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="date">
+                <div class="day">20</div>
+                <div class="month">Oct</div>
+            </div>
+            <div class="description">
+                <div class="event-name"> Masterclass and Taster Masterclass with GOTO Academy
+                </div>
+                <div class="event-details">
+                    I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
+                </div>
+            </div>
+        </div>
         <div class="event">
             <div class="date">
                 <div class="day">20</div>
