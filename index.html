@@ -94,6 +94,8 @@
             --white: white;
             --light-green: #6CE9A6;
 
+            --green-50: #ECFDF3 ;
+
             --page-right-pad: calc(var(--common-gutter) * 3);
             --page-left-pad: calc(var(--common-gutter) * 3);
             --page-top-pad: calc(var(--common-gutter) * 3);
@@ -185,8 +187,11 @@
         }
 
         h2 {
-            height: calc(1.5 * 40px);
+            height: calc(5 * var(--common-gutter));
             font-size: x-large;
+            margin-bottom: 0;
+            line-height: normal;
+
         }
 
         .appearances > .timeline {
@@ -242,6 +247,86 @@
             margin-top: 0.5em;
         }
 
+        /*  recent posts  */
+
+        .recent-posts {
+            padding-top: var(--page-top-pad);
+            padding-bottom: var(--page-bottom-pad);
+            margin-bottom: var(--page-bottom-pad);
+            margin-top: var(--page-top-pad);
+            padding-left: calc(var(--page-left-pad) - var(--common-gutter));
+            padding-right: calc(var(--page-right-pad) - var(--common-gutter));
+        }
+
+        .recent-posts > h2 {
+            padding-left: var(--common-gutter);
+            padding-right: var(--common-gutter);
+
+        }
+
+        .recent-post-panel {
+            padding: var(--common-gutter);
+            display: inline-block;
+        }
+
+        .recent-post {
+            display: inline-block;
+            filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
+            background-color: var(--white);
+            padding: var(--common-gutter);
+            /*border: 1px solid var(--gray-300);*/
+            border-radius: var(--common-gutter);
+        }
+
+        .recent-post > img {
+            width: 100%;
+            border: 1px solid var(--gray-100);
+        }
+
+        .recent-post > .date {
+            font-size: 14px;
+            line-height: 20px;
+            color: var(--green-700);
+            margin-bottom: var(--common-gutter);
+            margin-top: var(--common-gutter);
+
+        }
+
+        .recent-post > .title {
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 30px;
+            color: var(--gray-800);
+            margin-bottom: var(--common-gutter);
+        }
+
+        .recent-post > .text > p {
+            color: var(--gray-500);
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .recent-posts > .recent-posts-columns {
+            column-count: 3;
+            column-gap: 0;
+        }
+
+        .recent-posts > .recent-posts-buttons {
+            alignment: center;
+            text-align: center;
+            margin-bottom: calc(var(--common-gutter) * 2);
+            margin-top: calc(var(--common-gutter) * 2);
+        }
+
+        .recent-posts > .recent-posts-buttons > button {
+            /*border: 1px solid red;*/
+            background-color : var(--green-50);
+            border-radius: var(--common-gutter);
+            padding: calc(1.5  * var(--common-gutter));
+
+        }
+
+        /*    */
     </style>
 
 </head>
@@ -279,8 +364,6 @@
     </div>
     <div class="image"></div>
 </div>
-
-
 <div class="appearances">
 
 
@@ -348,80 +431,9 @@
 
 
 </div>
-
-<style>
-
-    .recent-posts {
-        padding-top: var(--page-top-pad);
-        padding-bottom: var(--page-bottom-pad);
-        margin-bottom: var(--page-bottom-pad);
-        margin-top: var(--page-top-pad);
-        padding-left: calc(var(--page-left-pad) - var(--common-gutter));
-        padding-right:  calc(var(--page-right-pad) - var(--common-gutter));
-    }
-
-    .recent-posts > h2 {
-        padding-left: var(--common-gutter);
-        padding-right: var(--common-gutter);
-
-    }
-
-    .recent-post-panel {
-        padding: var(--common-gutter);
-        display: inline-block;
-    }
-
-    .recent-post {
-        display: inline-block;
-        filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
-        background-color: var(--white);
-        padding:  var(--common-gutter);
-        /*border: 1px solid var(--gray-300);*/
-        border-radius: var(--common-gutter);
-    }
-
-    .recent-post > img {
-        width: 100%;
-        border: 1px solid var(--gray-100);
-    }
-
-    .recent-post > .date {
-        font-size: 14px;
-        line-height: 20px;
-        color: var(--green-700);
-        margin-bottom: var(--common-gutter);
-        margin-top: var(--common-gutter);
-
-    }
-
-    .recent-post > .title {
-        font-weight: bold;
-        font-size: 20px;
-        line-height: 30px;
-        color: var(--gray-800);
-        margin-bottom: var(--common-gutter);
-    }
-
-    .recent-post > .text > p {
-        color: var(--gray-500);
-        font-size: 16px;
-        line-height: 24px;
-    }
-
-    .recent-posts > .recent-posts-columns {
-        column-count: 3;
-        column-gap: 0;
-    }
-
-</style>
 <div class="recent-posts">
     <h2>Recent Posts </h2>
-    <!--
-    image-width: 336px
-    font for date: ag normal 14/20 green 700
-    font for title: ag semibold 20/30 gray 900
-    font for text: ag normal 16/24 gray 500
-    -->
+
     <div class="recent-posts-columns">
         <div class="recent-post-panel">
             <div class="recent-post">
@@ -477,7 +489,6 @@
                 </div>
             </div>
         </div>
-
         <div class="recent-post-panel">
 
             <div class="recent-post">
@@ -528,6 +539,10 @@
 
     </div>
 
+    <div class="recent-posts-buttons">
+        <button>See More</button>
+
+    </div>
 </div>
 <div class="podcast"></div>
 <div class="books"></div>
