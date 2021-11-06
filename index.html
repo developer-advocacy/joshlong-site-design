@@ -76,12 +76,15 @@
 
         :root {
 
+            --common-gutter: 10px;
+
             --josh-hero-image-height: 634px;
             --josh-hero-image-width: 500px;
 
             --gray-25: #FCFCFD;
             --gray-100: #F2F4F7;
             --gray-300: #D0D5DD;
+            --gray-500: #667085;
             --gray-900: #101828;
             --gray-800: #1D2939;
 
@@ -91,10 +94,10 @@
             --white: white;
             --light-green: #6CE9A6;
 
-            --page-right-pad: 30px;
-            --page-left-pad: 30px;
-            --page-top-pad: 30px;
-            --page-bottom-pad: 30px;
+            --page-right-pad: calc(var(--common-gutter) * 3);
+            --page-left-pad: calc(var(--common-gutter) * 3);
+            --page-top-pad: calc(var(--common-gutter) * 3);
+            --page-bottom-pad: calc(var(--common-gutter) * 3);
 
             --appearance-event-padding: .9em;
 
@@ -174,13 +177,16 @@
             padding-bottom: 1.5em;
         }
 
-        .appearances > .header {
+        .appearances > h2 {
             background-image: url("assets/images/calendar.png");
             background-size: 40px 40px;
             background-repeat: no-repeat;
             padding-left: 50px;
+        }
+
+        h2 {
             height: calc(1.5 * 40px);
-            font-size: xx-large;
+            font-size: x-large;
         }
 
         .appearances > .timeline {
@@ -278,7 +284,7 @@
 <div class="appearances">
 
 
-    <div class="header"> Upcoming Appearances</div>
+    <h2> Upcoming Appearances</h2>
     <div class="timeline">
 
 
@@ -348,61 +354,179 @@
     .recent-posts {
         padding-top: var(--page-top-pad);
         padding-bottom: var(--page-bottom-pad);
-        display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        grid-template-areas: "a b c ";
+        margin-bottom: var(--page-bottom-pad);
+        margin-top: var(--page-top-pad);
+        padding-left: calc(var(--page-left-pad) - var(--common-gutter));
+        padding-right:  calc(var(--page-right-pad) - var(--common-gutter));
+    }
+
+    .recent-posts > h2 {
+        padding-left: var(--common-gutter);
+        padding-right: var(--common-gutter);
+
+    }
+
+    .recent-post-panel {
+        padding: var(--common-gutter);
+        display: inline-block;
     }
 
     .recent-post {
-        filter: drop-shadow(10px 10px 10px gray);
-        /*color : white ;*/
+        display: inline-block;
+        filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
         background-color: var(--white);
-        padding: 1em ;
+        padding:  var(--common-gutter);
+        /*border: 1px solid var(--gray-300);*/
+        border-radius: var(--common-gutter);
     }
 
-    .recent-post > .image {
-
+    .recent-post > img {
+        width: 100%;
+        border: 1px solid var(--gray-100);
     }
 
     .recent-post > .date {
         font-size: 14px;
         line-height: 20px;
         color: var(--green-700);
-    }
-    .recent-post > .title {
-        font-weight: semibold ;
-        font-size: 20px ;
-        line-height: 30px ;
-        color: var(--gray-900)
-        /*ag semibold 20/30 gray 900*/
+        margin-bottom: var(--common-gutter);
+        margin-top: var(--common-gutter);
+
     }
 
+    .recent-post > .title {
+        font-weight: bold;
+        font-size: 20px;
+        line-height: 30px;
+        color: var(--gray-800);
+        margin-bottom: var(--common-gutter);
+    }
+
+    .recent-post > .text > p {
+        color: var(--gray-500);
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+    .recent-posts > .recent-posts-columns {
+        column-count: 3;
+        column-gap: 0;
+    }
 
 </style>
 <div class="recent-posts">
-
-
+    <h2>Recent Posts </h2>
     <!--
     image-width: 336px
     font for date: ag normal 14/20 green 700
     font for title: ag semibold 20/30 gray 900
     font for text: ag normal 16/24 gray 500
     -->
-    <div class="recent-post">
-        <div class="image">
-            <img width="100" src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+    <div class="recent-posts-columns">
+        <div class="recent-post-panel">
+            <div class="recent-post">
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021 (with
+                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
         </div>
-        <div class="date">20 October 2021</div>
-        <div class="title">
-            A Bootiful, Reactive September and October 2021 (with
-            appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+        <div class="recent-post-panel">
+            <div class="recent-post">
+                <img src="https://pbs.twimg.com/media/DbI730WXkAAeMww?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
         </div>
-        <div class="text">
-            I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people about cloud
-            native (reactive) Spring.
+        <div class="recent-post-panel">
+            <div class="recent-post">
+                <!--                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>-->
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    This is a test
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
         </div>
-    </div>
+        <div class="recent-post-panel">
 
+            <div class="recent-post">
+                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021 (with
+                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-post-panel">
+
+            <div class="recent-post">
+                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021 (with
+                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-post-panel">
+
+            <div class="recent-post">
+                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021 (with
+                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-post-panel">
+
+            <div class="recent-post">
+                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021 (with
+                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 </div>
 <div class="podcast"></div>
@@ -411,6 +535,8 @@
 <div class="youtube"></div>
 <div class="footer"></div>
 
+
+<div style="height: 100px "></div>
 
 </body>
 </html>
