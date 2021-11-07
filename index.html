@@ -85,16 +85,15 @@
             --gray-100: #F2F4F7;
             --gray-300: #D0D5DD;
             --gray-500: #667085;
-            --gray-900: #101828;
             --gray-800: #1D2939;
+            --gray-900: #101828;
 
+            --green-50: #ECFDF3;
             --green-700: #027A48;
 
             --black: #000;
             --white: white;
             --light-green: #6CE9A6;
-
-            --green-50: #ECFDF3 ;
 
             --page-right-pad: calc(var(--common-gutter) * 3);
             --page-left-pad: calc(var(--common-gutter) * 3);
@@ -319,13 +318,18 @@
         }
 
         .recent-posts > .recent-posts-buttons > button {
-            background-color : var(--green-50);
+            background-color: var(--green-50);
             border-radius: var(--common-gutter);
-            padding: calc(1.5  * var(--common-gutter));
-
+            padding: calc(1.5 * var(--common-gutter));
+            border-width: 0;
+            line-height: 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: var(--green-700);
+            filter: drop-shadow(calc(var(--common-gutter) / 4) calc(var(--common-gutter) / 4) calc(var(--common-gutter) / 4) var(--gray-300));
         }
 
-        /*    */
+
     </style>
 
 </head>
