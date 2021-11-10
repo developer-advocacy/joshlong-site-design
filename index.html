@@ -554,18 +554,7 @@
 <style type="text/css">
 
 
-    .podcast > h2 {
-        --microphone-size: 48px;
-        background-image: url("assets/images/microphone.png");
-        background-size: 48px;
-        font-size: 36px;
-        line-height: var(--microphone-size);
-        padding-left: calc(var(--microphone-size) + var(--common-gutter));
-        background-repeat: no-repeat;
-    }
-
-
-    .podcast-image {
+    .latest-episode-image {
         grid-area: image;
         align-content: center;
         alignment: center;
@@ -584,7 +573,7 @@
         background-image: url("assets/images/bootiful-podcast-logo.png");
     }
 
-    .podcast-image > img {
+    .latest-episode-image > img {
         --guest-image-dimension: 100px;
         width: var(--guest-image-dimension);
         height: var(--guest-image-dimension);
@@ -592,37 +581,39 @@
         clip-path: circle(calc(var(--guest-image-dimension) / 2));
     }
 
-    .play {
-        --play-icon-dimensions: 50px;
-        background-image: url("assets/images/play.png");
-        background-repeat: no-repeat;
-        background-size: var(--play-icon-dimensions);
-        background-position: center;
-        grid-area: play;
-    }
-
-    .latest-episode-synopsis {
-        grid-area: synopsis;
-    }
-
-    .latest-episode-prompt {
-        grid-area: prompt
-    }
 
     .podcast > .podcast-listen {
+
         grid-area: listen;
+        --microphone-size: 48px;
+        background-image: url("assets/images/microphone.png");
+        background-size: var(--microphone-size);
+        font-size: 36px;
+        line-height: var(--microphone-size);
+        padding-left: calc(var(--microphone-size) + var(--common-gutter));
+        background-repeat: no-repeat;
+        height: calc(var(--microphone-size) * 1.5);
     }
 
     .podcast > .podcast-description {
         grid-area: text;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 28px;
+        color: var(--gray-100);
+        padding-right: calc(2 * var(--common-gutter));
     }
 
     .podcast > .podcast-logo {
         grid-area: logo;
-
     }
 
     .latest-episode-panel {
+        /*
+            hackety: we need the BG to be transparent but the
+            contents (in the same grid spot) to be 100% opaque
+        */
         grid-area: panel;
         background-color: #101828;
         opacity: 0.48;
@@ -639,10 +630,8 @@
         opacity: 1;
         grid-area: panel;
         z-index: 2;
-
         grid-template-areas:
                 "image prompt prompt"
-
                 "image synopsis play ";
         grid-template-columns: minmax(150px, auto ) auto 80px;
         grid-template-rows: auto   auto auto;
@@ -676,25 +665,70 @@
         );
         color: white;
     }
+
+
+    .latest-episode-panel-content > .play {
+        --play-icon-dimensions: 50px;
+        background-image: url("assets/images/play.png");
+        background-repeat: no-repeat;
+        background-size: var(--play-icon-dimensions);
+        background-position: center;
+        grid-area: play;
+    }
+
+    .latest-episode-panel-content > .latest-episode-synopsis {
+        grid-area: synopsis;
+        margin-bottom: calc(-1 * var(--common-gutter));
+
+
+    }
+
+    .latest-episode-panel-content > .latest-episode-synopsis >  p:first-of-type {
+        margin-top: calc(-1 * var(--common-gutter));
+    }
+
+    .latest-episode-panel-content > .latest-episode-synopsis > p {
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0;
+        padding: 0;
+        color: var(--gray-300);
+    }
+
+    .latest-episode-panel-content > .latest-episode-synopsis > h2 {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 30px;
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+
+    .latest-episode-panel-content > .latest-episode-prompt {
+        grid-area: prompt;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 8px;
+        padding: 0;
+
+    }
 </style>
 <div class="podcast">
 
-    <h2 class="podcast-listen">Listen to my Podcast </h2>
+    <h2 class="podcast-listen">
+        Listen to my Podcast
+    </h2>
     <div class="podcast-description">
         I run a podcast called A Bootiful Podcast, a celebration of the heroes that drive the Spring and Java
         ecosystems. It's also on Twitter (<a href="https://twitter.com/bootifulpodcast">@BootifulPodcast</a>). Here are
         the episodes.
     </div>
     <div class="podcast-logo"></div>
-
-    <div class="latest-episode-panel">
-    </div>
+    <div class="latest-episode-panel"></div>
     <div class="latest-episode-panel-content">
-        <div class="podcast-image">
+        <div class="latest-episode-image">
             <img src="https://s333.podbean.com/pb/760bd000a01bd734489d9274526cf9ba/618afd95/data1/fs80/5518947/uploads/941c07ee-1362-41fe-b9a0-a123dcb4405d.jpg?pbss=aff453c7-e434-5d06-845f-722cf15cb3c7"/>
         </div>
         <div class="latest-episode-prompt">Latest episode</div>
-
         <div class="latest-episode-synopsis">
             <h2>.NET legend Layla Porter on Azure Spring Cloud, Steeltoe.NET, and more</h2>
             <P> Hi, Spring fans! In this installment, Josh Long (@starbuxman) talks to teammate, .NET ecosystem
