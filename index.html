@@ -544,42 +544,26 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <div class="recent-posts-buttons">
         <button>See More</button>
-
     </div>
 </div>
 
 <style type="text/css">
 
-    .podcast {
-        background: rgb(7, 144, 82);
-        background: linear-gradient(
-                45deg,
-                rgba(7, 144, 82, 1) 0%,
-                rgba(67, 151, 146, 1) 55%,
-                rgba(67, 151, 146, 1) 100%
-        );
 
+    .podcast > h2 {
+        --microphone-size: 48px;
+        background-image: url("assets/images/microphone.png");
+        background-size: 48px;
+        font-size: 36px;
+        line-height: var(--microphone-size);
+        padding-left: calc(var(--microphone-size) + var(--common-gutter));
+        background-repeat: no-repeat;
     }
 
-    .latest-episode-panel > * {
-        border: 1px solid red;
-    }
-
-    .latest-episode-panel {
-        display: grid;
-        border: 11px solid red;
-        grid-template-areas:
-                "image prompt prompt"
-                "image synopsis play ";
-        grid-template-columns: minmax(  150px, auto ) auto 80px ;
-        grid-template-rows: auto auto auto;
-
-    }
 
     .podcast-image {
         grid-area: image;
@@ -590,9 +574,18 @@
         padding: var(--common-gutter);
     }
 
+    .podcast > .podcast-logo {
+        --podcast-logo-width: 385px;
+        --podcast-logo-height: 128px;
+        width: var(--podcast-logo-width);
+        background-repeat: no-repeat;
+        height: var(--podcast-logo-height);
+        background-size: var(--podcast-logo-width) var(--podcast-logo-height);
+        background-image: url("assets/images/bootiful-podcast-logo.png");
+    }
+
     .podcast-image > img {
         --guest-image-dimension: 100px;
-        border: 1px solid red;
         width: var(--guest-image-dimension);
         height: var(--guest-image-dimension);
         background-size: var(--guest-image-dimension);
@@ -613,22 +606,90 @@
     }
 
     .latest-episode-prompt {
-        border: 1px solid green;
         grid-area: prompt
     }
 
+    .podcast > .podcast-listen {
+        grid-area: listen;
+    }
+
+    .podcast > .podcast-description {
+        grid-area: text;
+    }
+
+    .podcast > .podcast-logo {
+        grid-area: logo;
+
+    }
+
+    .latest-episode-panel {
+        grid-area: panel;
+        background-color: #101828;
+        opacity: 0.48;
+        border-radius: var(--common-gutter);
+        z-index: 1;
+    }
+
+
+    .latest-episode-panel-content {
+        display: grid;
+        margin-top: var(--common-gutter);
+        margin-bottom: var(--common-gutter);
+        padding: var(--common-gutter);
+        opacity: 1;
+        grid-area: panel;
+        z-index: 2;
+
+        grid-template-areas:
+                "image prompt prompt"
+
+                "image synopsis play ";
+        grid-template-columns: minmax(150px, auto ) auto 80px;
+        grid-template-rows: auto   auto auto;
+
+    }
+
+
+    .podcast {
+
+        display: grid;
+        grid-template-areas:
+                "listen logo"
+                "text logo"
+                " .     ."
+                "panel panel";
+        grid-template-rows: auto auto calc(var(--common-gutter) * 2 ) auto;
+
+        padding-top: var(--page-top-pad);
+        padding-bottom: var(--page-bottom-pad);
+        padding-left: calc(2 * var(--page-left-pad));
+        padding-right: calc(2 * var(--page-right-pad));
+
+        margin-left: calc(-1 * var(--page-left-pad));
+        margin-right: calc(-1 * var(--page-right-pad));
+        background: rgb(7, 144, 82);
+        background: linear-gradient(
+                45deg,
+                rgba(7, 144, 82, 1) 0%,
+                rgba(67, 151, 146, 1) 55%,
+                rgba(67, 151, 146, 1) 100%
+        );
+        color: white;
+    }
 </style>
 <div class="podcast">
 
-    <h2>Listen to my Podcast </h2>
-    <P>
+    <h2 class="podcast-listen">Listen to my Podcast </h2>
+    <div class="podcast-description">
         I run a podcast called A Bootiful Podcast, a celebration of the heroes that drive the Spring and Java
         ecosystems. It's also on Twitter (<a href="https://twitter.com/bootifulpodcast">@BootifulPodcast</a>). Here are
         the episodes.
-    </P>
-    <img src="assets/images/bootiful-podcast-logo.png"/>
+    </div>
+    <div class="podcast-logo"></div>
 
     <div class="latest-episode-panel">
+    </div>
+    <div class="latest-episode-panel-content">
         <div class="podcast-image">
             <img src="https://s333.podbean.com/pb/760bd000a01bd734489d9274526cf9ba/618afd95/data1/fs80/5518947/uploads/941c07ee-1362-41fe-b9a0-a123dcb4405d.jpg?pbss=aff453c7-e434-5d06-845f-722cf15cb3c7"/>
         </div>
@@ -636,15 +697,14 @@
 
         <div class="latest-episode-synopsis">
             <h2>.NET legend Layla Porter on Azure Spring Cloud, Steeltoe.NET, and more</h2>
-            <P> Hi, Spring fans! In this installment, Josh Long (@starbuxman) talks to teammate, .NET ecosystem legend,
+            <P> Hi, Spring fans! In this installment, Josh Long (@starbuxman) talks to teammate, .NET ecosystem
+                legend,
                 and an awesome human being Layla Porter (@LaylaCodesIt). </P>
         </div>
 
         <div class="play"></div>
 
     </div>
-
-
 </div>
 <div class="books"></div>
 <div class="livelessons"></div>
