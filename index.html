@@ -183,10 +183,11 @@
             background-size: 40px 40px;
             background-repeat: no-repeat;
             padding-left: 50px;
+            height: calc(5 * var(--common-gutter));
         }
 
         h2 {
-            height: calc(5 * var(--common-gutter));
+
             font-size: x-large;
             margin-bottom: 0;
             line-height: normal;
@@ -567,8 +568,8 @@
         --podcast-logo-width: 385px;
         --podcast-logo-height: 128px;
         width: var(--podcast-logo-width);
-        background-repeat: no-repeat;
         height: var(--podcast-logo-height);
+        background-repeat: no-repeat;
         background-size: var(--podcast-logo-width) var(--podcast-logo-height);
         background-image: url("assets/images/bootiful-podcast-logo.png");
     }
@@ -583,7 +584,6 @@
 
 
     .podcast > .podcast-listen {
-
         grid-area: listen;
         --microphone-size: 48px;
         background-image: url("assets/images/microphone.png");
@@ -592,7 +592,8 @@
         line-height: var(--microphone-size);
         padding-left: calc(var(--microphone-size) + var(--common-gutter));
         background-repeat: no-repeat;
-        height: calc(var(--microphone-size) * 1.5);
+        margin-bottom: var(--common-gutter);
+        /*height: minmax( calc(var(--microphone-size) * 1.5) , auto );*/
     }
 
     .podcast > .podcast-description {
@@ -684,14 +685,12 @@
     }
 
     .latest-episode-panel-content > .latest-episode-synopsis > p:first-of-type {
-        margin-top: calc(-1 * var(--common-gutter));
+        /*margin-top: calc(-0.5 * 1em);*/
     }
 
     .latest-episode-panel-content > .latest-episode-synopsis > p {
         font-size: 16px;
         line-height: 24px;
-        margin: 0;
-        padding: 0;
         color: var(--gray-300);
     }
 
@@ -699,7 +698,6 @@
         font-weight: 600;
         font-size: 20px;
         line-height: 30px;
-        margin-bottom: 0;
         margin-top: 0;
     }
 
