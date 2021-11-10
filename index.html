@@ -576,39 +576,44 @@
         grid-template-areas:
                 "image prompt prompt"
                 "image synopsis play ";
-        grid-template-columns: 200px 500px 200px;
+        grid-template-columns: minmax(  150px, auto ) auto 80px ;
         grid-template-rows: auto auto auto;
 
     }
 
-    /*.latest-episode-panel > */
     .podcast-image {
+        grid-area: image;
+        align-content: center;
+        alignment: center;
+        text-align: center;
+        vertical-align: center;
+        padding: var(--common-gutter);
+    }
+
+    .podcast-image > img {
         --guest-image-dimension: 100px;
-        border: 12px solid red;
+        border: 1px solid red;
         width: var(--guest-image-dimension);
         height: var(--guest-image-dimension);
         background-size: var(--guest-image-dimension);
         clip-path: circle(calc(var(--guest-image-dimension) / 2));
-        grid-area: image;
     }
 
     .play {
         --play-icon-dimensions: 50px;
-        width: var(--play-icon-dimensions);
-        height: var(--play-icon-dimensions);
         background-image: url("assets/images/play.png");
         background-repeat: no-repeat;
         background-size: var(--play-icon-dimensions);
-        grid-area: play  ;
+        background-position: center;
+        grid-area: play;
     }
 
     .latest-episode-synopsis {
-        border: 5px solid orange;
-        grid-area:  synopsis;
+        grid-area: synopsis;
     }
 
     .latest-episode-prompt {
-        border: 21px solid green;
+        border: 1px solid green;
         grid-area: prompt
     }
 
@@ -624,10 +629,9 @@
     <img src="assets/images/bootiful-podcast-logo.png"/>
 
     <div class="latest-episode-panel">
-
-        <img class="podcast-image"
-             src="https://s333.podbean.com/pb/760bd000a01bd734489d9274526cf9ba/618afd95/data1/fs80/5518947/uploads/941c07ee-1362-41fe-b9a0-a123dcb4405d.jpg?pbss=aff453c7-e434-5d06-845f-722cf15cb3c7"/>
-
+        <div class="podcast-image">
+            <img src="https://s333.podbean.com/pb/760bd000a01bd734489d9274526cf9ba/618afd95/data1/fs80/5518947/uploads/941c07ee-1362-41fe-b9a0-a123dcb4405d.jpg?pbss=aff453c7-e434-5d06-845f-722cf15cb3c7"/>
+        </div>
         <div class="latest-episode-prompt">Latest episode</div>
 
         <div class="latest-episode-synopsis">
