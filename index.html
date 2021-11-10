@@ -324,9 +324,9 @@
             border-width: 0;
             line-height: 24px;
             font-size: 16px;
-            font-weight: bold;
+            font-weight: normal;
             color: var(--green-700);
-            filter: drop-shadow(calc(var(--common-gutter) / 4) calc(var(--common-gutter) / 4) calc(var(--common-gutter) / 4) var(--gray-300));
+            filter: drop-shadow(calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) var(--gray-300));
         }
 
 
@@ -438,6 +438,11 @@
     <h2>Recent Posts </h2>
 
     <div class="recent-posts-columns">
+        <!--
+        to support this view of the blogs, we'll need to develop a feature on the server-side that shows us
+        the first paragraph or the first N characters, whichever is fewer, in a given blog. We can look at the <P>
+        tags, perhaps using the JSOUP parsing, take the first one, and then truncate all but the first N characters of that?
+        -->
         <div class="recent-post-panel">
             <div class="recent-post">
                 <div class="date">20 October 2021</div>
@@ -547,7 +552,96 @@
 
     </div>
 </div>
-<div class="podcast"></div>
+
+<style type="text/css">
+
+    .podcast {
+        background: rgb(7, 144, 82);
+        background: linear-gradient(
+                45deg,
+                rgba(7, 144, 82, 1) 0%,
+                rgba(67, 151, 146, 1) 55%,
+                rgba(67, 151, 146, 1) 100%
+        );
+
+    }
+
+    .latest-episode-panel > * {
+        border: 1px solid red;
+    }
+
+    .latest-episode-panel {
+        display: grid;
+        border: 11px solid red;
+        grid-template-areas:
+                "image prompt prompt"
+                "image synopsis play ";
+        grid-template-columns: 200px 500px 200px;
+        grid-template-rows: auto auto auto;
+
+    }
+
+    /*.latest-episode-panel > */
+    .podcast-image {
+        --guest-image-dimension: 100px;
+        border: 12px solid red;
+        width: var(--guest-image-dimension);
+        height: var(--guest-image-dimension);
+        background-size: var(--guest-image-dimension);
+        clip-path: circle(calc(var(--guest-image-dimension) / 2));
+        grid-area: image;
+    }
+
+    .play {
+        --play-icon-dimensions: 50px;
+        width: var(--play-icon-dimensions);
+        height: var(--play-icon-dimensions);
+        background-image: url("assets/images/play.png");
+        background-repeat: no-repeat;
+        background-size: var(--play-icon-dimensions);
+        grid-area: play  ;
+    }
+
+    .latest-episode-synopsis {
+        border: 5px solid orange;
+        grid-area:  synopsis;
+    }
+
+    .latest-episode-prompt {
+        border: 21px solid green;
+        grid-area: prompt
+    }
+
+</style>
+<div class="podcast">
+
+    <h2>Listen to my Podcast </h2>
+    <P>
+        I run a podcast called A Bootiful Podcast, a celebration of the heroes that drive the Spring and Java
+        ecosystems. It's also on Twitter (<a href="https://twitter.com/bootifulpodcast">@BootifulPodcast</a>). Here are
+        the episodes.
+    </P>
+    <img src="assets/images/bootiful-podcast-logo.png"/>
+
+    <div class="latest-episode-panel">
+
+        <img class="podcast-image"
+             src="https://s333.podbean.com/pb/760bd000a01bd734489d9274526cf9ba/618afd95/data1/fs80/5518947/uploads/941c07ee-1362-41fe-b9a0-a123dcb4405d.jpg?pbss=aff453c7-e434-5d06-845f-722cf15cb3c7"/>
+
+        <div class="latest-episode-prompt">Latest episode</div>
+
+        <div class="latest-episode-synopsis">
+            <h2>.NET legend Layla Porter on Azure Spring Cloud, Steeltoe.NET, and more</h2>
+            <P> Hi, Spring fans! In this installment, Josh Long (@starbuxman) talks to teammate, .NET ecosystem legend,
+                and an awesome human being Layla Porter (@LaylaCodesIt). </P>
+        </div>
+
+        <div class="play"></div>
+
+    </div>
+
+
+</div>
 <div class="books"></div>
 <div class="livelessons"></div>
 <div class="youtube"></div>
