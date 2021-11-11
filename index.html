@@ -799,58 +799,56 @@
             <img class="cover current" src="https://joshlong.com/media/books/reactive-spring/cover.png"/>
             <img class="cover" src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/>
         </div>
-        <div class="arrows">
-            <div class="arrow left active"></div>
-            <div class="arrow right"></div>
+        <div>
+
+            <div class="arrows">
+                <div class="arrow left"></div>
+                <div class="arrow active right"></div>
+            </div>
         </div>
     </div>
 </div>
 <style>
 
 
-    .arrows > .arrow.right.active {
-        background-image: url("assets/images/arrows/bw-r.png");
+    .arrows {
+        text-align: center;
+        grid-area: arrows;
     }
 
-    .arrows > .arrow.left.active {
+    .arrows .arrow.left {
+        background-image: url("assets/images/arrows/gray-l.png");
+        display: inline-block;
+    }
+
+    .arrows .arrow.right {
+        display: inline-block;
+        background-image: url("assets/images/arrows/gray-r.png");
+    }
+
+    .arrows .arrow.left.active {
         background-image: url("assets/images/arrows/bw-l.png");
     }
 
-    .arrows > .arrow.right {
-
-        background-image: url("assets/images/arrows/gray-r.png");
-        grid-area: r;
+    .arrows .arrow.right.active {
+        background-image: url("assets/images/arrows/bw-r.png");
     }
 
-    .arrows > .arrow.left {
-
-        background-image: url("assets/images/arrows/gray-l.png");
-        grid-area: l;
-    }
-
-    .arrows > .arrow {
-        --arrow-dimension: 100px;
+    .arrows .arrow {
+        --arrow-dimension: 20px;
         height: var(--arrow-dimension);
-        left: var(--arrow-dimension);
+        width: var(--arrow-dimension);
+        background-size: var(--arrow-dimension);
         background-repeat: no-repeat;
-        border: 1px solid black;
     }
 
     .content {
         display: grid;
         border: 1px solid red;
-        grid-template-columns: 50% 50%;
+        grid-template-columns: auto auto;
         grid-template-areas:
             "description covers "
-            " .          arrows ";
-    }
-
-    .content > .arrows {
-        border: 1px solid gold;
-        grid-area: arrows;
-        display: grid;
-        grid-template-areas: "l r";
-        grid-template-columns: auto auto;
+            "description arrows ";
     }
 
     .content > .description {
@@ -859,6 +857,7 @@
 
     .covers > .cover {
         width: 100px;
+        border: 1px solid blue;
     }
 
     .content > .covers {
