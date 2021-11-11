@@ -76,7 +76,15 @@
 
         :root {
             --common-gutter: 10px;
+            /* for the books and video covers */
+            --cover-width: 300px;
+            --active-cover-width: 320px;
 
+            /*
+             --cover-width: 323px;
+            --active-cover-width: 342px;
+
+            */
             --josh-hero-image-height: 634px;
             --josh-hero-image-width: 500px;
 
@@ -719,57 +727,6 @@
     </div>
 </div>
 
-<style type="text/css">
-
-    .content-showcase > .content-description {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 28px;
-        color: var(--gray-500);
-    }
-
-    .zone {
-        /*
-                margin-left: calc(-1 * var(--page-left-pad));
-                margin-right: calc(-1 * var(--page-right-pad));
-                padding-left: var(--page-left-pad);
-                padding-right: var(--page-right-pad);
-        */
-
-
-        padding-left: calc(2 * var(--page-left-pad));
-        padding-right: calc(2 * var(--page-right-pad));
-        margin-left: calc(-1 * var(--page-left-pad));
-        margin-right: calc(-1 * var(--page-right-pad));
-
-        /*    */
-    }
-
-    .content-showcase {
-        padding-top: var(--page-top-pad);
-    }
-
-    .content-showcase > p {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 28px;
-        text-align: center;
-        color: #667085;
-    }
-
-    .content-showcase > h2 {
-        color: #101828;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 36px;
-        line-height: 44px;
-        text-align: center;
-        letter-spacing: -0.02em;
-    }
-
-</style>
 
 <div class="books content-showcase">
     <h2> Books </h2>
@@ -812,9 +769,48 @@
 <style>
 
 
+    .content-showcase > .content-description {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 28px;
+        color: var(--gray-500);
+    }
+
+    .zone {
+        padding-left: calc(2 * var(--page-left-pad));
+        padding-right: calc(2 * var(--page-right-pad));
+        margin-left: calc(-1 * var(--page-left-pad));
+        margin-right: calc(-1 * var(--page-right-pad));
+    }
+
+    .content-showcase {
+        padding-top: var(--page-top-pad);
+    }
+
+    .content-showcase > p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 28px;
+        text-align: center;
+        color: #667085;
+    }
+
+    .content-showcase > h2 {
+        color: #101828;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 44px;
+        text-align: center;
+        letter-spacing: -0.02em;
+    }
+
     .arrows {
         text-align: center;
         grid-area: arrows;
+        margin-top: var(--common-gutter);
     }
 
     .arrows > .arrow.left {
@@ -836,7 +832,7 @@
     }
 
     .arrows > .arrow {
-        --arrow-dimension: 20px;
+        --arrow-dimension: 40px;
         height: var(--arrow-dimension);
         width: var(--arrow-dimension);
         background-size: var(--arrow-dimension);
@@ -845,10 +841,22 @@
 
     .content {
         display: grid;
-        grid-template-columns: auto auto;
+        border: 1px solid red;
+        margin-right: calc(-1 * var(--page-right-pad));
+        /*
+            we want the book covers to line up flush with the sides of the page. todo make this orientation-aware
+        */
         grid-template-areas:
             "description covers "
             "description arrows ";
+    }
+
+    .content.right {
+        /*margin-left: calc(var(--page-right-pad) * -1);*/
+    }
+
+    .content.left {
+        /*margin-left: calc(var(--page-left-pad) * -1);*/
     }
 
     .content > .description {
@@ -861,6 +869,7 @@
     }
 
     .content > .covers > .cover.left {
+        shape-outside:  content-box;
         clip-path: inset(0px 0 00px calc(var(--cover-width) / 2));
         grid-area: l;
     }
@@ -870,25 +879,24 @@
         width: var(--active-cover-width);
         border: 2px solid black;
         grid-area: active;
+        filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
+
     }
 
     .content > .covers > .cover {
         opacity: 0.5;
-        --cover-width: 150px;
-        --active-cover-width: calc(var(--cover-width) * 1.1);
         width: var(--cover-width);
-        border: 1px solid purple;
-
     }
 
     .content > .covers {
+        border: 1px solid green;
         grid-area: covers;
         display: grid;
         grid-template-areas: "l active r";
-        gap: var(--common-gutter);
         grid-auto-flow: column;
         align-items: center;
         justify-items: center;
+
     }
 </style>
 <div class="livelessons zone content-showcase">
