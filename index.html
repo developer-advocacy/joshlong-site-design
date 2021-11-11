@@ -841,10 +841,8 @@
 
     .content {
         display: grid;
-        border: 1px solid red;
         margin-right: calc(-1 * var(--page-right-pad));
-        /*
-            we want the book covers to line up flush with the sides of the page. todo make this orientation-aware
+        /* we want the book covers to line up flush with the sides of the page. todo make this orientation-aware
         */
         grid-template-areas:
             "description covers "
@@ -896,6 +894,8 @@
         grid-auto-flow: column;
         align-items: center;
         justify-items: center;
+
+
 
     }
 </style>
