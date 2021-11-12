@@ -563,7 +563,7 @@
             width: var(--cover-width);
         }
 
-        /* left */
+
         .content > .covers > div.cover.left {
             overflow: hidden;
             grid-area: l;
@@ -577,7 +577,7 @@
             position: relative;
         }
 
-        /* active */
+
         .content > .covers > div.cover.active {
             grid-area: active;
             width: var(--active-cover-width);
@@ -604,6 +604,58 @@
             grid-auto-flow: column;
             align-items: center;
             justify-items: center;
+        }
+
+        .zone h2 {
+            margin-top: calc(5 * var(--common-gutter));
+        }
+
+        /* books content-showcase  */
+        .books button {
+            border-radius: var(--common-gutter);
+            padding: var(--common-gutter);
+            --buy-button-left: calc(4 * var(--common-gutter));
+            padding-left: calc(var(--buy-button-left));
+            background-repeat: no-repeat;
+            background-position-y: calc(1 * var(--common-gutter));
+            background-position-x: calc(1 * var(--common-gutter));
+            background-size: 24px;
+            margin-left: var(--common-gutter);
+            margin-right: var(--common-gutter);
+        }
+
+        .books .buttons {
+            text-align: center;
+        }
+
+        .books .buttons > button.leanpub {
+            color: white;
+            background-color: black;
+            background-image: url("assets/images/buttons/leanpub.png");
+        }
+
+        .books .buttons > button.amazon {
+            color: black;
+            background-color: white;
+            background-image: url("assets/images/buttons/amazon.png");
+        }
+
+        .books {
+        }
+
+        .books > .content {
+            margin-right: calc(-1 * var(--zone-padding));
+            grid-template-areas:
+            "description covers "
+            "description arrows ";
+        }
+
+        /* livelessons content-showcase  */
+        .livelessons > .content {
+            margin-left: calc(-1 * var(--zone-padding));
+            grid-template-areas:
+            " covers description "
+            " arrows description ";
         }
 
 
@@ -899,58 +951,6 @@
 
 <style>
 
-    /* books content showcase specifically */
-    .books button {
-        border-radius: var(--common-gutter);
-        padding: var(--common-gutter);
-        --buy-button-left: calc(4 * var(--common-gutter));
-        padding-left: calc(var(--buy-button-left));
-        background-repeat: no-repeat;
-        background-position-y: calc(1 * var(--common-gutter));
-        background-position-x: calc(1 * var(--common-gutter));
-        background-size: 24px;
-        margin-left: var(--common-gutter);
-        margin-right: var(--common-gutter);
-    }
-
-    .books .buttons {
-        text-align: center;
-    }
-
-    .books .buttons > button.leanpub {
-        color: white;
-        background-color: black;
-        background-image: url("assets/images/buttons/leanpub.png");
-    }
-
-    .books .buttons > button.amazon {
-        color: black;
-        background-color: white;
-        background-image: url("assets/images/buttons/amazon.png");
-    }
-
-    .books {
-    }
-
-    .books > .content {
-        margin-right: calc(-1 * var(--zone-padding));
-        grid-template-areas:
-            "description covers "
-            "description arrows ";
-    }
-
-    /* livelessons content showcase specifically */
-    .livelessons > .content {
-        margin-left: calc(-1 * var(--zone-padding));
-        grid-template-areas:
-            " covers description "
-            " arrows description ";
-    }
-
-    .zone h2 {
-        /*border: 1px solid red;*/
-        margin-top: calc( 5 * var(--common-gutter));
-    }
 
 </style>
 
