@@ -76,15 +76,11 @@
 
         :root {
             --common-gutter: 10px;
-            /* for the books and video covers */
-            --cover-width: 280px;
-            --active-cover-width: 320px;
-
-            /*
-             --cover-width: 323px;
+            --zone-padding: calc(2 * var(--page-right-pad));
+            --cover-width: 323px;
             --active-cover-width: 342px;
 
-            */
+
             --josh-hero-image-height: 634px;
             --josh-hero-image-width: 500px;
 
@@ -136,11 +132,6 @@
             grid-template-areas: "text image";
             grid-template-columns: auto 500px;
 
-            /*   margin-left: calc(-1 * var(--page-left-pad));
-               margin-right: calc(-1 * var(--page-right-pad));
-
-               padding-left: calc(2 * var(--page-left-pad));
-               padding-right: var(--page-right-pad);*/
             padding-top: var(--page-top-pad);
         }
 
@@ -256,10 +247,6 @@
             padding-bottom: var(--page-bottom-pad);
             margin-bottom: var(--page-bottom-pad);
             margin-top: var(--page-top-pad);
-            /*
-                        padding-left: calc(var(--page-left-pad) - var(--common-gutter));
-                        padding-right: calc(var(--page-right-pad) - var(--common-gutter));
-            */
         }
 
         .recent-posts > h2 {
@@ -721,20 +708,17 @@
                 legend,
                 and an awesome human being Layla Porter (@LaylaCodesIt). </P>
         </div>
-
         <div class="play"></div>
-
     </div>
 </div>
 
 
-<div class="books content-showcase">
+<div class="books zone content-showcase">
     <h2> Books </h2>
     <P>
         I've authored, or co-authored, six books so far.
         The latest and greatest of which are Reactive Spring and Cloud Native Java
     </P>
-
     <div class="content">
         <div class="description">
             <h3>
@@ -751,14 +735,12 @@
                 and integration and composition, and more.
             </P>
         </div>
-
         <div class="covers">
             <div class="cover left"><img src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/></div>
             <div class="cover active"><img src="https://joshlong.com/media/books/reactive-spring/cover.png"/></div>
             <div class="cover right "><img src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/></div>
         </div>
         <div>
-
             <div class="arrows">
                 <div class="arrow left"></div>
                 <div class="arrow active right"></div>
@@ -766,13 +748,32 @@
         </div>
     </div>
 </div>
-<style>
+<div class="livelessons zone content-showcase">
+    <h2>
+        Livelessons
+    </h2>
+    <P>I've got a number of videos available on Safari. These videos are available a la carte or (I feel preferably) as
+        part of the all-you-can-eat buffet-style monthly subscription.
+    </P>
 
+</div>
+<style>
+    .books {
+        margin-right: calc(-1 * var(--page-right-pad));
+        padding-right: calc(0 * var(--page-right-pad));
+    }
+
+    .books > .content {
+        margin-right: calc(-1 * var(--zone-padding));
+        grid-template-areas:
+            "description covers "
+            "description arrows ";
+    }
 
     .zone {
-        padding-left: calc(2 * var(--page-left-pad));
-        padding-right: calc(2 * var(--page-right-pad));
+        padding-left: var(--zone-padding);
         margin-left: calc(-1 * var(--page-left-pad));
+        padding-right: var(--zone-padding);
         margin-right: calc(-1 * var(--page-right-pad));
     }
 
@@ -790,7 +791,7 @@
     }
 
     .content-showcase > h2 {
-        color: #101828;
+        color: var(--gray-900);
         font-style: normal;
         font-weight: bold;
         font-size: 36px;
@@ -833,22 +834,27 @@
 
     .content {
         display: grid;
-        margin-right: calc(-1 * var(--page-right-pad));
-        /* we want the book covers to line up flush with the sides of the page. todo make this orientation-aware
-        */
-        grid-template-areas:
-            "description covers "
-            "description arrows ";
-    }
-
-    .content.right {
-    }
-
-    .content.left {
     }
 
     .content > .description {
         grid-area: description;
+        padding-right: calc(5 * var(--common-gutter));
+    }
+
+    .content > .description > h3 {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 38px;
+        color: var(--gray-900);
+    }
+
+    .content > .description > p {
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 28px;
+        color: var(--gray-500);
     }
 
     .content > .covers > div.cover.right {
@@ -860,7 +866,6 @@
     .content > .covers > div.cover.right > img {
         clip-path: inset(0px calc(var(--cover-width) / 2) 00px 0);
         width: var(--cover-width);
-
     }
 
     /* left */
@@ -872,29 +877,28 @@
     }
 
     .content > .covers > div.cover.left > img {
-        /*clip-path: inset(0px calc(var(--cover-width) / 2) 00px 0);*/
         width: var(--cover-width);
         left: calc(-1 * calc(var(--cover-width) / 2));
         display: inline-block;
         position: relative;
-
     }
 
     /* active */
     .content > .covers > div.cover.active {
         grid-area: active;
         width: var(--active-cover-width);
+        filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
 
     }
 
     .content > .covers > div.cover.active > img {
         opacity: 1;
         width: var(--active-cover-width);
-        filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
-        border: 2px solid black;
+        border: 4px solid black;
+        border-radius: var(--common-gutter);
     }
 
-    .content > .covers > .cover {
+    .content > .covers > .cover > img  {
         opacity: 0.5;
         width: var(--cover-width);
     }
@@ -910,39 +914,11 @@
 
 
 </style>
-<div class="livelessons zone content-showcase">
-    <h2>
-        Livelessons
-    </h2>
-    <P>I've got a number of videos available on Safari. These videos are available a la carte or (I feel preferably) as
-        part of the all-you-can-eat buffet-style monthly subscription.
-    </P>
-
-</div>
 <div class="youtube"></div>
 <div class="footer"></div>
 
 
 <div style="height: 100px "></div>
-<!--
-<div>
-    <div style="border: 1px solid red ; width: 200px ; overflow: hidden "><img width="300" src="https://joshlong.com/media/books/reactive-spring/cover.png"/></div>
-</div>
 
-
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>-->
 </body>
 </html>
