@@ -899,6 +899,7 @@
 
 <style>
 
+    /* books content showcase specifically */
     .books button {
         border-radius: var(--common-gutter);
         padding: var(--common-gutter);
@@ -928,11 +929,7 @@
         background-image: url("assets/images/buttons/amazon.png");
     }
 
-    /* books content showcase specifically */
     .books {
-        margin-right: calc(-1 * var(--page-right-pad));
-        padding-right: calc(0 * var(--page-right-pad));
-
     }
 
     .books > .content {
@@ -943,7 +940,17 @@
     }
 
     /* livelessons content showcase specifically */
+    .livelessons > .content {
+        margin-left: calc(-1 * var(--zone-padding));
+        grid-template-areas:
+            " covers description "
+            " arrows description ";
+    }
 
+    .zone h2 {
+        /*border: 1px solid red;*/
+        margin-top: calc( 5 * var(--common-gutter));
+    }
 
 </style>
 
@@ -955,6 +962,31 @@
         part of the all-you-can-eat buffet-style monthly subscription.
     </P>
 
+    <div class="content">
+        <div class="description">
+            <h3>
+                Reactive Spring Boot Livelessons
+            </h3>
+            <P>
+                Reactive Spring Boot LiveLessons by Josh Long, Spring Developer Advocate, introduces key concepts of
+                reactive programming and provides Java developers with the skills they need to build reactive
+                applications with Spring.
+            </P>
+
+        </div>
+        <div class="covers">
+            <div class="cover left"><img
+                    src="https://joshlong.com/media/livelessons/BuildMicroserviceswSpringBoot_2eLL.jpg"/></div>
+            <div class="cover active"><img src="https://joshlong.com/media/livelessons/ReactiveSpringLL-2E.jpg"/></div>
+            <div class="cover right "><img src="https://joshlong.com/media/livelessons/CloudNativeJavaLL.jpg"/></div>
+        </div>
+        <div>
+            <div class="arrows">
+                <div class="arrow active left"></div>
+                <div class="arrow  right"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div class="youtube"></div>
