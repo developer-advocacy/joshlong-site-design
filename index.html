@@ -77,7 +77,7 @@
         :root {
             --common-gutter: 10px;
             /* for the books and video covers */
-            --cover-width: 300px;
+            --cover-width: 280px;
             --active-cover-width: 320px;
 
             /*
@@ -753,9 +753,9 @@
         </div>
 
         <div class="covers">
-            <img class="cover left " src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/>
-            <img class="cover active" src="https://joshlong.com/media/books/reactive-spring/cover.png"/>
-            <img class="cover right " src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/>
+            <div class="cover left"><img src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/></div>
+            <div class="cover active"><img src="https://joshlong.com/media/books/reactive-spring/cover.png"/></div>
+            <div class="cover right "><img src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/></div>
         </div>
         <div>
 
@@ -768,14 +768,6 @@
 </div>
 <style>
 
-
-    .content-showcase > .content-description {
-        font-style: normal;
-        font-weight: normal;
-        font-size: 18px;
-        line-height: 28px;
-        color: var(--gray-500);
-    }
 
     .zone {
         padding-left: calc(2 * var(--page-left-pad));
@@ -850,35 +842,56 @@
     }
 
     .content.right {
-        /*margin-left: calc(var(--page-right-pad) * -1);*/
     }
 
     .content.left {
-        /*margin-left: calc(var(--page-left-pad) * -1);*/
     }
 
     .content > .description {
         grid-area: description;
     }
 
-    .content > .covers > .cover.right {
-        clip-path: inset(0px calc(var(--cover-width) / 2) 00px 0);
+    .content > .covers > div.cover.right {
+        overflow: hidden;
         grid-area: r;
+        width: calc(var(--cover-width) / 2);
     }
 
-    .content > .covers > .cover.left {
-        shape-outside:  content-box;
-        clip-path: inset(0px 0 00px calc(var(--cover-width) / 2));
+    .content > .covers > div.cover.right > img {
+        clip-path: inset(0px calc(var(--cover-width) / 2) 00px 0);
+        width: var(--cover-width);
+
+    }
+
+    /* left */
+
+    .content > .covers > div.cover.left {
+        overflow: hidden;
         grid-area: l;
+        width: calc(var(--cover-width) / 2);
     }
 
-    .content > .covers > .cover.active {
+    .content > .covers > div.cover.left > img {
+        /*clip-path: inset(0px calc(var(--cover-width) / 2) 00px 0);*/
+        width: var(--cover-width);
+        left: calc(-1 * calc(var(--cover-width) / 2));
+        display: inline-block;
+        position: relative;
+
+    }
+
+    /* active */
+    .content > .covers > div.cover.active {
+        grid-area: active;
+        width: var(--active-cover-width);
+
+    }
+
+    .content > .covers > div.cover.active > img {
         opacity: 1;
         width: var(--active-cover-width);
-        border: 2px solid black;
-        grid-area: active;
         filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
-
+        border: 2px solid black;
     }
 
     .content > .covers > .cover {
@@ -887,17 +900,15 @@
     }
 
     .content > .covers {
-        border: 1px solid green;
         grid-area: covers;
         display: grid;
         grid-template-areas: "l active r";
         grid-auto-flow: column;
         align-items: center;
         justify-items: center;
-
-
-
     }
+
+
 </style>
 <div class="livelessons zone content-showcase">
     <h2>
@@ -913,6 +924,25 @@
 
 
 <div style="height: 100px "></div>
+<!--
+<div>
+    <div style="border: 1px solid red ; width: 200px ; overflow: hidden "><img width="300" src="https://joshlong.com/media/books/reactive-spring/cover.png"/></div>
+</div>
 
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>-->
 </body>
 </html>
