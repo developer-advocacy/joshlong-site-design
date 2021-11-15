@@ -193,25 +193,25 @@
 <style>
     /*HERO*/
     .hero {
-
-        /*       font-size: 20px;
-               line-height: 30px;*/
         background-color: var(--black);
         grid-area: hero;
         color: var(--gray-100);
         display: grid;
-        grid-template-areas: "text "
-        "image";
+        grid-template-areas:
+                "text "
+                "image";
         grid-template-rows: auto auto;
     }
 
     .hero > .text > button {
+        font-size: medium;
         background-color: var(--black);
         border-radius: var(--button-radius);
         padding: 1em 20px;
         color: var(--light-green);
         border: 1px solid var(--light-green);
         margin-top: 2em;
+        width: 100%;
     }
 
     .hero > .text {
@@ -219,6 +219,7 @@
     }
 
     .hero > .image > img {
+        margin-top: var(--page-top-pad);
         width: 100%;
     }
 
@@ -233,6 +234,11 @@
     }
 
     @media screen and (min-width: 1000px) {
+
+        .hero > .text > button {
+            width: max-content;
+
+        }
 
         .hero {
             display: grid;
