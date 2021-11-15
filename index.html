@@ -11,6 +11,7 @@
     /* CORE */
     @import url("https://rsms.me/inter/inter.css");
 
+
     .zone {
 
         padding-left: var(--zone-padding);
@@ -34,14 +35,13 @@
     }
 
     :root {
+        --social-icons-dimensions-height: 20px;
+        --social-icons-dimensions-width: 200px;
         --common-gutter: 10px;
         --button-radius: calc(.8 * var(--common-gutter));
         --zone-padding: calc(2 * var(--page-right-pad));
-
-
         --josh-hero-image-height: 634px;
         --josh-hero-image-width: 500px;
-
         --gray-25: #FCFCFD;
         --gray-100: #F2F4F7;
         --gray-300: #D0D5DD;
@@ -52,12 +52,10 @@
         --green-50: #ECFDF3;
         --green-600: #039855;
         --green-700: #027A48;
-
         --black: #000;
         --white: white;
         --light-green: #6CE9A6;
         --green-gradient: linear-gradient(#079052, #439792);
-
         --global-pad-multiplier: 1;
         --page-right-pad: calc(var(--common-gutter) * var(--global-pad-multiplier));
         --page-left-pad: calc(var(--common-gutter) * var(--global-pad-multiplier));
@@ -66,18 +64,31 @@
         --appearance-event-padding: .9em;
         --mobile-width: 1000px;
         --hamburger-menu-width: 80px;
+        --icon-button-left-padding: calc(4 * var(--common-gutter));
+
+    }
+
+    button {
+        font-size: medium;
+        font-weight: bold;
+        background-color: var(--green-50);
+        border-radius: var(--common-gutter);
+        padding: calc(1.5 * var(--common-gutter));
+        border-width: 0;
+        color: var(--green-700);
+        display: inline-block;
+        margin-bottom: var(--common-gutter);
+        width: 100%;
     }
 
     h2 {
-        font-size: x-large;
-        margin-bottom: 0;
         line-height: normal;
+        margin: 0;
     }
 
     body {
         margin: 0;
         background: var(--white);
-        font-size: medium;
         line-height: 1.5em;
         padding-left: var(--page-left-pad);
         padding-right: var(--page-left-pad);
@@ -86,6 +97,14 @@
     }
 
     @media screen and (min-width: 1000px) {
+        body {
+            font-size: medium;
+        }
+
+        button {
+            font-size: medium;
+            width: auto;
+        }
 
         :root {
             --global-pad-multiplier: 3;
@@ -93,8 +112,16 @@
 
     }
 
-</style>
-<style>
+
+    button.icon {
+        padding-top: var(--common-gutter);
+        background-repeat: no-repeat;
+        background-position-y: var(--common-gutter);
+        background-position-x: var(--common-gutter);
+        background-size: 25px;
+        padding-left: calc(5 * var(--common-gutter));
+    }
+
     /* MENU  */
     .menu {
         padding-top: var(--page-top-pad);
@@ -162,7 +189,7 @@
 
     @media screen and (min-width: 1000px) {
         .menu .logo {
-            font-size: larger;
+            font-size: x-large;
         }
 
         .menu .hamburger-menu {
@@ -195,8 +222,6 @@
         }
     }
 
-</style>
-<style>
     /*HERO*/
     .hero {
         background-color: var(--black);
@@ -210,14 +235,18 @@
     }
 
     .hero > .text > button {
-        font-size: medium;
         background-color: var(--black);
-        border-radius: var(--button-radius);
-        color: var(--light-green);
         border: 1px solid var(--light-green);
-        margin-top: 2em;
-        width: 100%;
-        padding: 1em 20px;
+        margin-top: var(--common-gutter);
+        color: var(--light-green);
+        /*
+
+               border-radius: var(--button-radius);
+
+
+               margin-top: 2em;
+               width: 100%;
+               padding: 1em 20px;*/
     }
 
     .hero > .text {
@@ -241,7 +270,7 @@
     }
 
     .hero > .text > .name {
-        font-size: 60px;
+        font-size: xxx-large;
         line-height: 2em;
         display: none;
     }
@@ -249,7 +278,7 @@
     @media screen and (min-width: 1000px) {
 
         .hero > .text > button {
-            width: max-content;
+            width: auto;
         }
 
         .hero {
@@ -263,8 +292,7 @@
             display: block;
         }
     }
-</style>
-<style>
+
     /* APPEARANCES */
     /*
     TODO i disable the css for the horizontal scrollbar. I should add an arrow ro something so folks know to click and advance the events listings.
@@ -322,10 +350,11 @@
         min-height: 100px;
         max-height: 100px;
         min-width: 100px;
+        font-size: x-large;
+        line-height: 1em;
     }
 
     .appearances > .timeline > .event > .date > .day {
-        font-size: xx-large;
     }
 
     .appearances > .timeline > .event > .description {
@@ -334,18 +363,19 @@
 
     .appearances > .timeline > .event > .description > .event-name {
         color: var(--gray-25);
-        /*line-height: 30pt;*/
-        font-size: large;
         grid-area: event;
     }
 
     .appearances > .timeline > .event > .description > .event-details {
-        font-size: small;
+        font-size: smaller;
         color: var(--gray-300);
         margin-top: 0.5em;
     }
 
     @media screen and (min-width: 1000px) {
+        .appearances > .timeline > .event > .description > .event-details {
+            font-size: small;
+        }
 
         .appearances > .timeline > .event {
             grid-template-columns: 100px 300px;
@@ -360,13 +390,9 @@
             margin-bottom: 1em;
             overflow: auto;
         }
-
-
     }
-</style>
-<style>
 
-
+    /*RECENT POSTS*/
     .recent-post-panel {
         padding: var(--common-gutter);
         display: inline-block;
@@ -386,8 +412,6 @@
     }
 
     .recent-post > .date {
-        /*        font-size: 14px;
-                line-height: 20px;*/
         font-size: smaller;
         color: var(--green-700);
         margin-bottom: var(--common-gutter);
@@ -397,37 +421,14 @@
 
     .recent-post > h2 {
         font-weight: bold;
-        font-size: larger;
-        /*        font-size: 20px;
-                line-height: 30px;*/
         color: var(--gray-800);
         margin-bottom: var(--common-gutter);
     }
 
     .recent-post > .text > p {
         color: var(--gray-500);
-        /*      font-size: 16px;
-              line-height: 24px;*/
     }
 
-
-    .recent-posts > .recent-posts-buttons {
-        alignment: center;
-        text-align: center;
-        margin-bottom: calc(var(--common-gutter) * 2);
-        margin-top: calc(var(--common-gutter) * 2);
-    }
-
-    .recent-posts > .recent-posts-buttons > button {
-        background-color: var(--green-50);
-        border-radius: var(--common-gutter);
-        padding: calc(1.5 * var(--common-gutter));
-        border-width: 0;
-        font-size: larger;
-        font-weight: normal;
-        color: var(--green-700);
-        filter: drop-shadow(calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) var(--gray-300));
-    }
 
     @media screen and (min-width: 1000px) {
         .recent-posts > .recent-posts-columns {
@@ -435,8 +436,8 @@
             column-gap: 0;
         }
     }
-</style>
-<style>
+
+
     /* PODCAST */
     .latest-episode-panel-content .image {
         grid-area: image;
@@ -447,12 +448,10 @@
         padding: var(--common-gutter);
     }
 
-
-    .latest-episode-panel-content .image > img {
+    .latest-episode-panel-content .image img {
         --guest-image-dimension: 80px;
         width: var(--guest-image-dimension);
         height: var(--guest-image-dimension);
-        /*background-size: var(--guest-image-dimension);*/
         clip-path: circle(calc(var(--guest-image-dimension) / 2));
     }
 
@@ -471,8 +470,6 @@
         grid-area: text;
         font-style: normal;
         font-weight: normal;
-        /*font-size: 18px;*/
-        /*line-height: 28px;*/
         color: var(--gray-100);
         padding-right: calc(2 * var(--common-gutter));
     }
@@ -493,7 +490,7 @@
         /*
         hackety: we need the BG to be transparent but the
         contents (in the same grid spot) to be 100% opaque
-     */
+        */
         margin-top: calc(1 * var(--common-gutter));
         grid-area: panel;
         background-color: #101828;
@@ -554,22 +551,16 @@
     }
 
     .latest-episode-panel-content > .synopsis > p {
-        /*        font-size: 16px;
-                line-height: 24px;*/
         color: var(--gray-300);
     }
 
     .latest-episode-panel-content > .synopsis > h3 {
         font-weight: 600;
-        /*        font-size: 20px;
-                line-height: 30px;*/
         margin-top: 0;
     }
 
     .latest-episode-panel-content > .prompt {
         grid-area: prompt;
-        /*        font-size: 16px;
-                line-height: 24px;*/
         margin-bottom: 1em;
         padding: 0;
     }
@@ -590,15 +581,11 @@
 
 
     }
-</style>
-<style>
+
     /* CONTENT SHOWCASES CORE */
     :root {
-        --cover-width: 150px;
-        --active-cover-width: 200px;
-
-        /*    --cover-width: 100px;
-        --active-cover-width: 150px;*/
+        --cover-width: 100px;
+        --active-cover-width: 150px;
     }
 
     .content-showcase {
@@ -606,20 +593,14 @@
     }
 
     .content-showcase > p {
-        /*       font-size: 18px;
-               line-height: 28px;*/
         text-align: center;
         color: #667085;
-        /*        padding-right: calc(var(--common-gutter) * 20);
-                padding-left: calc(var(--common-gutter) * 20);*/
     }
 
     .content-showcase > h2 {
         color: var(--gray-900);
         font-style: normal;
         font-weight: bold;
-        /*    font-size: 36px;
-            line-height: 44px;*/
         text-align: center;
         letter-spacing: -0.02em;
     }
@@ -661,17 +642,14 @@
     }
 
     .content > .description button {
-
-        padding: var(--common-gutter);
-        background: var(--green-600);
-        border: 1px solid var(--green-600);
-        color: var(--white);
-        box-sizing: border-box;
-        box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
-        border-radius: var(--button-radius);
-
+        /*   padding: var(--common-gutter);
+           background: var(--green-600);
+           border: 1px solid var(--green-600);
+           color: var(--white);
+           box-sizing: border-box;
+           box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+           border-radius: var(--button-radius);*/
     }
-
 
     .content > .description {
         grid-area: description;
@@ -680,20 +658,15 @@
         display: inline-block;
     }
 
-
     .content > .description > h3 {
         font-style: normal;
         font-weight: 600;
-        /*        font-size: 30px;
-                line-height: 38px;*/
         color: var(--gray-900);
     }
 
     .content > .description > p {
         font-style: normal;
         font-weight: normal;
-        /*   font-size: 18px;
-           line-height: 28px;*/
         color: var(--gray-500);
     }
 
@@ -704,12 +677,6 @@
         width: calc(var(--cover-width) / 2);
     }
 
-    .content .buttons {
-        text-align: center;
-        align-items: center;
-        alignment: center;
-        justify-content: center;
-    }
 
     .content .covers > div.cover.right > img {
         clip-path: inset(0px calc(var(--cover-width) / 2) 00px 0);
@@ -763,8 +730,6 @@
         }
 
         .content-showcase > p {
-            /*    font-size: 18px;
-                line-height: 28px;*/
             padding-right: calc(var(--common-gutter) * 20);
             padding-left: calc(var(--common-gutter) * 20);
         }
@@ -783,44 +748,8 @@
         margin-top: calc(5 * var(--common-gutter));
     }
 
-</style>
-<style>
 
-    .books .buttons button {
-        border: 1px solid var(--gray-500);
-        border-radius: var(--common-gutter);
-        padding: var(--common-gutter);
-        --buy-button-left: calc(4 * var(--common-gutter));
-        padding-left: calc(var(--buy-button-left));
-        background-repeat: no-repeat;
-        background-position-y: calc(.5 * var(--common-gutter));
-        background-position-x: calc(.5 * var(--common-gutter));
-        background-size: 24px;
-        margin-left: var(--common-gutter);
-        margin-right: var(--common-gutter);
-        display: inline-block;
-        margin-bottom: var(--common-gutter);
-    }
-
-    .books .buttons {
-        text-align: center;
-        align-items: center;
-        alignment: center;
-        justify-content: center;
-    }
-
-    .books .buttons button.leanpub {
-        color: white;
-        background-color: black;
-        background-position-y: calc(.8 * var(--common-gutter));
-        background-image: url("assets/images/buttons/leanpub.png");
-    }
-
-    .books .buttons button.amazon {
-        color: black;
-        background-color: white;
-        background-image: url("assets/images/buttons/amazon.png");
-    }
+    /*BOOKS*/
 
     .content {
         grid-template-areas:
@@ -829,11 +758,20 @@
             "description ";
     }
 
-    .books .buttons > button {
-        margin: 0;
-        margin-bottom: var(--common-gutter);
-        /*margin-right: var(--common-gutter);*/
+    .content .buttons button.icon {
+        border: 1px solid black;
+    }
 
+    .content .buttons button.leanpub {
+        color: white;
+        background-color: black;
+        background-image: url("assets/images/buttons/leanpub.png");
+    }
+
+    .content .buttons button.amazon {
+        color: black;
+        background-color: white;
+        background-image: url("assets/images/buttons/amazon.png");
     }
 
     @media screen and (min-width: 1000px) {
@@ -841,11 +779,6 @@
         .books .content {
             margin-right: calc(-1 * var(--zone-padding));
         }
-
-        .books .buttons button {
-            display: inline;
-        }
-
 
         .books .buttons {
             padding: 0;
@@ -861,22 +794,11 @@
             "description arrows ";
         }
     }
-</style>
-<style>
-    .livelessons .buttons button {
-        display: inline-block;
-        margin-bottom: var(--common-gutter);
-    }
 
+    /*LIVELESSONS*/
     @media screen and (min-width: 1000px) {
 
-        .livelessons .buttons > button {
-            margin: 0;
-        }
-
         .livelessons .buttons {
-            padding: 0;
-            margin: 0;
             text-align: left;
         }
 
@@ -888,10 +810,10 @@
             " arrows description ";
         }
     }
-</style>
-<style>
 
-    .youtube {
+    /*YOUTUBE*/
+
+    .youtube-container {
 
         padding-top: var(--page-top-pad);
         padding-bottom: var(--page-bottom-pad);
@@ -904,47 +826,34 @@
         margin-top: var(--page-top-pad);
     }
 
-    .youtube button {
-        width: 100%;
-        background-repeat: no-repeat;
-        --button-icon-size: 20px;
-        background-position-y: calc(var(--common-gutter) * .7);
-        background-position-x: var(--common-gutter);
-        background-size: var(--button-icon-size) var(--button-icon-size);
-        display: block;
-        border: 1px solid var(--gray-300);
-        box-sizing: border-box;
-        color: var(--gray-25);
-        padding: var(--common-gutter);
-        padding-left: calc(var(--common-gutter) * 4);
-        background-color: #101828;
-        border-radius: var(--button-radius);
-        margin-bottom: var(--common-gutter);
-
+    .youtube-container .buttons button {
+        color: var(--white);
+        border: 1px solid var(--white);
+        background-color: var(--gray-900);
     }
 
-
     @media screen and (min-width: 1000px) {
-        .youtube {
+        .youtube-container {
             grid-template-areas: "text video";
             grid-template-columns: 30% 70%;
         }
 
-        .youtube .text {
+        .youtube-container .text {
             padding-right: calc(5 * var(--common-gutter));
         }
 
-        .youtube button {
+        .youtube-container .buttons button {
             width: auto;
+            display: block;
         }
     }
 
 
-    .youtube .text {
+    .youtube-container .text {
         grid-area: text;
     }
 
-    .youtube .video {
+    .youtube-container .video {
         grid-area: video;
         position: relative;
         overflow: hidden;
@@ -952,7 +861,7 @@
         padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
     }
 
-    .youtube .video iframe {
+    .youtube-container .video iframe {
         border-radius: var(--common-gutter);
         position: absolute;
         top: 0;
@@ -964,7 +873,7 @@
 
     }
 
-    .youtube h2 {
+    .youtube-container h2 {
         color: var(--white);
         --screen-dimension: 48px;
         background-image: url("assets/images/screen.png");
@@ -977,28 +886,24 @@
 
     }
 
-    button.spring-site {
+    .youtube-container button.spring-site {
         background-image: url("assets/images/buttons/spring.png");
     }
 
-    button.twitter {
+    .youtube-container button.twitter {
         background-image: url("assets/images/buttons/twitter.png");
     }
 
-    button.youtube {
+    .youtube-container button.youtube {
         background-image: url("assets/images/buttons/youtube.png");
     }
 
-    .youtube p {
+    .youtube-container p {
         color: var(--gray-100);
         font-style: normal;
         font-weight: normal;
-        font-size: 18px;
-        line-height: 28px;
-    }
 
-</style>
-<style>
+    }
 
 
     .contact {
@@ -1014,57 +919,47 @@
 
     .contact h2 {
         margin: 0;
+        padding: 0;
+
+
     }
 
-    .contact .call-to-action {
+    .contact .buttons {
         grid-area: call-to-action;
         margin-top: var(--common-gutter);
-        text-align: center;
-    }
 
-    .contact .call-to-action button {
-        justify-content: center;
-        align-items: center;
-        padding: var(--common-gutter);
-        background: var(--green-600);
-        border: 1px solid var(--green-600);
-        color: var(--white);
-        box-sizing: border-box;
-        border-radius: 8px;
     }
 
     .contact .prompt {
         color: var(--gray-100);
         grid-area: prompt;
-
     }
 
     @media screen and (min-width: 1000px) {
-        .contact .prompt {
-            text-align: left;
 
-        }
 
         .contact {
             grid-template-areas: "prompt call-to-action";
             grid-template-columns: auto auto;
+            align-content: baseline;
         }
 
-        .contact .call-to-action {
+        .contact .prompt {
+            text-align: left;
+        }
+
+        .contact .buttons {
             grid-area: call-to-action;
             margin-top: var(--common-gutter);
             text-align: right;
         }
     }
-</style>
-<style>
+
     .footer {
         color: var(--gray-100);
         padding-top: calc(2 * var(--page-top-pad));
         padding-bottom: calc(2 * var(--page-bottom-pad));
         background-color: var(--gray-900);
-        --icons-dimensions-height: 20px;
-        --icons-dimensions-width: 200px;
         display: grid;
         grid-template-areas:
                         "name"
@@ -1080,17 +975,14 @@
     }
 
     .footer > .social-icons > img {
-        width: var(--icons-dimensions-width);
-        height: var(--icons-dimensions-height);
+        width: var(--social-icons-dimensions-width);
+        height: var(--social-icons-dimensions-height);
         align-self: center;
-
     }
 
     .footer > .name {
         grid-area: name;
         text-align: center;
-        /*        font-size: 18px;
-                line-height: 28px;*/
         color: var(--gray-25);
     }
 
@@ -1161,7 +1053,7 @@
             pod caster and YouTuber: hi, Spring fans!
             👋
         </div>
-        <button type="button">
+        <button>
             Get to know me
         </button>
     </div>
@@ -1336,7 +1228,7 @@
         </div>
     </div>
 
-    <div class="recent-posts-buttons">
+    <div class="buttons">
         <button>See More</button>
     </div>
 </div>
@@ -1392,8 +1284,8 @@
                 and integration and composition, and more.
             </P>
             <div class="buttons">
-                <button class="amazon">Buy on Amazon</button>
-                <button class="leanpub">Buy on Leanpub</button>
+                <button class="icon amazon"> Buy on Amazon</button>
+                <button class="icon leanpub">Buy on Leanpub</button>
             </div>
         </div>
 
@@ -1450,7 +1342,7 @@
         </div>
     </div>
 </div>
-<div class="youtube zone  ">
+<div class="youtube-container zone  ">
     <div class="text">
         <h2> Spring Tips </h2>
         <p>
@@ -1460,9 +1352,12 @@
             of developers use Spring to build simple, truly portable, fast and flexible JVM-based systems and
             applications.
         </p>
-        <button class="youtube">Learn on Youtube</button>
-        <button class="twitter">Follow on Twitter</button>
-        <button class="spring-site">Get Started Now</button>
+        <div class="buttons">
+            <button class="icon youtube">Learn on Youtube</button>
+            <button class="icon twitter">Follow on Twitter</button>
+            <button class="icon spring-site">Get Started Now</button>
+            <!--            <button class="icon leanpub">Buy on Leanpub</button>-->
+        </div>
     </div>
 
     <div class="video">
@@ -1471,9 +1366,9 @@
                 allowfullscreen></iframe>
     </div>
 </div>
-<div class="contact zone">
+<div class="zone contact">
     <div class="prompt"><h2> Got Something to Say? </h2></div>
-    <div class="call-to-action">
+    <div class="buttons">
         <button> Get in Touch</button>
     </div>
 </div>
