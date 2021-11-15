@@ -76,6 +76,7 @@
 
         :root {
             --common-gutter: 10px;
+            --button-radius: calc(.8 * var(--common-gutter));
             --zone-padding: calc(2 * var(--page-right-pad));
             --cover-width: 300px;
             --active-cover-width: 342px;
@@ -91,6 +92,7 @@
             --gray-800: #1D2939;
             --gray-900: #101828;
             --green-50: #ECFDF3;
+            --green-600: #039855;
             --green-700: #027A48;
 
             --black: #000;
@@ -137,7 +139,7 @@
 
         .hero > .text > button {
             background-color: var(--black);
-            border-radius: 10px;
+            border-radius: var(--button-radius);
             padding: 1em 20px;
             color: var(--light-green);
             border: 1px solid var(--light-green);
@@ -439,7 +441,6 @@
         }
 
         .latest-episode-panel-content > .latest-episode-synopsis > p:first-of-type {
-            /*margin-top: calc(-0.5 * 1em);*/
         }
 
         .latest-episode-panel-content > .latest-episode-synopsis > p {
@@ -483,6 +484,8 @@
             line-height: 28px;
             text-align: center;
             color: #667085;
+            padding-right: calc(var(--common-gutter) * 20);
+            padding-left: calc(var(--common-gutter) * 20);
         }
 
         .content-showcase > h2 {
@@ -529,6 +532,19 @@
 
         .content {
             display: grid;
+        }
+
+        .content > .description > button {
+            justify-content: center;
+            align-items: center;
+            padding: var(--common-gutter);
+            background: var(--green-600);
+            border: 1px solid var(--green-600);
+            color: var(--white);
+            box-sizing: border-box;
+            box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+            border-radius: 8px;
+
         }
 
         .content > .description {
@@ -652,6 +668,7 @@
 
         /* livelessons content-showcase  */
         .livelessons > .content {
+            margin-top: calc(5 * var(--common-gutter));
             margin-left: calc(-1 * var(--zone-padding));
             grid-template-areas:
             " covers description "
@@ -913,7 +930,8 @@
     <h2> Books </h2>
     <P>
         I've authored, or co-authored, six books so far.
-        The latest and greatest of which are Reactive Spring and Cloud Native Java
+        The latest and greatest of these are <strong><EM>Reactive Spring</EM></strong> and <strong><em>Cloud Native
+        Java</em></strong>.
     </P>
     <div class="content">
         <div class="description">
@@ -936,7 +954,9 @@
             </div>
         </div>
         <div class="covers">
-            <div class="cover left"><img src="https://images-na.ssl-images-amazon.com/images/I/41R7SBjRbKL._SX348_BO1,204,203,200_.jpg"/></div>
+            <div class="cover left"><img
+                    src="https://images-na.ssl-images-amazon.com/images/I/41R7SBjRbKL._SX348_BO1,204,203,200_.jpg"/>
+            </div>
             <div class="cover active"><img src="https://joshlong.com/media/books/reactive-spring/cover.png"/></div>
             <div class="cover right "><img src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/></div>
         </div>
@@ -973,6 +993,7 @@
                 applications with Spring.
             </P>
 
+            <button>Get It Now</button>
         </div>
         <div class="covers">
             <div class="cover left"><img
@@ -988,12 +1009,120 @@
         </div>
     </div>
 </div>
+<style type="text/css">
+    .youtube {
+        padding-top: var(--page-top-pad);
+        padding-bottom: var(--page-bottom-pad);
+        background: linear-gradient(0deg, #101828, #101828);
+        display: grid;
+        grid-template-areas: "text video";
+        grid-template-columns: 30% 70%;
+        margin-top: var(--page-top-pad);
+    }
 
-<div class="youtube"></div>
+    .youtube button {
+        background-repeat: no-repeat;
+        --button-icon-size: 20px;
+        background-position-y: calc(var(--common-gutter) * .7);
+        background-position-x: var(--common-gutter);
+        background-size: var(--button-icon-size) var(--button-icon-size);
+        display: block;
+        border: 1px solid var(--gray-300);
+        box-sizing: border-box;
+        color: var(--gray-25);
+        padding: var(--common-gutter);
+        padding-left: calc(var(--common-gutter) * 4);
+        background-color: #101828;
+        border-radius: var(--button-radius);
+        margin-bottom: var(--common-gutter);
+
+    }
+
+    .youtube .text {
+        grid-area: text;
+        padding-right: calc(5 * var(--common-gutter) );
+        /*border: 1px solid red;*/
+    }
+
+    .youtube .video {
+        grid-area: video;
+
+        position: relative;
+        overflow: hidden;
+        width: 100%;
+        padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+
+
+    }
+
+    .youtube .video iframe {
+        border-radius: var(--common-gutter ) ;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+
+    }
+
+    .youtube h2 {
+        color: var(--white);
+        --screen-dimension: 48px;
+        background-image: url("assets/images/screen.png");
+        background-size: var(--screen-dimension);
+        padding-left: calc(var(--screen-dimension) + var(--common-gutter));
+        background-repeat: no-repeat;
+        font-size: 36px;
+        line-height: var(--screen-dimension);
+        margin-bottom: var(--common-gutter);
+
+    }
+
+    button.spring-site {
+        background-image: url("assets/images/buttons/spring.png");
+    }
+
+    button.twitter {
+        background-image: url("assets/images/buttons/twitter.png");
+    }
+
+    button.youtube {
+        background-image: url("assets/images/buttons/youtube.png");
+    }
+
+    .youtube p {
+        color: var(--gray-100);
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 28px;
+    }
+</style>
+<div class="youtube zone  ">
+    <div class="text">
+        <h2> Spring Tips </h2>
+        <p>
+            I run a screencast called Spring Tips. It's also on Twitter (<a href="https://twitter.com/SpringTipsLive">@SpringTipsLive</a>)
+            Spring is the most popular application development framework for Java™. Millions
+            of developers use Spring to build simple, truly portable, fast and flexible JVM-based systems and
+            applications.
+        </p>
+        <button class="youtube">Learn on Youtube</button>
+        <button class="twitter">Follow on Twitter</button>
+        <button class="spring-site">Get Started Now</button>
+    </div>
+
+    <div class="video">
+        <iframe
+                src="https://www.youtube.com/embed/puIJ1Mn9_LE" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
+</div>
 <div class="footer"></div>
-
-
 <div style="height: 100px "></div>
-
 </body>
 </html>
