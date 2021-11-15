@@ -438,152 +438,164 @@
         }
     }
 </style>
+
 <style>
+    /* PODCAST */
+    .latest-episode-image {
+        grid-area: image;
+        align-content: center;
+        alignment: center;
+        text-align: center;
+        vertical-align: center;
+        padding: var(--common-gutter);
+    }
 
-    /* TODO */
-    @media screen and (min-width: 2200px) {
-        /* deactivate all the styling until we can get a chance to work on it */
-        /*  RECENT POSTS  */
-        /* PODCAST */
-        .latest-episode-image {
-            grid-area: image;
-            align-content: center;
-            alignment: center;
-            text-align: center;
-            vertical-align: center;
-            padding: var(--common-gutter);
-        }
 
-        .podcast > .podcast-logo {
-            --podcast-logo-width: 385px;
-            --podcast-logo-height: 128px;
-            width: var(--podcast-logo-width);
-            height: var(--podcast-logo-height);
-            background-repeat: no-repeat;
-            background-size: var(--podcast-logo-width) var(--podcast-logo-height);
-            background-image: url("assets/images/bootiful-podcast-logo.png");
-        }
+    .latest-episode-image > img {
+        --guest-image-dimension: 100px;
+        width: var(--guest-image-dimension);
+        height: var(--guest-image-dimension);
+        background-size: var(--guest-image-dimension);
+        clip-path: circle(calc(var(--guest-image-dimension) / 2));
+    }
 
-        .latest-episode-image > img {
-            --guest-image-dimension: 100px;
-            width: var(--guest-image-dimension);
-            height: var(--guest-image-dimension);
-            background-size: var(--guest-image-dimension);
-            clip-path: circle(calc(var(--guest-image-dimension) / 2));
-        }
+    .podcast > .podcast-listen {
+        grid-area: listen;
+        --microphone-size: 48px;
+        background-image: url("assets/images/microphone.png");
+        background-size: var(--microphone-size);
+        font-size: 36px;
+        line-height: var(--microphone-size);
+        padding-left: calc(var(--microphone-size) + var(--common-gutter));
+        background-repeat: no-repeat;
+        margin-bottom: var(--common-gutter);
+    }
 
-        .podcast > .podcast-listen {
-            grid-area: listen;
-            --microphone-size: 48px;
-            background-image: url("assets/images/microphone.png");
-            background-size: var(--microphone-size);
-            font-size: 36px;
-            line-height: var(--microphone-size);
-            padding-left: calc(var(--microphone-size) + var(--common-gutter));
-            background-repeat: no-repeat;
-            margin-bottom: var(--common-gutter);
-        }
+    .podcast > .podcast-description {
+        grid-area: text;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 28px;
+        color: var(--gray-100);
+        padding-right: calc(2 * var(--common-gutter));
+    }
 
-        .podcast > .podcast-description {
-            grid-area: text;
-            font-style: normal;
-            font-weight: normal;
-            font-size: 18px;
-            line-height: 28px;
-            color: var(--gray-100);
-            padding-right: calc(2 * var(--common-gutter));
-        }
+    .podcast > .podcast-logo > img { width: 80%; }
+    .podcast > .podcast-logo {
+        grid-area: logo;
 
-        .podcast > .podcast-logo {
-            grid-area: logo;
-        }
+        text-align: center;
+        margin-top: calc( 2 *  var(--common-gutter));
+        margin-bottom:  calc( 2 *  var(--common-gutter));
+    }
 
-        .latest-episode-panel {
-            /*
-            hackety: we need the BG to be transparent but the
-            contents (in the same grid spot) to be 100% opaque
-        */
-            grid-area: panel;
-            background-color: #101828;
-            opacity: 0.48;
-            border-radius: var(--common-gutter);
-            z-index: 1;
-        }
+    .latest-episode-panel {
+        /*
+        hackety: we need the BG to be transparent but the
+        contents (in the same grid spot) to be 100% opaque
+    */
+        grid-area: panel;
+        background-color: #101828;
+        opacity: 0.48;
+        border-radius: var(--common-gutter);
+        z-index: 1;
+    }
 
-        .latest-episode-panel-content {
-            display: grid;
-            margin-top: var(--common-gutter);
-            margin-bottom: var(--common-gutter);
-            padding: var(--common-gutter);
-            opacity: 1;
-            grid-area: panel;
-            z-index: 2;
-            grid-template-areas:
+    .latest-episode-panel-content {
+        display: grid;
+        margin-top: var(--common-gutter);
+        margin-bottom: var(--common-gutter);
+        padding: var(--common-gutter);
+        opacity: 1;
+        grid-area: panel;
+        z-index: 2;
+        grid-template-areas:
                 "image prompt prompt"
                 "image synopsis play ";
-            grid-template-columns: minmax(150px, auto ) auto 80px;
-            grid-template-rows: auto   auto auto;
-        }
+        grid-template-columns: minmax(150px, auto ) auto 80px;
+        grid-template-rows: auto   auto auto;
+    }
 
+    .podcast {
+        display: grid;
+
+        padding-top: calc(var(--page-top-pad) * 2);
+        padding-bottom: calc(var(--page-bottom-pad) * 2);
+        background: rgb(7, 144, 82);
+        background: linear-gradient(
+                45deg,
+                rgba(7, 144, 82, 1) 0%,
+                rgba(67, 151, 146, 1) 55%,
+                rgba(67, 151, 146, 1) 100%
+        );
+        color: white;
+        grid-template-areas:
+                    "listen "
+                    "text "
+                    "logo "
+                    "panel";
+    }
+
+
+    .latest-episode-panel-content > .play {
+        --play-icon-dimensions: 50px;
+        background-image: url("assets/images/play.png");
+        background-repeat: no-repeat;
+        background-size: var(--play-icon-dimensions);
+        background-position: center;
+        grid-area: play;
+    }
+
+    .latest-episode-panel-content > .latest-episode-synopsis {
+        grid-area: synopsis;
+        margin-bottom: calc(-1 * var(--common-gutter));
+    }
+
+    .latest-episode-panel-content > .latest-episode-synopsis > p:first-of-type {
+    }
+
+    .latest-episode-panel-content > .latest-episode-synopsis > p {
+        font-size: 16px;
+        line-height: 24px;
+        color: var(--gray-300);
+    }
+
+    .latest-episode-panel-content > .latest-episode-synopsis > h2 {
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 30px;
+        margin-top: 0;
+    }
+
+    .latest-episode-panel-content > .latest-episode-prompt {
+        grid-area: prompt;
+        font-size: 16px;
+        line-height: 24px;
+        margin-bottom: 8px;
+        padding: 0;
+    }
+
+
+    @media screen and (min-width: 1000px) {
         .podcast {
-            display: grid;
             grid-template-areas:
                 "listen logo"
                 "text logo"
                 " .     ."
                 "panel panel";
             grid-template-rows: auto auto calc(var(--common-gutter) * 2 ) auto;
-            padding-top: calc(var(--page-top-pad) * 2);
-            padding-bottom: calc(var(--page-bottom-pad) * 2);
-            background: rgb(7, 144, 82);
-            background: linear-gradient(
-                    45deg,
-                    rgba(7, 144, 82, 1) 0%,
-                    rgba(67, 151, 146, 1) 55%,
-                    rgba(67, 151, 146, 1) 100%
-            );
-            color: white;
         }
+    }
 
+</style>
 
-        .latest-episode-panel-content > .play {
-            --play-icon-dimensions: 50px;
-            background-image: url("assets/images/play.png");
-            background-repeat: no-repeat;
-            background-size: var(--play-icon-dimensions);
-            background-position: center;
-            grid-area: play;
-        }
+<style>
 
-        .latest-episode-panel-content > .latest-episode-synopsis {
-            grid-area: synopsis;
-            margin-bottom: calc(-1 * var(--common-gutter));
-        }
-
-        .latest-episode-panel-content > .latest-episode-synopsis > p:first-of-type {
-        }
-
-        .latest-episode-panel-content > .latest-episode-synopsis > p {
-            font-size: 16px;
-            line-height: 24px;
-            color: var(--gray-300);
-        }
-
-        .latest-episode-panel-content > .latest-episode-synopsis > h2 {
-            font-weight: 600;
-            font-size: 20px;
-            line-height: 30px;
-            margin-top: 0;
-        }
-
-        .latest-episode-panel-content > .latest-episode-prompt {
-            grid-area: prompt;
-            font-size: 16px;
-            line-height: 24px;
-            margin-bottom: 8px;
-            padding: 0;
-        }
-
+    /* TODO */
+    @media screen and (min-width: 2200px) {
+        /* deactivate all the styling until we can get a chance to work on it */
+        /*  RECENT POSTS  */
         /*  general purpose content showcase styles  */
         .content-showcase {
             padding-top: var(--page-top-pad);
@@ -953,6 +965,7 @@
         }
     }
 </style>
+
 <body>
 <!--
     to support this view of the blogs, we'll need to develop a feature on the server-side that shows us
@@ -998,7 +1011,6 @@
         <img alt="Hi, Spring fans! I'm Josh Long" src="assets/images/josh-hero-image.png"/>
     </div>
 </div>
-
 <div class="zone appearances">
 
     <h2> Upcoming Appearances</h2>
@@ -1061,7 +1073,6 @@
         </div>
     </div>
 </div>
-
 <div class="zone recent-posts">
     <h2>Recent Posts </h2>
 
@@ -1168,12 +1179,7 @@
         <button>See More</button>
     </div>
 </div>
-
-
-<!--
-
-
-<div class="zone  podcast">
+<div class="zone podcast">
 
     <h2 class="podcast-listen">
         Listen to my Podcast
@@ -1183,7 +1189,9 @@
         ecosystems. It's also on Twitter (<a href="https://twitter.com/bootifulpodcast">@BootifulPodcast</a>). Here are
         the episodes.
     </div>
-    <div class="podcast-logo"></div>
+    <div class="podcast-logo">
+        <img src="assets/images/bootiful-podcast-logo.png"/>
+    </div>
     <div class="latest-episode-panel"></div>
     <div class="latest-episode-panel-content">
         <div class="latest-episode-image">
@@ -1199,6 +1207,9 @@
         <div class="play"></div>
     </div>
 </div>
+
+<!--
+
 
 
 <div class="books zone content-showcase">
