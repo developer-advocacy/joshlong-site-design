@@ -803,6 +803,43 @@
             grid-area: prompt;
         }
 
+        /* FOOTER */
+        .footer {
+            color: var(--gray-100);
+            padding-top: calc(2 * var(--page-top-pad));
+            padding-bottom: calc(2 * var(--page-bottom-pad));
+            background-color: var(--gray-900);
+            --icons-dimensions-height: 20px;
+            --icons-dimensions-width: 200px;
+            height: calc(var(--page-bottom-pad) + var(--page-top-pad) + var(--icons-dimensions-height));
+            display: grid;
+            grid-template-areas: "icons name copyright";
+            grid-template-columns: 40% 20% 40%;
+        }
+
+        .footer > * {
+            /*border: 1px solid rosybrown;*/
+        }
+
+        .footer > .social-icons {
+            background: url("assets/images/social-icons.png") no-repeat;
+            background-size: var(--icons-dimensions-width) var(--icons-dimensions-height);
+        }
+
+        .footer > .name {
+            grid-area: name;
+            text-align: center;
+            font-size: 18px;
+            line-height: 28px;
+            color: var(--gray-25);
+        }
+
+        .footer > .copyright {
+            text-align: right;
+            color: var(--gray-400);
+            grid-area: copyright;
+        }
+
     </style>
 
 </head>
@@ -1161,47 +1198,7 @@
         <button> Get in Touch</button>
     </div>
 </div>
-<style>
 
-
-    /* FOOTER */
-    .footer {
-        color: var(--gray-100);
-        padding-top: calc(2 * var(--page-top-pad));
-        padding-bottom: calc(2 * var(--page-bottom-pad));
-        background-color: var(--gray-900);
-        --icons-dimensions-height: 20px;
-        --icons-dimensions-width: 200px;
-        height: calc(var(--page-bottom-pad) + var(--page-top-pad) + var(--icons-dimensions-height));
-        display: grid;
-        grid-template-areas: "icons name copyright";
-        grid-template-columns: 40% 20% 40%;
-    }
-
-    .footer > * {
-        /*border: 1px solid rosybrown;*/
-    }
-
-    .footer > .social-icons {
-        background: url("assets/images/social-icons.png") no-repeat;
-        background-size: var(--icons-dimensions-width) var(--icons-dimensions-height);
-    }
-
-    .footer > .name {
-        grid-area: name;
-        text-align: center;
-        font-size: 18px;
-        line-height: 28px;
-        color: var(--gray-25);
-    }
-
-    .footer > .copyright {
-        text-align: right;
-        color: var(--gray-400);
-        grid-area: copyright;
-    }
-
-</style>
 <div class="footer zone ">
 
     <div class="social-icons"></div>
