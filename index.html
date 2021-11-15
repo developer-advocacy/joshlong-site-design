@@ -60,10 +60,11 @@
         --light-green: #6CE9A6;
         --green-gradient: linear-gradient(#079052, #439792);
 
-        --page-right-pad: calc(var(--common-gutter) * 3);
-        --page-left-pad: calc(var(--common-gutter) * 3);
-        --page-top-pad: calc(var(--common-gutter) * 3);
-        --page-bottom-pad: calc(var(--common-gutter) * 3);
+        --global-pad-multiplier: 1;
+        --page-right-pad: calc(var(--common-gutter) * var(--global-pad-multiplier));
+        --page-left-pad: calc(var(--common-gutter) * var(--global-pad-multiplier));
+        --page-top-pad: calc(var(--common-gutter) * var(--global-pad-multiplier));
+        --page-bottom-pad: calc(var(--common-gutter) * var(--global-pad-multiplier));
 
         --appearance-event-padding: .9em;
 
@@ -85,6 +86,14 @@
         padding-left: var(--page-left-pad);
         padding-right: var(--page-left-pad);
         padding-top: var(--page-top-pad);
+
+    }
+
+    @media screen and (min-width: 1000px) {
+
+        :root {
+            --global-pad-multiplier: 3;
+        }
 
     }
 
@@ -291,8 +300,6 @@
         grid-template-areas:     "date description"
                                  " .   description";
         grid-template-columns: 100px auto;
-        /*grid-template-columns: 100px 300px;*/
-        /*grid-template-rows: 100px auto;*/
         grid-template-rows: auto auto;
     }
 
@@ -349,91 +356,94 @@
     }
 </style>
 <style>
+    .recent-posts {
+        padding-top: var(--page-top-pad);
+        padding-bottom: var(--page-bottom-pad);
+        margin-bottom: var(--page-bottom-pad);
+        margin-top: var(--page-top-pad);
+    }
+
+    .recent-posts > h2 {
+        padding-left: var(--common-gutter);
+        padding-right: var(--common-gutter);
+    }
+
+    .recent-post-panel {
+        padding: var(--common-gutter);
+        display: inline-block;
+    }
+
+    .recent-post {
+        display: inline-block;
+        filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
+        background-color: var(--white);
+        padding: var(--common-gutter);
+        border-radius: var(--common-gutter);
+    }
+
+    .recent-post > img {
+        width: 100%;
+        border: 1px solid var(--gray-100);
+    }
+
+    .recent-post > .date {
+        /*        font-size: 14px;
+                line-height: 20px;*/
+        font-size: smaller;
+        color: var(--green-700);
+        margin-bottom: var(--common-gutter);
+        margin-top: var(--common-gutter);
+
+    }
+
+    .recent-post > .title {
+        font-weight: bold;
+        font-size: larger;
+        /*        font-size: 20px;
+                line-height: 30px;*/
+        color: var(--gray-800);
+        margin-bottom: var(--common-gutter);
+    }
+
+    .recent-post > .text > p {
+        color: var(--gray-500);
+        font-size: 16px;
+        line-height: 24px;
+    }
+
+
+    .recent-posts > .recent-posts-buttons {
+        alignment: center;
+        text-align: center;
+        margin-bottom: calc(var(--common-gutter) * 2);
+        margin-top: calc(var(--common-gutter) * 2);
+    }
+
+    .recent-posts > .recent-posts-buttons > button {
+        background-color: var(--green-50);
+        border-radius: var(--common-gutter);
+        padding: calc(1.5 * var(--common-gutter));
+        border-width: 0;
+        line-height: 24px;
+        font-size: 16px;
+        font-weight: normal;
+        color: var(--green-700);
+        filter: drop-shadow(calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) var(--gray-300));
+    }
+
+    @media screen and (min-width: 1000px) {
+        .recent-posts > .recent-posts-columns {
+            column-count: 3;
+            column-gap: 0;
+        }
+    }
+</style>
+<style>
 
     /* TODO */
     @media screen and (min-width: 2200px) {
         /* deactivate all the styling until we can get a chance to work on it */
         /*  RECENT POSTS  */
-        .recent-posts {
-            padding-top: var(--page-top-pad);
-            padding-bottom: var(--page-bottom-pad);
-            margin-bottom: var(--page-bottom-pad);
-            margin-top: var(--page-top-pad);
-        }
-
-        .recent-posts > h2 {
-            padding-left: var(--common-gutter);
-            padding-right: var(--common-gutter);
-
-        }
-
-        .recent-post-panel {
-            padding: var(--common-gutter);
-            display: inline-block;
-        }
-
-        .recent-post {
-            display: inline-block;
-            filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
-            background-color: var(--white);
-            padding: var(--common-gutter);
-            /*border: 1px solid var(--gray-300);*/
-            border-radius: var(--common-gutter);
-        }
-
-        .recent-post > img {
-            width: 100%;
-            border: 1px solid var(--gray-100);
-        }
-
-        .recent-post > .date {
-            font-size: 14px;
-            line-height: 20px;
-            color: var(--green-700);
-            margin-bottom: var(--common-gutter);
-            margin-top: var(--common-gutter);
-
-        }
-
-        .recent-post > .title {
-            font-weight: bold;
-            font-size: 20px;
-            line-height: 30px;
-            color: var(--gray-800);
-            margin-bottom: var(--common-gutter);
-        }
-
-        .recent-post > .text > p {
-            color: var(--gray-500);
-            font-size: 16px;
-            line-height: 24px;
-        }
-
-        .recent-posts > .recent-posts-columns {
-            column-count: 3;
-            column-gap: 0;
-        }
-
-        .recent-posts > .recent-posts-buttons {
-            alignment: center;
-            text-align: center;
-            margin-bottom: calc(var(--common-gutter) * 2);
-            margin-top: calc(var(--common-gutter) * 2);
-        }
-
-        .recent-posts > .recent-posts-buttons > button {
-            background-color: var(--green-50);
-            border-radius: var(--common-gutter);
-            padding: calc(1.5 * var(--common-gutter));
-            border-width: 0;
-            line-height: 24px;
-            font-size: 16px;
-            font-weight: normal;
-            color: var(--green-700);
-            filter: drop-shadow(calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) var(--gray-300));
-        }
-
-
         /* PODCAST */
         .latest-episode-image {
             grid-area: image;
@@ -1052,9 +1062,6 @@
     </div>
 </div>
 
-
-<!--
-
 <div class="zone recent-posts">
     <h2>Recent Posts </h2>
 
@@ -1064,8 +1071,7 @@
             <div class="recent-post">
                 <div class="date">20 October 2021</div>
                 <div class="title">
-                    A Bootiful, Reactive September and October 2021 (with
-                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                    Mardis Gras in Sydney
                 </div>
                 <div class="text">
                     <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
@@ -1078,7 +1084,7 @@
                 <img src="https://pbs.twimg.com/media/DbI730WXkAAeMww?format=jpg&name=medium"/>
                 <div class="date">20 October 2021</div>
                 <div class="title">
-                    A Bootiful, Reactive September and October 2021
+                    Travel is the Enemy of Closed-Mindedness
                 </div>
                 <div class="text">
                     <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
@@ -1101,7 +1107,20 @@
         <div class="recent-post-panel">
 
             <div class="recent-post">
-                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    Have You Seen Spring Lately?
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-post-panel">
+
+            <div class="recent-post">
                 <div class="date">20 October 2021</div>
                 <div class="title">
                     A Bootiful, Reactive September and October 2021 (with
@@ -1119,8 +1138,7 @@
                 <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
                 <div class="date">20 October 2021</div>
                 <div class="title">
-                    A Bootiful, Reactive September and October 2021 (with
-                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                    Introducing Azure Spring Cloud
                 </div>
                 <div class="text">
                     <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
@@ -1129,26 +1147,10 @@
             </div>
         </div>
 
-        <div class="recent-post-panel">
-
-            <div class="recent-post">
-                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
-                <div class="date">20 October 2021</div>
-                <div class="title">
-                    A Bootiful, Reactive September and October 2021 (with
-                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
-                </div>
-                <div class="text">
-                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
-                        about cloud native (reactive) Spring.</p>
-                </div>
-            </div>
-        </div>
 
         <div class="recent-post-panel">
 
             <div class="recent-post">
-                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
                 <div class="date">20 October 2021</div>
                 <div class="title">
                     A Bootiful, Reactive September and October 2021 (with
@@ -1166,6 +1168,9 @@
         <button>See More</button>
     </div>
 </div>
+
+
+<!--
 
 
 <div class="zone  podcast">
