@@ -87,6 +87,7 @@
             --gray-25: #FCFCFD;
             --gray-100: #F2F4F7;
             --gray-300: #D0D5DD;
+            --gray-400: #98A2B3;
             --gray-500: #667085;
             --gray-800: #1D2939;
             --gray-900: #101828;
@@ -767,7 +768,6 @@
         }
 
 
-
         /* FOOTER */
         .contact {
             padding-top: var(--page-top-pad);
@@ -799,7 +799,7 @@
         }
 
         .contact .prompt {
-            color: white;
+            color: var(--gray-100);
             grid-area: prompt;
         }
 
@@ -1166,26 +1166,47 @@
 
     /* FOOTER */
     .footer {
-        padding-top: var(--page-top-pad);
-        padding-bottom: var(--page-bottom-pad);
-        border: 1px solid red;
+        color: var(--gray-100);
+        padding-top: calc(2 * var(--page-top-pad));
+        padding-bottom: calc(2 * var(--page-bottom-pad));
         background-color: var(--gray-900);
         --icons-dimensions-height: 20px;
         --icons-dimensions-width: 200px;
         height: calc(var(--page-bottom-pad) + var(--page-top-pad) + var(--icons-dimensions-height));
         display: grid;
         grid-template-areas: "icons name copyright";
-        grid-template-columns: auto auto auto;
+        grid-template-columns: 40% 20% 40%;
+    }
+
+    .footer > * {
+        /*border: 1px solid rosybrown;*/
     }
 
     .footer > .social-icons {
         background: url("assets/images/social-icons.png") no-repeat;
         background-size: var(--icons-dimensions-width) var(--icons-dimensions-height);
     }
+
+    .footer > .name {
+        grid-area: name;
+        text-align: center;
+        font-size: 18px;
+        line-height: 28px;
+        color: var(--gray-25);
+    }
+
+    .footer > .copyright {
+        text-align: right;
+        color: var(--gray-400);
+        grid-area: copyright;
+    }
+
 </style>
 <div class="footer zone ">
 
     <div class="social-icons"></div>
+    <div class="name"> Josh Long</div>
+    <div class="copyright"> ©2021 Josh Long. All rights reserved.</div>
 
 </div>
 
