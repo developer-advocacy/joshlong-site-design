@@ -118,6 +118,7 @@
 
     .menu > .hamburger-menu:focus + .links {
         /* TODO this should be a javascript handler because any links clicked within don't work! */
+
         display: block;
     }
 
@@ -265,6 +266,9 @@
 </style>
 <style>
     /* APPEARANCES */
+    /*
+    TODO i disable the css for the horizontal scrollbar. I should add an arrow ro something so folks know to click and advance the events listings.
+    */
     .appearances {
         display: grid;
         background-color: var(--gray-900);
@@ -282,9 +286,11 @@
         height: calc(5 * var(--common-gutter));
         margin-bottom: var(--common-gutter);
     }
+
     .appearances > .timeline::-webkit-scrollbar {
         display: none; /* for Chrome, Safari, and Opera */
     }
+
     .appearances > .timeline {
         scrollbar-width: none; /* for Firefox */
 
