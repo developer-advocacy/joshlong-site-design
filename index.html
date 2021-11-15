@@ -11,7 +11,6 @@
     <style>
         @import url("https://rsms.me/inter/inter.css");
 
-
         *, *::before, *::after {
             box-sizing: border-box;
         }
@@ -766,6 +765,44 @@
             font-size: 18px;
             line-height: 28px;
         }
+
+
+
+        /* FOOTER */
+        .contact {
+            padding-top: var(--page-top-pad);
+            padding-bottom: var(--page-top-pad);
+            background-color: var(--gray-800);
+            display: grid;
+            grid-template-areas: "prompt call-to-action";
+            grid-template-columns: auto auto;
+        }
+
+        .contact h2 {
+            margin: 0;
+        }
+
+        .contact .call-to-action {
+            grid-area: call-to-action;
+            text-align: right;
+        }
+
+        .contact .call-to-action button {
+            justify-content: center;
+            align-items: center;
+            padding: var(--common-gutter);
+            background: var(--green-600);
+            border: 1px solid var(--green-600);
+            color: var(--white);
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .contact .prompt {
+            color: white;
+            grid-area: prompt;
+        }
+
     </style>
 
 </head>
@@ -1059,10 +1096,6 @@
     </div>
 </div>
 
-<style>
-
-
-</style>
 
 <div class="livelessons zone content-showcase">
     <h2>
@@ -1103,7 +1136,8 @@
     <div class="text">
         <h2> Spring Tips </h2>
         <p>
-            I run a screencast called Spring Tips. It's also on Twitter (<a href="https://twitter.com/SpringTipsLive">@SpringTipsLive</a>)
+            I run a screencast called <EM><STRONG>Spring Tips</STRONG></EM>. It's also on Twitter (<a
+                href="https://twitter.com/SpringTipsLive">@SpringTipsLive</a>)
             Spring is the most popular application development framework for Java™. Millions
             of developers use Spring to build simple, truly portable, fast and flexible JVM-based systems and
             applications.
@@ -1121,7 +1155,39 @@
                 allowfullscreen></iframe>
     </div>
 </div>
-<div class="footer"></div>
-<div style="height: 100px "></div>
+<div class="contact zone">
+    <div class="prompt"><h2> Got Something to Say? </h2></div>
+    <div class="call-to-action">
+        <button> Get in Touch</button>
+    </div>
+</div>
+<style>
+
+
+    /* FOOTER */
+    .footer {
+        padding-top: var(--page-top-pad);
+        padding-bottom: var(--page-bottom-pad);
+        border: 1px solid red;
+        background-color: var(--gray-900);
+        --icons-dimensions-height: 20px;
+        --icons-dimensions-width: 200px;
+        height: calc(var(--page-bottom-pad) + var(--page-top-pad) + var(--icons-dimensions-height));
+        display: grid;
+        grid-template-areas: "icons name copyright";
+        grid-template-columns: auto auto auto;
+    }
+
+    .footer > .social-icons {
+        background: url("assets/images/social-icons.png") no-repeat;
+        background-size: var(--icons-dimensions-width) var(--icons-dimensions-height);
+    }
+</style>
+<div class="footer zone ">
+
+    <div class="social-icons"></div>
+
+</div>
+
 </body>
 </html>
