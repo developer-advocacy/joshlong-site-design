@@ -218,13 +218,15 @@
         grid-area: text;
     }
 
-    .hero > .image > img {
-        margin-top: var(--page-top-pad);
-        width: 100%;
-    }
-
     .hero > .image {
         text-align: center;
+        padding: 0;
+        margin: 0;
+        font-size: 0;
+    }
+
+    .hero > .image > img {
+        width: 100%;
     }
 
     .hero > .text > .name {
@@ -237,7 +239,6 @@
 
         .hero > .text > button {
             width: max-content;
-
         }
 
         .hero {
@@ -253,28 +254,80 @@
     }
 </style>
 <style>
+    /* APPEARANCES */
+    .appearances {
+        display: grid;
+        background-color: var(--gray-900);
+        color: var(--white);
+        vertical-align: center;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+    }
 
+    .appearances > h2 {
+        background-image: url("assets/images/calendar.png");
+        background-size: 40px 40px;
+        background-repeat: no-repeat;
+        padding-left: 50px;
+        height: calc(5 * var(--common-gutter));
+        margin-bottom: var(--common-gutter);
+    }
 
-    /* TODO */
-    @media screen and (min-width: 2200px) {
-        /* deactivate all the styling until we can get a chance to work on it */
-        /* APPEARANCES */
-        .appearances {
-            display: grid;
-            background-color: var(--gray-900);
-            color: var(--white);
-            vertical-align: center;
-            padding-top: 1.5em;
-            padding-bottom: 1.5em;
-        }
+    .appearances > .timeline {
+        display: grid;
+        grid-template-columns:  auto;
 
-        .appearances > h2 {
-            background-image: url("assets/images/calendar.png");
-            background-size: 40px 40px;
-            background-repeat: no-repeat;
-            padding-left: 50px;
-            height: calc(5 * var(--common-gutter));
-        }
+        grid-template-areas: "event";
+        grid-row-gap: var(--common-gutter);
+        margin-bottom: 1em;
+        overflow: auto;
+    }
+
+    .appearances > .timeline > .event {
+        border-radius: 10px;
+        background-color: var(--gray-800);
+        padding: var(--appearance-event-padding);
+        display: grid;
+        grid-template-areas:     "date description"
+                                 " .   description";
+        grid-template-columns: 100px 300px;
+        grid-template-rows: 100px auto;
+    }
+
+    .appearances > .timeline > .event > .date {
+        grid-area: date;
+        background-image: var(--green-gradient);
+        padding: 1em;
+        border-radius: 10px;
+        color: var(--gray-25);
+        text-align: center;
+        min-height: 100px;
+        min-width: 100px;
+    }
+
+    .appearances > .timeline > .event > .date > .day {
+        font-size: xx-large;
+    }
+
+    .appearances > .timeline > .event > .description {
+        padding-left: var(--appearance-event-padding);
+    }
+
+    .appearances > .timeline > .event > .description > .event-name {
+        color: var(--gray-25);
+        /*line-height: 30pt;*/
+        font-size: large;
+        grid-area: event;
+    }
+
+    .appearances > .timeline > .event > .description > .event-details {
+        font-size: small;
+        color: var(--gray-300);
+        margin-top: 0.5em;
+    }
+
+    @media screen and (min-width: 1000px) {
+
 
         .appearances > .timeline {
             display: grid;
@@ -285,50 +338,14 @@
             overflow: auto;
         }
 
-        .appearances > .timeline > .event {
-            border-radius: 10px;
-            background-color: var(--gray-800);
-            padding: var(--appearance-event-padding);
-            display: grid;
-            grid-template-areas: "date description"
-                                 " .   description";
-            grid-template-columns: 100px 300px;
-            grid-template-rows: 100px auto;
 
-        }
+    }
+</style>
+<style>
 
-        .appearances > .timeline > .event > .date {
-            grid-area: date;
-            background-image: var(--green-gradient);
-            padding: 1em;
-            border-radius: 10px;
-            color: var(--gray-25);
-            text-align: center;
-            min-height: 100px;
-            min-width: 100px;
-        }
-
-        .appearances > .timeline > .event > .date > .day {
-            font-size: xx-large;
-        }
-
-        .appearances > .timeline > .event > .description {
-            padding-left: var(--appearance-event-padding);
-        }
-
-        .appearances > .timeline > .event > .description > .event-name {
-            color: var(--gray-25);
-            /*line-height: 30pt;*/
-            font-size: large;
-            grid-area: event;
-        }
-
-        .appearances > .timeline > .event > .description > .event-details {
-            font-size: small;
-            color: var(--gray-300);
-            margin-top: 0.5em;
-        }
-
+    /* TODO */
+    @media screen and (min-width: 2200px) {
+        /* deactivate all the styling until we can get a chance to work on it */
         /*  RECENT POSTS  */
         .recent-posts {
             padding-top: var(--page-top-pad);
@@ -960,11 +977,12 @@
             Get to know me
         </button>
     </div>
-    <div class="image"><img src="assets/images/josh-hero-image.png"/></div>
+    <div class="image">
+        <img alt="Hi, Spring fans! I'm Josh Long" src="assets/images/josh-hero-image.png"/>
+    </div>
 </div>
-<!--
-<div class="zone appearances">
 
+<div class="zone appearances">
 
     <h2> Upcoming Appearances</h2>
     <div class="timeline">
@@ -1024,12 +1042,12 @@
                 </div>
             </div>
         </div>
-
-
     </div>
-
-
 </div>
+
+
+<!--
+
 <div class="zone recent-posts">
     <h2>Recent Posts </h2>
 
