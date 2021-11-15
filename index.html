@@ -893,7 +893,6 @@
 
     @media screen and (min-width: 1000px) {
         .youtube {
-            border: 1px solid teal;
             grid-template-areas: "text video";
             grid-template-columns: 30% 70%;
         }
@@ -1037,52 +1036,67 @@
     }
 </style>
 <style>
+    .footer {
+        color: var(--gray-100);
+        padding-top: calc(2 * var(--page-top-pad));
+        padding-bottom: calc(2 * var(--page-bottom-pad));
+        background-color: var(--gray-900);
+        --icons-dimensions-height: 20px;
+        --icons-dimensions-width: 200px;
+        display: grid;
+        grid-template-areas:
+                        "name"
+                        "icons"
+                        "copyright";
+        grid-template-columns: auto;
+        height: 200px;
+    }
 
-    /* TODO */
-    @media screen and (min-width: 2200px) {
-        /* deactivate all the styling until we can get a chance to work on it */
-        /*  RECENT POSTS  */
-        /*  general purpose content showcase styles  */
-        /* books content-showcase  */
-        /* livelessons content-showcase  */
-        /*  SPRING TIPS VIDEOS  */
-        /* FOOTER */
-        /* FOOTER */
+    .footer > .social-icons {
+        grid-area: icons;
+        text-align: center;
+    }
+
+    .footer > .social-icons > img {
+        width: var(--icons-dimensions-width);
+        height: var(--icons-dimensions-height);
+        align-self: center;
+
+    }
+
+    .footer > .name {
+        grid-area: name;
+        text-align: center;
+        /*        font-size: 18px;
+                line-height: 28px;*/
+        color: var(--gray-25);
+    }
+
+    .footer > .copyright {
+        text-align: center;
+        color: var(--gray-400);
+        grid-area: copyright;
+    }
+
+    @media screen and (min-width: 1000px) {
+
+        .footer > .copyright {
+            text-align: right;
+        }
+
+        .footer > .social-icons {
+            text-align: left;
+        }
+
+        .footer > .name {
+            text-align: center;
+        }
+
         .footer {
-            color: var(--gray-100);
-            padding-top: calc(2 * var(--page-top-pad));
-            padding-bottom: calc(2 * var(--page-bottom-pad));
-            background-color: var(--gray-900);
-            --icons-dimensions-height: 20px;
-            --icons-dimensions-width: 200px;
-            height: calc(var(--page-bottom-pad) + var(--page-top-pad) + var(--icons-dimensions-height));
-            display: grid;
             grid-template-areas: "icons name copyright";
             grid-template-columns: 40% 20% 40%;
         }
 
-        .footer > * {
-            /*border: 1px solid rosybrown;*/
-        }
-
-        .footer > .social-icons {
-            background: url("assets/images/social-icons.png") no-repeat;
-            background-size: var(--icons-dimensions-width) var(--icons-dimensions-height);
-        }
-
-        .footer > .name {
-            grid-area: name;
-            text-align: center;
-            font-size: 18px;
-            line-height: 28px;
-            color: var(--gray-25);
-        }
-
-        .footer > .copyright {
-            text-align: right;
-            color: var(--gray-400);
-            grid-area: copyright;
-        }
     }
 </style>
 
@@ -1111,7 +1125,9 @@
             -->
         </div>
     </div>
-    <div class="social-icons"></div>
+    <div class="social-icons">
+        <img src="assets/images/social-icons.png"/>
+    </div>
 </div>
 <div class="zone hero">
     <div class="text">
@@ -1419,15 +1435,11 @@
     </div>
 
     <div class="video">
-        <iframe
-                src="https://www.youtube.com/embed/puIJ1Mn9_LE" title="YouTube video player"
-                frameborder="0"
+        <iframe src="https://www.youtube.com/embed/puIJ1Mn9_LE" title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
     </div>
 </div>
-
-
 <div class="contact zone">
     <div class="prompt"><h2> Got Something to Say? </h2></div>
     <div class="call-to-action">
@@ -1435,22 +1447,12 @@
     </div>
 </div>
 
-<!--
-
-<div class="contact zone">
-    <div class="prompt"><h2> Got Something to Say? </h2></div>
-    <div class="call-to-action">
-        <button> Get in Touch</button>
+<div class="footer zone">
+    <div class="social-icons">
+        <img src="assets/images/social-icons.png"/>
     </div>
-</div>
-
-<div class="footer zone ">
-
-    <div class="social-icons"></div>
     <div class="name"> Josh Long</div>
-    <div class="copyright"> ©2021 Josh Long. All rights reserved.</div>
-
+    <div class="copyright">©2021 Josh Long. All rights reserved.</div>
 </div>
--->
 </body>
 </html>
