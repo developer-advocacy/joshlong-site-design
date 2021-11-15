@@ -77,6 +77,8 @@
     body {
         margin: 0;
         background: var(--white);
+        font-size: medium;
+        line-height: 1.5em;
         padding-left: var(--page-left-pad);
         padding-right: var(--page-left-pad);
         padding-top: var(--page-top-pad);
@@ -445,10 +447,10 @@
 
 
     .latest-episode-image > img {
-        --guest-image-dimension: 100px;
+        --guest-image-dimension: 80px;
         width: var(--guest-image-dimension);
         height: var(--guest-image-dimension);
-        background-size: var(--guest-image-dimension);
+        /*background-size: var(--guest-image-dimension);*/
         clip-path: circle(calc(var(--guest-image-dimension) / 2));
     }
 
@@ -457,7 +459,7 @@
         --microphone-size: 48px;
         background-image: url("assets/images/microphone.png");
         background-size: var(--microphone-size);
-        font-size: 36px;
+        /*font-size: 36px;*/
         line-height: var(--microphone-size);
         padding-left: calc(var(--microphone-size) + var(--common-gutter));
         background-repeat: no-repeat;
@@ -468,8 +470,8 @@
         grid-area: text;
         font-style: normal;
         font-weight: normal;
-        font-size: 18px;
-        line-height: 28px;
+        /*font-size: 18px;*/
+        /*line-height: 28px;*/
         color: var(--gray-100);
         padding-right: calc(2 * var(--common-gutter));
     }
@@ -491,6 +493,7 @@
         hackety: we need the BG to be transparent but the
         contents (in the same grid spot) to be 100% opaque
      */
+        margin-top: calc(1 * var(--common-gutter));
         grid-area: panel;
         background-color: #101828;
         opacity: 0.48;
@@ -509,8 +512,8 @@
         grid-template-areas:
                 "image prompt prompt"
                 "image synopsis play ";
-        grid-template-columns: minmax(150px, auto ) auto 80px;
-        grid-template-rows: auto   auto auto;
+        grid-template-columns: calc( var(--guest-image-dimension) / 2 ) auto 80px;
+        grid-template-rows:     auto auto;
     }
 
     .podcast {
@@ -535,6 +538,7 @@
 
 
     .latest-episode-panel-content > .play {
+
         --play-icon-dimensions: 50px;
         background-image: url("assets/images/play.png");
         background-repeat: no-repeat;
@@ -548,39 +552,42 @@
         margin-bottom: calc(-1 * var(--common-gutter));
     }
 
-    .latest-episode-panel-content > .latest-episode-synopsis > p:first-of-type {
-    }
-
     .latest-episode-panel-content > .latest-episode-synopsis > p {
-        font-size: 16px;
-        line-height: 24px;
+        /*        font-size: 16px;
+                line-height: 24px;*/
         color: var(--gray-300);
     }
 
     .latest-episode-panel-content > .latest-episode-synopsis > h2 {
         font-weight: 600;
-        font-size: 20px;
-        line-height: 30px;
+        /*        font-size: 20px;
+                line-height: 30px;*/
         margin-top: 0;
     }
 
     .latest-episode-panel-content > .latest-episode-prompt {
         grid-area: prompt;
-        font-size: 16px;
-        line-height: 24px;
-        margin-bottom: 8px;
+        /*        font-size: 16px;
+                line-height: 24px;*/
+        margin-bottom: 1em;
         padding: 0;
     }
 
     @media screen and (min-width: 1000px) {
+
+        :root {
+            --guest-image-dimension: 200px;
+        }
+
         .podcast {
             grid-template-areas:
                 "listen logo"
                 "text logo"
-                " .     ."
                 "panel panel";
-            grid-template-rows: auto auto calc(var(--common-gutter) * 2 ) auto;
+            grid-template-rows: auto auto   auto;
         }
+
+
     }
 </style>
 <style>
@@ -832,7 +839,8 @@
         }
 
         .books .buttons > button {
-            margin: 0;
+            margin: 0;        margin-bottom: var(--common-gutter);
+
         }
 
         .books .buttons {
