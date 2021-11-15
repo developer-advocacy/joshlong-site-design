@@ -6,122 +6,194 @@
     <title>
         Josh Long
     </title>
+</head>
+<style>
+    @import url("https://rsms.me/inter/inter.css");
+
+    /* CORE  */
+
+    .zone {
+
+        padding-left: var(--zone-padding);
+        padding-right: var(--zone-padding);
+
+        margin-left: calc(-1 * var(--page-left-pad));
+        margin-right: calc(-1 * var(--page-right-pad));
+
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    a {
+        color: var(--white)
+    }
+
+    html {
+        font-family: 'Inter', sans-serif;
+    }
+
+    :root {
+        --common-gutter: 10px;
+        --button-radius: calc(.8 * var(--common-gutter));
+        --zone-padding: calc(2 * var(--page-right-pad));
+        --cover-width: 300px;
+        --active-cover-width: 342px;
 
 
-    <style>
-        @import url("https://rsms.me/inter/inter.css");
+        --josh-hero-image-height: 634px;
+        --josh-hero-image-width: 500px;
 
-        *, *::before, *::after {
-            box-sizing: border-box;
-        }
+        --gray-25: #FCFCFD;
+        --gray-100: #F2F4F7;
+        --gray-300: #D0D5DD;
+        --gray-400: #98A2B3;
+        --gray-500: #667085;
+        --gray-800: #1D2939;
+        --gray-900: #101828;
+        --green-50: #ECFDF3;
+        --green-600: #039855;
+        --green-700: #027A48;
 
-        a {
-            color: var(--white)
-        }
+        --black: #000;
+        --white: white;
+        --light-green: #6CE9A6;
+        --green-gradient: linear-gradient(#079052, #439792);
 
-        .menu {
-            grid-area: menu;
-            color: var(--white);
-            background-color: var(--black);
+        --page-right-pad: calc(var(--common-gutter) * 3);
+        --page-left-pad: calc(var(--common-gutter) * 3);
+        --page-top-pad: calc(var(--common-gutter) * 3);
+        --page-bottom-pad: calc(var(--common-gutter) * 3);
 
-            display: grid;
-            grid-template-areas: "logo links social-icons";
-            grid-template-columns: 150px  auto 200px;
+        --appearance-event-padding: .9em;
 
-            margin-left: calc(-1 * var(--page-left-pad));
-            margin-right: calc(-1 * var(--page-right-pad));
-            margin-top: calc(-1 * var(--page-top-pad));
+        --mobile-width: 1000px;
 
-            padding-left: var(--page-left-pad);
-            padding-top: var(--page-top-pad);
-            padding-right: var(--page-right-pad);
+        /**/
+        --hamburger-menu-width: 80px;
+    }
 
-            vertical-align: center;
-        }
+    body {
+        margin: 0;
+        background: var(--white);
+        padding-left: var(--page-left-pad);
+        padding-right: var(--page-left-pad);
+        padding-top: var(--page-top-pad);
+
+    }
+
+    /* MENU  */
+    .menu {
+        padding-top: var(--page-top-pad);
+        padding-bottom: var(--common-gutter);
+        color: var(--white);
+        background-color: var(--black);
+        display: grid;
+        grid-template-columns: auto var(--hamburger-menu-width);
+        grid-template-rows: auto  max-content;
+        grid-template-areas:
+                    "logo  hamburger  "
+                    "links links ";
+        margin-top: calc(-1 * var(--page-top-pad));
+        vertical-align: center;
+        align-items: center;
+    }
+
+    .menu .social-icons {
+        display: none;
+    }
+
+
+    .menu > .hamburger-menu:focus + .links {
+        /*
+            TODO this should be a javascript handler because any links clicked within don't work!
+         */
+        display: block;
+    }
+
+    .menu > .hamburger-menu {
+        display: block;
+        grid-area: hamburger;
+        padding: 0;
+        height: 80px;
+        min-height: 80px;
+        width: 80px;
+        min-width: 80px;
+        background-size: 80px 80px;
+        background-repeat: no-repeat;
+        background-image: url("assets/images/hamburger-menu.png");
+    }
+
+    .menu > .links {
+        grid-area: links;
+        display: none;
+
+    }
+
+    .menu > .links {
+        text-align: center;
+
+    }
+
+    .menu > .links > a {
+        margin: 0;
+        padding: 0;
+        display: block;
+        font-weight: 500;
+        text-decoration: none;
+    }
+
+    .menu .logo {
+        grid-area: logo;
+        font-weight: 500;
+        font-size: 7vw;
+    }
+
+
+    @media screen and (min-width: 1000px) {
 
         .menu .logo {
-            grid-area: logo;
-            font-size: 22px;
-            line-height: 26px;
-            font-weight: 500;
+            font-size: larger;
         }
 
-        .menu .links {
-            grid-area: links;
-
-        }
-
-        .menu > .links > nav > a {
-            display: inline;
-            margin: 0;
-            padding-right: 0.5em;
-            font-size: 16px;
-        }
-
-        .menu > .links > nav > ul > a {
-            font-weight: 500;
-            text-decoration: none;
+        .menu .hamburger-menu {
+            display: none;
         }
 
         .menu .social-icons {
             grid-area: social-icons;
             background: url("assets/images/social-icons.png") no-repeat;
             background-size: 200px 20px;
+            height: 20px;
+            display: block;
+            width: 200px;
         }
 
-        html {
-            font-family: 'Inter', sans-serif;
-        }
 
-        :root {
-            --common-gutter: 10px;
-            --button-radius: calc(.8 * var(--common-gutter));
-            --zone-padding: calc(2 * var(--page-right-pad));
-            --cover-width: 300px;
-            --active-cover-width: 342px;
-
-
-            --josh-hero-image-height: 634px;
-            --josh-hero-image-width: 500px;
-
-            --gray-25: #FCFCFD;
-            --gray-100: #F2F4F7;
-            --gray-300: #D0D5DD;
-            --gray-400: #98A2B3;
-            --gray-500: #667085;
-            --gray-800: #1D2939;
-            --gray-900: #101828;
-            --green-50: #ECFDF3;
-            --green-600: #039855;
-            --green-700: #027A48;
-
-            --black: #000;
-            --white: white;
-            --light-green: #6CE9A6;
-            --green-gradient: linear-gradient(#079052, #439792);
-
-            --page-right-pad: calc(var(--common-gutter) * 3);
-            --page-left-pad: calc(var(--common-gutter) * 3);
-            --page-top-pad: calc(var(--common-gutter) * 3);
-            --page-bottom-pad: calc(var(--common-gutter) * 3);
-
-            --appearance-event-padding: .9em;
-        }
-
-        body {
+        .menu > .links > a {
+            display: inline;
             margin: 0;
-            background: var(--white);
-            padding-left: var(--page-left-pad);
-            padding-right: var(--page-left-pad);
-            padding-top: var(--page-top-pad);
-            display: grid;
-            grid-template-rows: auto auto;
-            grid-template-columns: auto;
-            grid-template-areas: "menu"
-                                 "hero"
-                                 "appearances";
+            padding-right: 0.5em;
+
         }
 
+        .menu > .links {
+            grid-area: links;
+            display: block;
+        }
+
+        .menu {
+            grid-template-areas: "logo links social-icons";
+            grid-template-columns: 150px  auto 200px;
+        }
+    }
+
+
+    /* TODO */
+
+    @media screen and (min-width: 2200px) {
+        /* deactivate all the styling until we can get a chance to work on it */
         .hero {
 
             font-size: 20px;
@@ -243,7 +315,6 @@
         }
 
         /*  RECENT POSTS  */
-
         .recent-posts {
             padding-top: var(--page-top-pad);
             padding-bottom: var(--page-bottom-pad);
@@ -380,9 +451,9 @@
 
         .latest-episode-panel {
             /*
-                hackety: we need the BG to be transparent but the
-                contents (in the same grid spot) to be 100% opaque
-            */
+            hackety: we need the BG to be transparent but the
+            contents (in the same grid spot) to be 100% opaque
+        */
             grid-area: panel;
             background-color: #101828;
             opacity: 0.48;
@@ -465,14 +536,6 @@
         }
 
         /*  general purpose content showcase styles  */
-
-        .zone {
-            padding-left: var(--zone-padding);
-            margin-left: calc(-1 * var(--page-left-pad));
-            padding-right: var(--zone-padding);
-            margin-right: calc(-1 * var(--page-right-pad));
-        }
-
         .content-showcase {
             padding-top: var(--page-top-pad);
         }
@@ -839,25 +902,32 @@
             color: var(--gray-400);
             grid-area: copyright;
         }
-
-    </style>
-
-</head>
+    }
+</style>
 <body>
-
-<div class="menu">
+<!--
+    to support this view of the blogs, we'll need to develop a feature on the server-side that shows us
+    the first paragraph or the first N characters, whichever is fewer, in a given blog. We can look at the <P>
+    tags, perhaps using the JSOUP parsing, take the first one, and then truncate all but the first N characters of that?
+-->
+<div class="zone menu">
     <div class="logo">Josh Long</div>
+    <div tabindex="1" class="hamburger-menu"></div>
     <div class="links">
-        <nav>
-            <a href="#">Home</a>
-            <a href="#">About</a>
-            <a href="#">Appearances</a>
-            <a href="#">Blog</a>
-            <a href="#">Abstract</a>
-            <a href="#">Livelessons</a>
-            <a href="#">Books</a>
-            <a href="#">Contact</a>
-        </nav>
+
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Appearances</a>
+        <a href="#">Blog</a>
+        <a href="#">Abstract</a>
+        <a href="#">Livelessons</a>
+        <a href="#">Books</a>
+        <a href="#">Contact</a>
+        <div>
+            <!-- don't delete this div! for some reason chrome renders
+            these <a> elements as super small unless this div is here
+            -->
+        </div>
     </div>
     <div class="social-icons"></div>
 </div>
@@ -877,6 +947,7 @@
     </div>
     <div class="image"></div>
 </div>
+<!--
 <div class="zone appearances">
 
 
@@ -948,11 +1019,7 @@
     <h2>Recent Posts </h2>
 
     <div class="recent-posts-columns">
-        <!--
-        to support this view of the blogs, we'll need to develop a feature on the server-side that shows us
-        the first paragraph or the first N characters, whichever is fewer, in a given blog. We can look at the <P>
-        tags, perhaps using the JSOUP parsing, take the first one, and then truncate all but the first N characters of that?
-        -->
+
         <div class="recent-post-panel">
             <div class="recent-post">
                 <div class="date">20 October 2021</div>
@@ -981,7 +1048,6 @@
         </div>
         <div class="recent-post-panel">
             <div class="recent-post">
-                <!--                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>-->
                 <div class="date">20 October 2021</div>
                 <div class="title">
                     This is a test
@@ -1206,6 +1272,6 @@
     <div class="copyright"> ©2021 Josh Long. All rights reserved.</div>
 
 </div>
-
+-->
 </body>
 </html>
