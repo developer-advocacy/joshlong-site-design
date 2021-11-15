@@ -293,7 +293,6 @@
 
     .appearances > .timeline {
         scrollbar-width: none; /* for Firefox */
-
         display: grid;
         grid-template-columns:  auto;
         grid-template-areas: "event";
@@ -366,17 +365,7 @@
     }
 </style>
 <style>
-    .recent-posts {
-        padding-top: var(--page-top-pad);
-        padding-bottom: var(--page-bottom-pad);
-        margin-bottom: var(--page-bottom-pad);
-        margin-top: var(--page-top-pad);
-    }
 
-    .recent-posts > h2 {
-        padding-left: var(--common-gutter);
-        padding-right: var(--common-gutter);
-    }
 
     .recent-post-panel {
         padding: var(--common-gutter);
@@ -406,7 +395,7 @@
 
     }
 
-    .recent-post > .title {
+    .recent-post > h2 {
         font-weight: bold;
         font-size: larger;
         /*        font-size: 20px;
@@ -417,8 +406,8 @@
 
     .recent-post > .text > p {
         color: var(--gray-500);
-        font-size: 16px;
-        line-height: 24px;
+        /*      font-size: 16px;
+              line-height: 24px;*/
     }
 
 
@@ -434,8 +423,7 @@
         border-radius: var(--common-gutter);
         padding: calc(1.5 * var(--common-gutter));
         border-width: 0;
-        line-height: 24px;
-        font-size: 16px;
+        font-size: larger;
         font-weight: normal;
         color: var(--green-700);
         filter: drop-shadow(calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) var(--gray-300));
@@ -450,7 +438,7 @@
 </style>
 <style>
     /* PODCAST */
-    .latest-episode-image {
+    .latest-episode-panel-content .image {
         grid-area: image;
         align-content: center;
         alignment: center;
@@ -460,7 +448,7 @@
     }
 
 
-    .latest-episode-image > img {
+    .latest-episode-panel-content .image > img {
         --guest-image-dimension: 80px;
         width: var(--guest-image-dimension);
         height: var(--guest-image-dimension);
@@ -468,12 +456,11 @@
         clip-path: circle(calc(var(--guest-image-dimension) / 2));
     }
 
-    .podcast > .podcast-listen {
+    .podcast > h3 {
         grid-area: listen;
         --microphone-size: 48px;
         background-image: url("assets/images/microphone.png");
         background-size: var(--microphone-size);
-        /*font-size: 36px;*/
         line-height: var(--microphone-size);
         padding-left: calc(var(--microphone-size) + var(--common-gutter));
         background-repeat: no-repeat;
@@ -561,25 +548,25 @@
         grid-area: play;
     }
 
-    .latest-episode-panel-content > .latest-episode-synopsis {
+    .latest-episode-panel-content > .synopsis {
         grid-area: synopsis;
         margin-bottom: calc(-1 * var(--common-gutter));
     }
 
-    .latest-episode-panel-content > .latest-episode-synopsis > p {
+    .latest-episode-panel-content > .synopsis > p {
         /*        font-size: 16px;
                 line-height: 24px;*/
         color: var(--gray-300);
     }
 
-    .latest-episode-panel-content > .latest-episode-synopsis > h2 {
+    .latest-episode-panel-content > .synopsis > h3 {
         font-weight: 600;
         /*        font-size: 20px;
                 line-height: 30px;*/
         margin-top: 0;
     }
 
-    .latest-episode-panel-content > .latest-episode-prompt {
+    .latest-episode-panel-content > .prompt {
         grid-area: prompt;
         /*        font-size: 16px;
                 line-height: 24px;*/
@@ -1252,9 +1239,9 @@
         <div class="recent-post-panel">
             <div class="recent-post">
                 <div class="date">20 October 2021</div>
-                <div class="title">
+                <h3>
                     Mardis Gras in Sydney
-                </div>
+                </h3>
                 <div class="text">
                     <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
                         about cloud native (reactive) Spring.</p>
@@ -1266,9 +1253,9 @@
                 <img alt="an image on the blog"
                      src="https://pbs.twimg.com/media/DbI730WXkAAeMww?format=jpg&name=medium"/>
                 <div class="date">20 October 2021</div>
-                <div class="title">
+                <h3>
                     Travel is the Enemy of Closed-Mindedness
-                </div>
+                </h3>
                 <div class="text">
                     <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
                         about cloud native (reactive) Spring.</p>
@@ -1278,9 +1265,9 @@
         <div class="recent-post-panel">
             <div class="recent-post">
                 <div class="date">20 October 2021</div>
-                <div class="title">
+                <h3>
                     This is a test
-                </div>
+                </h3>
                 <div class="text">
                     <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
                         about cloud native (reactive) Spring.</p>
@@ -1291,9 +1278,9 @@
 
             <div class="recent-post">
                 <div class="date">20 October 2021</div>
-                <div class="title">
+                <h3>
                     Have You Seen Spring Lately?
-                </div>
+                </h3>
                 <div class="text">
                     <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
                         about cloud native (reactive) Spring.</p>
@@ -1305,10 +1292,11 @@
 
             <div class="recent-post">
                 <div class="date">20 October 2021</div>
-                <div class="title">
+
+                <h3>
                     A Bootiful, Reactive September and October 2021 (with
                     appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
-                </div>
+                </h3>
                 <div class="text">
                     <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
                         about cloud native (reactive) Spring.</p>
@@ -1321,9 +1309,9 @@
                 <img alt="another image on the blog"
                      src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
                 <div class="date">20 October 2021</div>
-                <div class="title">
-                    Introducing Azure Spring Cloud
-                </div>
+
+                <h3> Introducing Azure Spring Cloud</h3>
+
                 <div class="text">
                     <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
                         about cloud native (reactive) Spring.</p>
@@ -1336,10 +1324,10 @@
 
             <div class="recent-post">
                 <div class="date">20 October 2021</div>
-                <div class="title">
+                <h3>
                     A Bootiful, Reactive September and October 2021 (with
                     appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
-                </div>
+                </h3>
                 <div class="text">
                     <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
                         about cloud native (reactive) Spring.</p>
@@ -1354,7 +1342,7 @@
 </div>
 <div class="zone podcast">
 
-    <h2 class="podcast-listen">
+    <h2>
         Listen to my Podcast
     </h2>
     <div class="podcast-description">
@@ -1367,13 +1355,13 @@
     </div>
     <div class="latest-episode-panel"></div>
     <div class="latest-episode-panel-content">
-        <div class="latest-episode-image">
+        <div class="image">
             <img alt="the latest guest needs no introduction.."
                  src="https://static-cdn.jtvnw.net/jtv_user_pictures/ac662385-725b-43c9-b0e1-03a49533931f-profile_image-70x70.png"/>
         </div>
-        <div class="latest-episode-prompt">Latest episode</div>
-        <div class="latest-episode-synopsis">
-            <h2>.NET legend Layla Porter on Azure Spring Cloud, Steeltoe.NET, and more</h2>
+        <div class="prompt">Latest episode</div>
+        <div class="synopsis">
+            <h3>.NET legend Layla Porter on Azure Spring Cloud, Steeltoe.NET, and more</h3>
             <P> Hi, Spring fans! In this installment, Josh Long (@starbuxman) talks to teammate, .NET ecosystem
                 legend,
                 and an awesome human being Layla Porter (@LaylaCodesIt). </P>
