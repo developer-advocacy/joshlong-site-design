@@ -1,0 +1,1211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>
+        Josh Long
+    </title>
+
+
+    <style>
+        @import url("https://rsms.me/inter/inter.css");
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        a {
+            color: var(--white)
+        }
+
+        .menu {
+            grid-area: menu;
+            color: var(--white);
+            background-color: var(--black);
+
+            display: grid;
+            grid-template-areas: "logo links social-icons";
+            grid-template-columns: 150px  auto 200px;
+
+            margin-left: calc(-1 * var(--page-left-pad));
+            margin-right: calc(-1 * var(--page-right-pad));
+            margin-top: calc(-1 * var(--page-top-pad));
+
+            padding-left: var(--page-left-pad);
+            padding-top: var(--page-top-pad);
+            padding-right: var(--page-right-pad);
+
+            vertical-align: center;
+        }
+
+        .menu .logo {
+            grid-area: logo;
+            font-size: 22px;
+            line-height: 26px;
+            font-weight: 500;
+        }
+
+        .menu .links {
+            grid-area: links;
+
+        }
+
+        .menu > .links > nav > a {
+            display: inline;
+            margin: 0;
+            padding-right: 0.5em;
+            font-size: 16px;
+        }
+
+        .menu > .links > nav > ul > a {
+            font-weight: 500;
+            text-decoration: none;
+        }
+
+        .menu .social-icons {
+            grid-area: social-icons;
+            background: url("assets/images/social-icons.png") no-repeat;
+            background-size: 200px 20px;
+        }
+
+        html {
+            font-family: 'Inter', sans-serif;
+        }
+
+        :root {
+            --common-gutter: 10px;
+            --button-radius: calc(.8 * var(--common-gutter));
+            --zone-padding: calc(2 * var(--page-right-pad));
+            --cover-width: 300px;
+            --active-cover-width: 342px;
+
+
+            --josh-hero-image-height: 634px;
+            --josh-hero-image-width: 500px;
+
+            --gray-25: #FCFCFD;
+            --gray-100: #F2F4F7;
+            --gray-300: #D0D5DD;
+            --gray-400: #98A2B3;
+            --gray-500: #667085;
+            --gray-800: #1D2939;
+            --gray-900: #101828;
+            --green-50: #ECFDF3;
+            --green-600: #039855;
+            --green-700: #027A48;
+
+            --black: #000;
+            --white: white;
+            --light-green: #6CE9A6;
+            --green-gradient: linear-gradient(#079052, #439792);
+
+            --page-right-pad: calc(var(--common-gutter) * 3);
+            --page-left-pad: calc(var(--common-gutter) * 3);
+            --page-top-pad: calc(var(--common-gutter) * 3);
+            --page-bottom-pad: calc(var(--common-gutter) * 3);
+
+            --appearance-event-padding: .9em;
+        }
+
+        body {
+            margin: 0;
+            background: var(--white);
+            padding-left: var(--page-left-pad);
+            padding-right: var(--page-left-pad);
+            padding-top: var(--page-top-pad);
+            display: grid;
+            grid-template-rows: auto auto;
+            grid-template-columns: auto;
+            grid-template-areas: "menu"
+                                 "hero"
+                                 "appearances";
+        }
+
+        .hero {
+
+            font-size: 20px;
+            line-height: 30px;
+            background-color: var(--black);
+            grid-area: hero;
+            color: var(--gray-100);
+
+            display: grid;
+            grid-template-areas: "text image";
+            grid-template-columns: auto 500px;
+
+            padding-top: var(--page-top-pad);
+        }
+
+        .hero > .text > button {
+            background-color: var(--black);
+            border-radius: var(--button-radius);
+            padding: 1em 20px;
+            color: var(--light-green);
+            border: 1px solid var(--light-green);
+            margin-top: 2em;
+        }
+
+        .hero > .text {
+            grid-area: text;
+            padding-top: calc(var(--page-top-pad) * 4);
+        }
+
+        .hero > .image {
+            height: var(--josh-hero-image-height);
+            background-size: var(--josh-hero-image-width) var(--josh-hero-image-height);
+            background: url("assets/images/josh-hero-image.png") no-repeat;
+        }
+
+        .hero > .text > .name {
+            display: block;
+            font-size: 60px;
+            line-height: 2em;
+        }
+
+
+        h2 {
+            font-size: x-large;
+            margin-bottom: 0;
+            line-height: normal;
+        }
+
+
+        /* APPEARANCES */
+        .appearances {
+            display: grid;
+            background-color: var(--gray-900);
+            color: var(--white);
+            vertical-align: center;
+            padding-top: 1.5em;
+            padding-bottom: 1.5em;
+        }
+
+        .appearances > h2 {
+            background-image: url("assets/images/calendar.png");
+            background-size: 40px 40px;
+            background-repeat: no-repeat;
+            padding-left: 50px;
+            height: calc(5 * var(--common-gutter));
+        }
+
+        .appearances > .timeline {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, 500px);
+            grid-column-gap: 0.5em;
+            grid-auto-flow: column;
+            margin-bottom: 1em;
+            overflow: auto;
+        }
+
+        .appearances > .timeline > .event {
+            border-radius: 10px;
+            background-color: var(--gray-800);
+            padding: var(--appearance-event-padding);
+            display: grid;
+            grid-template-areas: "date description"
+                                 " .   description";
+            grid-template-columns: 100px 300px;
+            grid-template-rows: 100px auto;
+
+        }
+
+        .appearances > .timeline > .event > .date {
+            grid-area: date;
+            background-image: var(--green-gradient);
+            padding: 1em;
+            border-radius: 10px;
+            color: var(--gray-25);
+            text-align: center;
+            min-height: 100px;
+            min-width: 100px;
+        }
+
+        .appearances > .timeline > .event > .date > .day {
+            font-size: xx-large;
+        }
+
+        .appearances > .timeline > .event > .description {
+            padding-left: var(--appearance-event-padding);
+        }
+
+        .appearances > .timeline > .event > .description > .event-name {
+            color: var(--gray-25);
+            /*line-height: 30pt;*/
+            font-size: large;
+            grid-area: event;
+        }
+
+        .appearances > .timeline > .event > .description > .event-details {
+            font-size: small;
+            color: var(--gray-300);
+            margin-top: 0.5em;
+        }
+
+        /*  RECENT POSTS  */
+
+        .recent-posts {
+            padding-top: var(--page-top-pad);
+            padding-bottom: var(--page-bottom-pad);
+            margin-bottom: var(--page-bottom-pad);
+            margin-top: var(--page-top-pad);
+        }
+
+        .recent-posts > h2 {
+            padding-left: var(--common-gutter);
+            padding-right: var(--common-gutter);
+
+        }
+
+        .recent-post-panel {
+            padding: var(--common-gutter);
+            display: inline-block;
+        }
+
+        .recent-post {
+            display: inline-block;
+            filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
+            background-color: var(--white);
+            padding: var(--common-gutter);
+            /*border: 1px solid var(--gray-300);*/
+            border-radius: var(--common-gutter);
+        }
+
+        .recent-post > img {
+            width: 100%;
+            border: 1px solid var(--gray-100);
+        }
+
+        .recent-post > .date {
+            font-size: 14px;
+            line-height: 20px;
+            color: var(--green-700);
+            margin-bottom: var(--common-gutter);
+            margin-top: var(--common-gutter);
+
+        }
+
+        .recent-post > .title {
+            font-weight: bold;
+            font-size: 20px;
+            line-height: 30px;
+            color: var(--gray-800);
+            margin-bottom: var(--common-gutter);
+        }
+
+        .recent-post > .text > p {
+            color: var(--gray-500);
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .recent-posts > .recent-posts-columns {
+            column-count: 3;
+            column-gap: 0;
+        }
+
+        .recent-posts > .recent-posts-buttons {
+            alignment: center;
+            text-align: center;
+            margin-bottom: calc(var(--common-gutter) * 2);
+            margin-top: calc(var(--common-gutter) * 2);
+        }
+
+        .recent-posts > .recent-posts-buttons > button {
+            background-color: var(--green-50);
+            border-radius: var(--common-gutter);
+            padding: calc(1.5 * var(--common-gutter));
+            border-width: 0;
+            line-height: 24px;
+            font-size: 16px;
+            font-weight: normal;
+            color: var(--green-700);
+            filter: drop-shadow(calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) calc(var(--common-gutter) / 6) var(--gray-300));
+        }
+
+
+        /* PODCAST */
+        .latest-episode-image {
+            grid-area: image;
+            align-content: center;
+            alignment: center;
+            text-align: center;
+            vertical-align: center;
+            padding: var(--common-gutter);
+        }
+
+        .podcast > .podcast-logo {
+            --podcast-logo-width: 385px;
+            --podcast-logo-height: 128px;
+            width: var(--podcast-logo-width);
+            height: var(--podcast-logo-height);
+            background-repeat: no-repeat;
+            background-size: var(--podcast-logo-width) var(--podcast-logo-height);
+            background-image: url("assets/images/bootiful-podcast-logo.png");
+        }
+
+        .latest-episode-image > img {
+            --guest-image-dimension: 100px;
+            width: var(--guest-image-dimension);
+            height: var(--guest-image-dimension);
+            background-size: var(--guest-image-dimension);
+            clip-path: circle(calc(var(--guest-image-dimension) / 2));
+        }
+
+        .podcast > .podcast-listen {
+            grid-area: listen;
+            --microphone-size: 48px;
+            background-image: url("assets/images/microphone.png");
+            background-size: var(--microphone-size);
+            font-size: 36px;
+            line-height: var(--microphone-size);
+            padding-left: calc(var(--microphone-size) + var(--common-gutter));
+            background-repeat: no-repeat;
+            margin-bottom: var(--common-gutter);
+        }
+
+        .podcast > .podcast-description {
+            grid-area: text;
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 28px;
+            color: var(--gray-100);
+            padding-right: calc(2 * var(--common-gutter));
+        }
+
+        .podcast > .podcast-logo {
+            grid-area: logo;
+        }
+
+        .latest-episode-panel {
+            /*
+                hackety: we need the BG to be transparent but the
+                contents (in the same grid spot) to be 100% opaque
+            */
+            grid-area: panel;
+            background-color: #101828;
+            opacity: 0.48;
+            border-radius: var(--common-gutter);
+            z-index: 1;
+        }
+
+        .latest-episode-panel-content {
+            display: grid;
+            margin-top: var(--common-gutter);
+            margin-bottom: var(--common-gutter);
+            padding: var(--common-gutter);
+            opacity: 1;
+            grid-area: panel;
+            z-index: 2;
+            grid-template-areas:
+                "image prompt prompt"
+                "image synopsis play ";
+            grid-template-columns: minmax(150px, auto ) auto 80px;
+            grid-template-rows: auto   auto auto;
+        }
+
+        .podcast {
+            display: grid;
+            grid-template-areas:
+                "listen logo"
+                "text logo"
+                " .     ."
+                "panel panel";
+            grid-template-rows: auto auto calc(var(--common-gutter) * 2 ) auto;
+            padding-top: calc(var(--page-top-pad) * 2);
+            padding-bottom: calc(var(--page-bottom-pad) * 2);
+            background: rgb(7, 144, 82);
+            background: linear-gradient(
+                    45deg,
+                    rgba(7, 144, 82, 1) 0%,
+                    rgba(67, 151, 146, 1) 55%,
+                    rgba(67, 151, 146, 1) 100%
+            );
+            color: white;
+        }
+
+
+        .latest-episode-panel-content > .play {
+            --play-icon-dimensions: 50px;
+            background-image: url("assets/images/play.png");
+            background-repeat: no-repeat;
+            background-size: var(--play-icon-dimensions);
+            background-position: center;
+            grid-area: play;
+        }
+
+        .latest-episode-panel-content > .latest-episode-synopsis {
+            grid-area: synopsis;
+            margin-bottom: calc(-1 * var(--common-gutter));
+        }
+
+        .latest-episode-panel-content > .latest-episode-synopsis > p:first-of-type {
+        }
+
+        .latest-episode-panel-content > .latest-episode-synopsis > p {
+            font-size: 16px;
+            line-height: 24px;
+            color: var(--gray-300);
+        }
+
+        .latest-episode-panel-content > .latest-episode-synopsis > h2 {
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 30px;
+            margin-top: 0;
+        }
+
+        .latest-episode-panel-content > .latest-episode-prompt {
+            grid-area: prompt;
+            font-size: 16px;
+            line-height: 24px;
+            margin-bottom: 8px;
+            padding: 0;
+        }
+
+        /*  general purpose content showcase styles  */
+
+        .zone {
+            padding-left: var(--zone-padding);
+            margin-left: calc(-1 * var(--page-left-pad));
+            padding-right: var(--zone-padding);
+            margin-right: calc(-1 * var(--page-right-pad));
+        }
+
+        .content-showcase {
+            padding-top: var(--page-top-pad);
+        }
+
+        .content-showcase > p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 28px;
+            text-align: center;
+            color: #667085;
+            padding-right: calc(var(--common-gutter) * 20);
+            padding-left: calc(var(--common-gutter) * 20);
+        }
+
+        .content-showcase > h2 {
+            color: var(--gray-900);
+            font-style: normal;
+            font-weight: bold;
+            font-size: 36px;
+            line-height: 44px;
+            text-align: center;
+            letter-spacing: -0.02em;
+        }
+
+        .arrows {
+            text-align: center;
+            grid-area: arrows;
+            margin-top: var(--common-gutter);
+        }
+
+        .arrows > .arrow.left {
+            background-image: url("assets/images/arrows/gray-l.png");
+            display: inline-block;
+        }
+
+        .arrows > .arrow.right {
+            display: inline-block;
+            background-image: url("assets/images/arrows/gray-r.png");
+        }
+
+        .arrows > .arrow.left.active {
+            background-image: url("assets/images/arrows/bw-l.png");
+        }
+
+        .arrows > .arrow.right.active {
+            background-image: url("assets/images/arrows/bw-r.png");
+        }
+
+        .arrows > .arrow {
+            --arrow-dimension: 40px;
+            height: var(--arrow-dimension);
+            width: var(--arrow-dimension);
+            background-size: var(--arrow-dimension);
+            background-repeat: no-repeat;
+        }
+
+        .content {
+            display: grid;
+        }
+
+        .content > .description > button {
+            justify-content: center;
+            align-items: center;
+            padding: var(--common-gutter);
+            background: var(--green-600);
+            border: 1px solid var(--green-600);
+            color: var(--white);
+            box-sizing: border-box;
+            box-shadow: 0 1px 2px rgba(16, 24, 40, 0.05);
+            border-radius: 8px;
+
+        }
+
+        .content > .description {
+            grid-area: description;
+            padding: calc(5 * var(--common-gutter));
+        }
+
+        .content > .description > h3 {
+            font-style: normal;
+            font-weight: 600;
+            font-size: 30px;
+            line-height: 38px;
+            color: var(--gray-900);
+        }
+
+        .content > .description > p {
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 28px;
+            color: var(--gray-500);
+        }
+
+        .content > .covers > div.cover.right {
+            overflow: hidden;
+            grid-area: r;
+            width: calc(var(--cover-width) / 2);
+        }
+
+        .content > .covers > div.cover.right > img {
+            clip-path: inset(0px calc(var(--cover-width) / 2) 00px 0);
+            width: var(--cover-width);
+        }
+
+
+        .content > .covers > div.cover.left {
+            overflow: hidden;
+            grid-area: l;
+            width: calc(var(--cover-width) / 2);
+        }
+
+        .content > .covers > div.cover.left > img {
+            width: var(--cover-width);
+            left: calc(-1 * calc(var(--cover-width) / 2));
+            display: inline-block;
+            position: relative;
+        }
+
+
+        .content > .covers > div.cover.active {
+            grid-area: active;
+            width: var(--active-cover-width);
+            filter: drop-shadow(calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) calc(var(--common-gutter) / 2) var(--gray-300));
+
+        }
+
+        .content > .covers > div.cover.active > img {
+            opacity: 1;
+            width: var(--active-cover-width);
+            border: 4px solid black;
+            border-radius: var(--common-gutter);
+        }
+
+        .content > .covers > .cover > img {
+            opacity: 0.5;
+            width: var(--cover-width);
+        }
+
+        .content > .covers {
+            grid-area: covers;
+            display: grid;
+            grid-template-areas: "l active r";
+            grid-auto-flow: column;
+            align-items: center;
+            justify-items: center;
+        }
+
+        .zone h2 {
+            margin-top: calc(5 * var(--common-gutter));
+        }
+
+        /* books content-showcase  */
+        .books button {
+            border-radius: var(--common-gutter);
+            padding: var(--common-gutter);
+            --buy-button-left: calc(4 * var(--common-gutter));
+            padding-left: calc(var(--buy-button-left));
+            background-repeat: no-repeat;
+            background-position-y: calc(1 * var(--common-gutter));
+            background-position-x: calc(1 * var(--common-gutter));
+            background-size: 24px;
+            margin-left: var(--common-gutter);
+            margin-right: var(--common-gutter);
+        }
+
+        .books .buttons {
+            text-align: center;
+        }
+
+        .books .buttons > button.leanpub {
+            color: white;
+            background-color: black;
+            background-image: url("assets/images/buttons/leanpub.png");
+        }
+
+        .books .buttons > button.amazon {
+            color: black;
+            background-color: white;
+            background-image: url("assets/images/buttons/amazon.png");
+        }
+
+        .books {
+        }
+
+        .books > .content {
+            margin-right: calc(-1 * var(--zone-padding));
+            grid-template-areas:
+            "description covers "
+            "description arrows ";
+        }
+
+        /* livelessons content-showcase  */
+        .livelessons > .content {
+            margin-top: calc(5 * var(--common-gutter));
+            margin-left: calc(-1 * var(--zone-padding));
+            grid-template-areas:
+            " covers description "
+            " arrows description ";
+        }
+
+
+        /*  SPRING TIPS VIDEOS  */
+        .youtube {
+            padding-top: var(--page-top-pad);
+            padding-bottom: var(--page-bottom-pad);
+            background: linear-gradient(0deg, #101828, #101828);
+            display: grid;
+            grid-template-areas: "text video";
+            grid-template-columns: 30% 70%;
+            margin-top: var(--page-top-pad);
+        }
+
+        .youtube button {
+            background-repeat: no-repeat;
+            --button-icon-size: 20px;
+            background-position-y: calc(var(--common-gutter) * .7);
+            background-position-x: var(--common-gutter);
+            background-size: var(--button-icon-size) var(--button-icon-size);
+            display: block;
+            border: 1px solid var(--gray-300);
+            box-sizing: border-box;
+            color: var(--gray-25);
+            padding: var(--common-gutter);
+            padding-left: calc(var(--common-gutter) * 4);
+            background-color: #101828;
+            border-radius: var(--button-radius);
+            margin-bottom: var(--common-gutter);
+
+        }
+
+        .youtube .text {
+            grid-area: text;
+            padding-right: calc(5 * var(--common-gutter));
+            /*border: 1px solid red;*/
+        }
+
+        .youtube .video {
+            grid-area: video;
+
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio (divide 9 by 16 = 0.5625) */
+
+
+        }
+
+        .youtube .video iframe {
+            border-radius: var(--common-gutter);
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+
+        }
+
+        .youtube h2 {
+            color: var(--white);
+            --screen-dimension: 48px;
+            background-image: url("assets/images/screen.png");
+            background-size: var(--screen-dimension);
+            padding-left: calc(var(--screen-dimension) + var(--common-gutter));
+            background-repeat: no-repeat;
+            font-size: 36px;
+            line-height: var(--screen-dimension);
+            margin-bottom: var(--common-gutter);
+
+        }
+
+        button.spring-site {
+            background-image: url("assets/images/buttons/spring.png");
+        }
+
+        button.twitter {
+            background-image: url("assets/images/buttons/twitter.png");
+        }
+
+        button.youtube {
+            background-image: url("assets/images/buttons/youtube.png");
+        }
+
+        .youtube p {
+            color: var(--gray-100);
+            font-style: normal;
+            font-weight: normal;
+            font-size: 18px;
+            line-height: 28px;
+        }
+
+
+        /* FOOTER */
+        .contact {
+            padding-top: var(--page-top-pad);
+            padding-bottom: var(--page-top-pad);
+            background-color: var(--gray-800);
+            display: grid;
+            grid-template-areas: "prompt call-to-action";
+            grid-template-columns: auto auto;
+        }
+
+        .contact h2 {
+            margin: 0;
+        }
+
+        .contact .call-to-action {
+            grid-area: call-to-action;
+            text-align: right;
+        }
+
+        .contact .call-to-action button {
+            justify-content: center;
+            align-items: center;
+            padding: var(--common-gutter);
+            background: var(--green-600);
+            border: 1px solid var(--green-600);
+            color: var(--white);
+            box-sizing: border-box;
+            border-radius: 8px;
+        }
+
+        .contact .prompt {
+            color: var(--gray-100);
+            grid-area: prompt;
+        }
+
+        /* FOOTER */
+        .footer {
+            color: var(--gray-100);
+            padding-top: calc(2 * var(--page-top-pad));
+            padding-bottom: calc(2 * var(--page-bottom-pad));
+            background-color: var(--gray-900);
+            --icons-dimensions-height: 20px;
+            --icons-dimensions-width: 200px;
+            height: calc(var(--page-bottom-pad) + var(--page-top-pad) + var(--icons-dimensions-height));
+            display: grid;
+            grid-template-areas: "icons name copyright";
+            grid-template-columns: 40% 20% 40%;
+        }
+
+        .footer > * {
+            /*border: 1px solid rosybrown;*/
+        }
+
+        .footer > .social-icons {
+            background: url("assets/images/social-icons.png") no-repeat;
+            background-size: var(--icons-dimensions-width) var(--icons-dimensions-height);
+        }
+
+        .footer > .name {
+            grid-area: name;
+            text-align: center;
+            font-size: 18px;
+            line-height: 28px;
+            color: var(--gray-25);
+        }
+
+        .footer > .copyright {
+            text-align: right;
+            color: var(--gray-400);
+            grid-area: copyright;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="menu">
+    <div class="logo">Josh Long</div>
+    <div class="links">
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">About</a>
+            <a href="#">Appearances</a>
+            <a href="#">Blog</a>
+            <a href="#">Abstract</a>
+            <a href="#">Livelessons</a>
+            <a href="#">Books</a>
+            <a href="#">Contact</a>
+        </nav>
+    </div>
+    <div class="social-icons"></div>
+</div>
+<div class="zone hero">
+    <div class="text">
+        <div class="name">Josh Long</div>
+        <div class="description ">
+            A Spring Developer Advocate, Java Champion,
+            Kotlin Google Developer Expert, author of numerous books,
+            best-selling video trainer, open-source contributor,
+            pod caster and YouTuber: hi, Spring fans!
+            👋
+        </div>
+        <button type="button">
+            Get to know me
+        </button>
+    </div>
+    <div class="image"></div>
+</div>
+<div class="zone appearances">
+
+
+    <h2> Upcoming Appearances</h2>
+    <div class="timeline">
+
+
+        <div class="event">
+            <div class="date">
+                <div class="day">20</div>
+                <div class="month">Oct</div>
+            </div>
+            <div class="description">
+                <div class="event-name">
+                    Masterclass + Taster Masterclass with GOTO Academy
+                </div>
+                <div class="event-details">
+                    I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
+                </div>
+            </div>
+        </div>
+
+        <div class="event">
+            <div class="date">
+                <div class="day">20</div>
+                <div class="month">Oct</div>
+            </div>
+            <div class="description">
+                <div class="event-name"> Masterclass and Taster Masterclass with GOTO Academy
+                </div>
+                <div class="event-details">
+                    I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="date">
+                <div class="day">20</div>
+                <div class="month">Oct</div>
+            </div>
+            <div class="description">
+                <div class="event-name"> Masterclass and Taster Masterclass with GOTO Academy
+                </div>
+                <div class="event-details">
+                    I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
+                </div>
+            </div>
+        </div>
+        <div class="event">
+            <div class="date">
+                <div class="day">20</div>
+                <div class="month">Oct</div>
+            </div>
+            <div class="description">
+                <div class="event-name"> Masterclass and Taster Masterclass with GOTO Academy
+                </div>
+                <div class="event-details">
+                    I'll be doing a masterclass taster talk on all things Spring, Kubernetes, and Microservices
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+</div>
+<div class="zone recent-posts">
+    <h2>Recent Posts </h2>
+
+    <div class="recent-posts-columns">
+        <!--
+        to support this view of the blogs, we'll need to develop a feature on the server-side that shows us
+        the first paragraph or the first N characters, whichever is fewer, in a given blog. We can look at the <P>
+        tags, perhaps using the JSOUP parsing, take the first one, and then truncate all but the first N characters of that?
+        -->
+        <div class="recent-post-panel">
+            <div class="recent-post">
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021 (with
+                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+        <div class="recent-post-panel">
+            <div class="recent-post">
+                <img src="https://pbs.twimg.com/media/DbI730WXkAAeMww?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+        <div class="recent-post-panel">
+            <div class="recent-post">
+                <!--                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>-->
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    This is a test
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+        <div class="recent-post-panel">
+
+            <div class="recent-post">
+                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021 (with
+                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+        <div class="recent-post-panel">
+
+            <div class="recent-post">
+                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021 (with
+                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-post-panel">
+
+            <div class="recent-post">
+                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021 (with
+                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="recent-post-panel">
+
+            <div class="recent-post">
+                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+                <div class="date">20 October 2021</div>
+                <div class="title">
+                    A Bootiful, Reactive September and October 2021 (with
+                    appearances from Spring cofounders Rod Johnson and Juergen Hoeller!)
+                </div>
+                <div class="text">
+                    <p> I just concluded a wonderful Devoxx FR where I was reunited with old friends and spoke to people
+                        about cloud native (reactive) Spring.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="recent-posts-buttons">
+        <button>See More</button>
+    </div>
+</div>
+
+
+<div class="zone  podcast">
+
+    <h2 class="podcast-listen">
+        Listen to my Podcast
+    </h2>
+    <div class="podcast-description">
+        I run a podcast called A Bootiful Podcast, a celebration of the heroes that drive the Spring and Java
+        ecosystems. It's also on Twitter (<a href="https://twitter.com/bootifulpodcast">@BootifulPodcast</a>). Here are
+        the episodes.
+    </div>
+    <div class="podcast-logo"></div>
+    <div class="latest-episode-panel"></div>
+    <div class="latest-episode-panel-content">
+        <div class="latest-episode-image">
+            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ac662385-725b-43c9-b0e1-03a49533931f-profile_image-70x70.png"/>
+        </div>
+        <div class="latest-episode-prompt">Latest episode</div>
+        <div class="latest-episode-synopsis">
+            <h2>.NET legend Layla Porter on Azure Spring Cloud, Steeltoe.NET, and more</h2>
+            <P> Hi, Spring fans! In this installment, Josh Long (@starbuxman) talks to teammate, .NET ecosystem
+                legend,
+                and an awesome human being Layla Porter (@LaylaCodesIt). </P>
+        </div>
+        <div class="play"></div>
+    </div>
+</div>
+
+
+<div class="books zone content-showcase">
+    <h2> Books </h2>
+    <P>
+        I've authored, or co-authored, six books so far.
+        The latest and greatest of these are <strong><EM>Reactive Spring</EM></strong> and <strong><em>Cloud Native
+        Java</em></strong>.
+    </P>
+    <div class="content">
+        <div class="description">
+            <h3>
+                The Reactive Spring Book
+            </h3>
+            <P>
+                Join Spring Developer Advocate Josh Long for an introduction to reactive programming in the Spring
+                ecosystem, leveraging the reactive streams specification, Reactor, Spring Boot, Spring Cloud and so much
+                more.
+            </P>
+            <P>
+                This book will cover important concepts in reactive programming including project Reactor and the
+                reactive streams specification, data access, web programming, RPC with protocols like RSocket, testing,
+                and integration and composition, and more.
+            </P>
+            <div class="buttons">
+                <button class="amazon">Buy on Amazon</button>
+                <button class="leanpub">Buy on Leanpub</button>
+            </div>
+        </div>
+        <div class="covers">
+            <div class="cover left"><img
+                    src="https://images-na.ssl-images-amazon.com/images/I/41R7SBjRbKL._SX348_BO1,204,203,200_.jpg"/>
+            </div>
+            <div class="cover active"><img src="https://joshlong.com/media/books/reactive-spring/cover.png"/></div>
+            <div class="cover right "><img src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/></div>
+        </div>
+        <div>
+            <div class="arrows">
+                <div class="arrow left"></div>
+                <div class="arrow active right"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="livelessons zone content-showcase">
+    <h2>
+        Livelessons
+    </h2>
+    <P>I've got a number of videos available on Safari. These videos are available a la carte or (I feel preferably) as
+        part of the all-you-can-eat buffet-style monthly subscription.
+    </P>
+
+    <div class="content">
+        <div class="description">
+            <h3>
+                Reactive Spring Boot Livelessons
+            </h3>
+            <P>
+                Reactive Spring Boot LiveLessons by Josh Long, Spring Developer Advocate, introduces key concepts of
+                reactive programming and provides Java developers with the skills they need to build reactive
+                applications with Spring.
+            </P>
+
+            <button>Get It Now</button>
+        </div>
+        <div class="covers">
+            <div class="cover left"><img
+                    src="https://joshlong.com/media/livelessons/BuildMicroserviceswSpringBoot_2eLL.jpg"/></div>
+            <div class="cover active"><img src="https://joshlong.com/media/livelessons/ReactiveSpringLL-2E.jpg"/></div>
+            <div class="cover right "><img src="https://joshlong.com/media/livelessons/CloudNativeJavaLL.jpg"/></div>
+        </div>
+        <div>
+            <div class="arrows">
+                <div class="arrow active left"></div>
+                <div class="arrow  right"></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="youtube zone  ">
+    <div class="text">
+        <h2> Spring Tips </h2>
+        <p>
+            I run a screencast called <EM><STRONG>Spring Tips</STRONG></EM>. It's also on Twitter (<a
+                href="https://twitter.com/SpringTipsLive">@SpringTipsLive</a>)
+            Spring is the most popular application development framework for Java™. Millions
+            of developers use Spring to build simple, truly portable, fast and flexible JVM-based systems and
+            applications.
+        </p>
+        <button class="youtube">Learn on Youtube</button>
+        <button class="twitter">Follow on Twitter</button>
+        <button class="spring-site">Get Started Now</button>
+    </div>
+
+    <div class="video">
+        <iframe
+                src="https://www.youtube.com/embed/puIJ1Mn9_LE" title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+    </div>
+</div>
+<div class="contact zone">
+    <div class="prompt"><h2> Got Something to Say? </h2></div>
+    <div class="call-to-action">
+        <button> Get in Touch</button>
+    </div>
+</div>
+
+<div class="footer zone ">
+
+    <div class="social-icons"></div>
+    <div class="name"> Josh Long</div>
+    <div class="copyright"> ©2021 Josh Long. All rights reserved.</div>
+
+</div>
+
+</body>
+</html>
