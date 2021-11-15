@@ -8,9 +8,8 @@
     </title>
 </head>
 <style>
+    /* CORE */
     @import url("https://rsms.me/inter/inter.css");
-
-    /* CORE  */
 
     .zone {
 
@@ -74,6 +73,12 @@
         --hamburger-menu-width: 80px;
     }
 
+    h2 {
+        font-size: x-large;
+        margin-bottom: 0;
+        line-height: normal;
+    }
+
     body {
         margin: 0;
         background: var(--white);
@@ -83,6 +88,8 @@
 
     }
 
+</style>
+<style>
     /* MENU  */
     .menu {
         padding-top: var(--page-top-pad);
@@ -104,11 +111,8 @@
         display: none;
     }
 
-
     .menu > .hamburger-menu:focus + .links {
-        /*
-            TODO this should be a javascript handler because any links clicked within don't work!
-         */
+        /* TODO this should be a javascript handler because any links clicked within don't work! */
         display: block;
     }
 
@@ -150,9 +154,7 @@
         font-size: 7vw;
     }
 
-
     @media screen and (min-width: 1000px) {
-
         .menu .logo {
             font-size: larger;
         }
@@ -170,12 +172,10 @@
             width: 200px;
         }
 
-
         .menu > .links > a {
             display: inline;
             margin: 0;
             padding-right: 0.5em;
-
         }
 
         .menu > .links {
@@ -189,60 +189,71 @@
         }
     }
 
+</style>
+<style>
+    /*HERO*/
+    .hero {
 
-    /* TODO */
+        /*       font-size: 20px;
+               line-height: 30px;*/
+        background-color: var(--black);
+        grid-area: hero;
+        color: var(--gray-100);
+        display: grid;
+        grid-template-areas: "text "
+        "image";
+        grid-template-rows: auto auto;
+        /*border: 1px solid white;*/
+    }
 
-    @media screen and (min-width: 2200px) {
-        /* deactivate all the styling until we can get a chance to work on it */
+    .hero > .text > button {
+        background-color: var(--black);
+        border-radius: var(--button-radius);
+        padding: 1em 20px;
+        color: var(--light-green);
+        border: 1px solid var(--light-green);
+        margin-top: 2em;
+    }
+
+    .hero > .text {
+        grid-area: text;
+    }
+
+    .hero > .image > img {
+        width: 100%;
+    }
+
+    .hero > .image {
+        border: 1px solid white;
+        text-align: center;
+    }
+
+    .hero > .text > .name {
+        font-size: 60px;
+        line-height: 2em;
+        display: none;
+    }
+
+    @media screen and (min-width: 1000px) {
+
         .hero {
-
-            font-size: 20px;
-            line-height: 30px;
-            background-color: var(--black);
-            grid-area: hero;
-            color: var(--gray-100);
-
             display: grid;
             grid-template-areas: "text image";
             grid-template-columns: auto 500px;
-
             padding-top: var(--page-top-pad);
-        }
-
-        .hero > .text > button {
-            background-color: var(--black);
-            border-radius: var(--button-radius);
-            padding: 1em 20px;
-            color: var(--light-green);
-            border: 1px solid var(--light-green);
-            margin-top: 2em;
-        }
-
-        .hero > .text {
-            grid-area: text;
-            padding-top: calc(var(--page-top-pad) * 4);
-        }
-
-        .hero > .image {
-            height: var(--josh-hero-image-height);
-            background-size: var(--josh-hero-image-width) var(--josh-hero-image-height);
-            background: url("assets/images/josh-hero-image.png") no-repeat;
         }
 
         .hero > .text > .name {
             display: block;
-            font-size: 60px;
-            line-height: 2em;
         }
+    }
+</style>
+<style>
 
 
-        h2 {
-            font-size: x-large;
-            margin-bottom: 0;
-            line-height: normal;
-        }
-
-
+    /* TODO */
+    @media screen and (min-width: 2200px) {
+        /* deactivate all the styling until we can get a chance to work on it */
         /* APPEARANCES */
         .appearances {
             display: grid;
@@ -945,7 +956,7 @@
             Get to know me
         </button>
     </div>
-    <div class="image"></div>
+    <div class="image"><img src="assets/images/josh-hero-image.png"/></div>
 </div>
 <!--
 <div class="zone appearances">
