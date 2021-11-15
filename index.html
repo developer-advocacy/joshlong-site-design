@@ -206,6 +206,7 @@
                 "text "
                 "image";
         grid-template-rows: auto auto;
+        border: 1px solid orange;
     }
 
     .hero > .text > button {
@@ -221,7 +222,7 @@
 
     .hero > .text {
         grid-area: text;
-        padding-top:  calc(4 * var(--page-top-pad));
+        padding-top: calc(4 * var(--page-top-pad));
     }
 
     .hero > .image {
@@ -229,11 +230,15 @@
         padding: 0;
         margin: 0;
         margin-top: var(--common-gutter);
+        line-height: 0;
         font-size: 0;
     }
 
     .hero > .image > img {
         width: 100%;
+        padding: 0;
+        margin: 0;
+        border: 1px solid orange;
     }
 
     .hero > .text > .name {
@@ -945,7 +950,6 @@
     }
 
     .youtube .video {
-
         grid-area: video;
         position: relative;
         overflow: hidden;
@@ -1149,7 +1153,7 @@
         </div>
     </div>
     <div class="social-icons">
-        <img src="assets/images/social-icons.png"/>
+        <img alt="social icons" src="assets/images/social-icons.png"/>
     </div>
 </div>
 <div class="zone hero">
@@ -1251,7 +1255,8 @@
         </div>
         <div class="recent-post-panel">
             <div class="recent-post">
-                <img src="https://pbs.twimg.com/media/DbI730WXkAAeMww?format=jpg&name=medium"/>
+                <img alt="an image on the blog"
+                     src="https://pbs.twimg.com/media/DbI730WXkAAeMww?format=jpg&name=medium"/>
                 <div class="date">20 October 2021</div>
                 <div class="title">
                     Travel is the Enemy of Closed-Mindedness
@@ -1305,7 +1310,8 @@
         <div class="recent-post-panel">
 
             <div class="recent-post">
-                <img src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
+                <img alt="another image on the blog"
+                     src="https://pbs.twimg.com/media/DbJQyzRX4AADZOG?format=jpg&name=medium"/>
                 <div class="date">20 October 2021</div>
                 <div class="title">
                     Introducing Azure Spring Cloud
@@ -1349,12 +1355,13 @@
         the episodes.
     </div>
     <div class="podcast-logo">
-        <img src="assets/images/bootiful-podcast-logo.png"/>
+        <img alt="A Bootiful Podcast" src="assets/images/bootiful-podcast-logo.png"/>
     </div>
     <div class="latest-episode-panel"></div>
     <div class="latest-episode-panel-content">
         <div class="latest-episode-image">
-            <img src="https://static-cdn.jtvnw.net/jtv_user_pictures/ac662385-725b-43c9-b0e1-03a49533931f-profile_image-70x70.png"/>
+            <img alt="the latest guest needs no introduction.."
+                 src="https://static-cdn.jtvnw.net/jtv_user_pictures/ac662385-725b-43c9-b0e1-03a49533931f-profile_image-70x70.png"/>
         </div>
         <div class="latest-episode-prompt">Latest episode</div>
         <div class="latest-episode-synopsis">
@@ -1396,10 +1403,12 @@
 
         <div class="covers">
             <div class="cover left"><img
-                    src="https://images-na.ssl-images-amazon.com/images/I/41R7SBjRbKL._SX348_BO1,204,203,200_.jpg"/>
-            </div>
-            <div class="cover active"><img src="https://joshlong.com/media/books/reactive-spring/cover.png"/></div>
-            <div class="cover right "><img src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/></div>
+                    src="https://images-na.ssl-images-amazon.com/images/I/41R7SBjRbKL._SX348_BO1,204,203,200_.jpg"
+                    alt="Pro Spring Recipes"/></div>
+            <div class="cover active"><img alt="Reactive Spring book cover"
+                                           src="https://joshlong.com/media/books/reactive-spring/cover.png"/></div>
+            <div class="cover right "><img alt="Cloud Native Java book cover (English)"
+                                           src="https://joshlong.com/media/books/cloud-native-java/english.jpg"/></div>
         </div>
         <div>
             <div class="arrows">
@@ -1429,10 +1438,13 @@
             </div>
         </div>
         <div class="covers">
-            <div class="cover left"><img
-                    src="https://joshlong.com/media/livelessons/BuildMicroserviceswSpringBoot_2eLL.jpg"/></div>
-            <div class="cover active"><img src="https://joshlong.com/media/livelessons/ReactiveSpringLL-2E.jpg"/></div>
-            <div class="cover right "><img src="https://joshlong.com/media/livelessons/CloudNativeJavaLL.jpg"/></div>
+            <div class="cover left"><img alt="Building Microservices with Spring Boot Livelessons"
+                                         src="https://joshlong.com/media/livelessons/BuildMicroserviceswSpringBoot_2eLL.jpg"/>
+            </div>
+            <div class="cover active"><img alt="Reactive Spring Livelessons"
+                                           src="https://joshlong.com/media/livelessons/ReactiveSpringLL-2E.jpg"/></div>
+            <div class="cover right "><img alt="Cloud Native Java Livelessons"
+                                           src="https://joshlong.com/media/livelessons/CloudNativeJavaLL.jpg"/></div>
         </div>
         <div>
             <div class="arrows">
@@ -1458,7 +1470,7 @@
     </div>
 
     <div class="video">
-        <iframe src="https://www.youtube.com/embed/puIJ1Mn9_LE" title="YouTube video player" frameborder="0"
+        <iframe src="https://www.youtube.com/embed/puIJ1Mn9_LE" title="YouTube video player"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 allowfullscreen></iframe>
     </div>
@@ -1472,7 +1484,7 @@
 
 <div class="footer zone">
     <div class="social-icons">
-        <img src="assets/images/social-icons.png"/>
+        <img src="assets/images/social-icons.png" alt="social icons"/>
     </div>
     <div class="name"> Josh Long</div>
     <div class="copyright">©2021 Josh Long. All rights reserved.</div>
